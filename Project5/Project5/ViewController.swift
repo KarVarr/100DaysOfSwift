@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
       
 
         if let startWordsPath = Bundle.main.path(forResource: "Start", ofType: "txt") {
@@ -24,10 +25,17 @@ class ViewController: UITableViewController {
         } else {
             allWords = ["silkworm"]
         }
-
+        
         startGame()
+        print(allWords.count)
     }
 
+    func startGame() {
+        title = allWords.randomElement()
+        usedWords.removeAll(keepingCapacity: true)
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(usedWords.count)
         return usedWords.count
@@ -38,11 +46,24 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = usedWords[indexPath.row]
         return cell
     }
-
-    func startGame() {
-        title = allWords.randomElement()
-        usedWords.removeAll(keepingCapacity: true)
-        tableView.reloadData()
+    
+    @objc func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] action in
+            guard let answer = ac?.textFields?[0].text else { return}
+            self?.submit(answer)
+            
+            }
+        
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+        
+    }
+    func submit(_ answer: String)  {
+        
     }
     
 }
