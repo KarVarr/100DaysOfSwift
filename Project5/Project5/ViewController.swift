@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-      
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
 
         if let startWordsPath = Bundle.main.path(forResource: "Start", ofType: "txt") {
             if let startWords = try? String(contentsOfFile: startWordsPath) {
@@ -27,17 +27,16 @@ class ViewController: UITableViewController {
         }
         
         startGame()
-        print(allWords.count)
     }
 
-    func startGame() {
+    @objc func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(usedWords.count)
+        
         return usedWords.count
     }
 
@@ -91,11 +90,18 @@ class ViewController: UITableViewController {
         
         return true
     }
+    
     func isOriginal(word: String) -> Bool {
         return !usedWords.contains(word)
     }
+    
     func isReal(word: String) -> Bool {
         let checker = UITextChecker()
+        if word.count < 3 || word == title{
+            return false
+        }
+        
+        
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
 
