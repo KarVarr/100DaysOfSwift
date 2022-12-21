@@ -62,11 +62,11 @@
 		1774BABA295203F900A6C1D5 /* Project7 */ = {
 			isa = PBXGroup;
 			children = (
-				17F16E83295344A10033CDCF /* DetailViewController.swift */,
 				1774BABB295203F900A6C1D5 /* AppDelegate.swift */,
 				1774BABD295203F900A6C1D5 /* SceneDelegate.swift */,
 				1774BACF2952150B00A6C1D5 /* Petition.swift */,
 				1774BAD12952159C00A6C1D5 /* Petitions.swift */,
+				17F16E83295344A10033CDCF /* DetailViewController.swift */,
 				1774BABF295203F900A6C1D5 /* ViewController.swift */,
 				1774BAC1295203F900A6C1D5 /* Main.storyboard */,
 				1774BAC4295203FB00A6C1D5 /* Assets.xcassets */,
