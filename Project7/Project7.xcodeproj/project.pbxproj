@@ -15,6 +15,7 @@
 		1774BAC8295203FB00A6C1D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1774BAC6295203FB00A6C1D5 /* LaunchScreen.storyboard */; };
 		1774BAD02952150B00A6C1D5 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1774BACF2952150B00A6C1D5 /* Petition.swift */; };
 		1774BAD22952159C00A6C1D5 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1774BAD12952159C00A6C1D5 /* Petitions.swift */; };
+		17F16E84295344A10033CDCF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F16E83295344A10033CDCF /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1774BAC9295203FB00A6C1D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1774BACF2952150B00A6C1D5 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		1774BAD12952159C00A6C1D5 /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		17F16E83295344A10033CDCF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		1774BABA295203F900A6C1D5 /* Project7 */ = {
 			isa = PBXGroup;
 			children = (
+				17F16E83295344A10033CDCF /* DetailViewController.swift */,
 				1774BABB295203F900A6C1D5 /* AppDelegate.swift */,
 				1774BABD295203F900A6C1D5 /* SceneDelegate.swift */,
 				1774BACF2952150B00A6C1D5 /* Petition.swift */,
@@ -147,6 +150,7 @@
 				1774BAC0295203F900A6C1D5 /* ViewController.swift in Sources */,
 				1774BAD02952150B00A6C1D5 /* Petition.swift in Sources */,
 				1774BABC295203F900A6C1D5 /* AppDelegate.swift in Sources */,
+				17F16E84295344A10033CDCF /* DetailViewController.swift in Sources */,
 				1774BABE295203F900A6C1D5 /* SceneDelegate.swift in Sources */,
 				1774BAD22952159C00A6C1D5 /* Petitions.swift in Sources */,
 			);
