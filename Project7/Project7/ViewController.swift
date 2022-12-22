@@ -9,10 +9,14 @@ import UIKit
 
 class ViewController: UITableViewController {
     var petitions = [Petition]()
-
+    
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(credits))
+        
         
         let urlString: String
         
@@ -35,6 +39,15 @@ class ViewController: UITableViewController {
         }
         
     }
+                   
+    @objc func credits () {
+            let ac = UIAlertController(title: "Credits", message: "Petitions fee", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
+        }
+                                                            
+                                                        
+                                                                    
     
     func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
