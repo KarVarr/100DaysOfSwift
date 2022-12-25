@@ -66,12 +66,18 @@ class ViewController: UIViewController {
         submit.setTitle("SUBMIT", for: .normal)
         submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submit)
+        submit.layer.borderWidth = 1
+        submit.layer.borderColor = UIColor.red.cgColor
+        submit.layer.cornerRadius = 5
         
         let clear = UIButton(type: .system)
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("CLEAR", for: .normal)
         clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clear)
+        clear.layer.borderWidth = 1
+        clear.layer.borderColor = UIColor.blue.cgColor
+        clear.layer.cornerRadius = 5
         
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -158,6 +164,12 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present (ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Incorrect answer!", message: "Not match any answer", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            
+            score -= 1
         }
     }
     
