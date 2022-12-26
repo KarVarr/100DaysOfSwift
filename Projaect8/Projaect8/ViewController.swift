@@ -202,8 +202,9 @@ class ViewController: UIViewController {
 
                     for (index, line) in lines.enumerated() {
                         let parts = line.components(separatedBy: ": ")
+                        print(parts)
                         let answer = parts[0]
-                        let clue = parts[0]
+                        let clue = parts[1]
 
                         clueString += "\(index + 1). \(clue)\n"
 
