@@ -11,51 +11,53 @@ class ViewController: UITableViewController {
     var petitions = [Petition]()
     
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(credits))
         
-        
+        performSelector(inBackground: #selector(fetchJSON), with: nil)
+    }
+    
+    @objc func fetchJSON () {
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
             urlString =
-                "https://www.hackingwithswift.com/samples/petitions-1.json"
+            "https://www.hackingwithswift.com/samples/petitions-1.json"
         } else {
             urlString =
-                "https://api.whitehouse.gov/v1/petitions.json?signatureConuntFloor=10000&limit=199"
+            "https://api.whitehouse.gov/v1/petitions.json?signatureConuntFloor=10000&limit=199"
         }
         
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let url = URL(string:  urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    self?.parse(json: data)
-                } else {
-                    self?.showError()
-                }
+        
+        if let url = URL(string:  urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
             } else {
-                self?.showError()
+                showError()
             }
+        } else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
-        
         
     }
-                   
-    @objc func credits () {
-            let ac = UIAlertController(title: "Credits", message: "Petitions fee", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Ok", style: .default))
-            present(ac, animated: true)
-        }
-                                                            
-                                                        
-                                                                    
     
-    func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+    @objc func credits () {
+        let ac = UIAlertController(title: "Credits", message: "Petitions fee", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
         present(ac, animated: true)
+    }
+    
+    
+    
+    
+   @objc func showError() {
+            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        
     }
     
     func parse(json: Data)
@@ -64,10 +66,12 @@ class ViewController: UITableViewController {
         
         if let jsonPetitios = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitios.results
-            tableView.reloadData()
+            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petitions.count
     }
@@ -86,6 +90,6 @@ class ViewController: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-
+    
 }
 
