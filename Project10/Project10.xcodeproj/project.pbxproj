@@ -14,6 +14,7 @@
 		178BF704295DE59B004F3A88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178BF703295DE59B004F3A88 /* Assets.xcassets */; };
 		178BF707295DE59B004F3A88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178BF705295DE59B004F3A88 /* LaunchScreen.storyboard */; };
 		178BF70F295DE8F6004F3A88 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178BF70E295DE8F6004F3A88 /* PersonCell.swift */; };
+		17B04FC9295F275900F0D361 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B04FC8295F275900F0D361 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		178BF706295DE59B004F3A88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		178BF708295DE59B004F3A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		178BF70E295DE8F6004F3A88 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		17B04FC8295F275900F0D361 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		178BF6F9295DE599004F3A88 /* Project10 */ = {
 			isa = PBXGroup;
 			children = (
+				17B04FC8295F275900F0D361 /* Person.swift */,
 				178BF6FA295DE599004F3A88 /* AppDelegate.swift */,
 				178BF6FC295DE599004F3A88 /* SceneDelegate.swift */,
 				178BF6FE295DE599004F3A88 /* ViewController.swift */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B04FC9295F275900F0D361 /* Person.swift in Sources */,
 				178BF6FF295DE599004F3A88 /* ViewController.swift in Sources */,
 				178BF6FB295DE599004F3A88 /* AppDelegate.swift in Sources */,
 				178BF70F295DE8F6004F3A88 /* PersonCell.swift in Sources */,
