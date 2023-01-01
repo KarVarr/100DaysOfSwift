@@ -15,7 +15,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPerson))
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,8 +80,14 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             person.name = newName
             self?.collectionView.reloadData()
         })
+//        ac.addAction(UIAlertAction(title: "delete", style: .destructive) {[weak self,
+//        weak ac] _ in
+//            guard let delete = people.remove(at: indexPath.item) else { return }
+//            person[indexPath] = delete
+//            self?.collectionView.reloadData()
+//        })
         
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        //ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
         
         
