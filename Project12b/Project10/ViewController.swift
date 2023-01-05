@@ -15,6 +15,15 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "poeple") as? Data {
+            let jsonDecoder = JSONDecoder()
+            do {
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load poeple")
+            }
+        }
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPerson))
     }
 
@@ -58,6 +67,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
+        save()
         collectionView.reloadData()
         
         dismiss(animated: true)
@@ -78,6 +88,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
                                                                      weak ac] _ in
             guard let newName = ac?.textFields?[0].text else {return}
             person.name = newName
+            //save()
             self?.collectionView.reloadData()
         })
 //        ac.addAction(UIAlertAction(title: "delete", style: .destructive) {[weak self,
@@ -91,6 +102,19 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         present(ac, animated: true)
         
         
+    }
+    
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey:  "people")
+            
+        } else {
+            print("Failed to save people")
+        }
     }
 
 }
