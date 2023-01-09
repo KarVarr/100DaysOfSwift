@@ -79,6 +79,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     @IBAction func save(_ sender: Any) {
+        guard let image = imageView.image else {return}
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     @IBAction func intensityChange(_ sender: Any) {
@@ -97,10 +99,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         guard let image = currentFilter.outputImage else { return }
         currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
         
-        if let cgimg = context.createCGImage(image, from: image.extent) {
-            let processedImage = UIImage(cgImage: cgimg)
+        if let cgImage = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgImage)
             imageView.image = processedImage
         }
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+                // we got back an error!
+                let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+            } else {
+                let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+            }
     }
     
 }
