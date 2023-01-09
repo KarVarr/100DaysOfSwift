@@ -15,10 +15,78 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdd-Hg-HaC">
+                                <rect key="frame" x="16" y="103" width="361" height="600"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JQm-dJ-eEv">
+                                        <rect key="frame" x="10" y="10" width="340" height="450"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JQm-dJ-eEv" firstAttribute="leading" secondItem="mdd-Hg-HaC" secondAttribute="leading" constant="10" id="ADR-2c-iKO"/>
+                                    <constraint firstItem="JQm-dJ-eEv" firstAttribute="centerY" secondItem="mdd-Hg-HaC" secondAttribute="centerY" id="SvQ-K9-kBf"/>
+                                    <constraint firstItem="JQm-dJ-eEv" firstAttribute="centerX" secondItem="mdd-Hg-HaC" secondAttribute="centerX" id="rTo-SO-k3o"/>
+                                    <constraint firstItem="JQm-dJ-eEv" firstAttribute="top" secondItem="mdd-Hg-HaC" secondAttribute="top" constant="10" id="xKc-b0-WBU"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acV-KE-76O">
+                                <rect key="frame" x="16" y="728" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FNZ-cp-mk6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bWp-hy-WDo">
+                                <rect key="frame" x="102" y="723" width="277" height="30"/>
+                                <connections>
+                                    <action selector="intensityChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="3Ie-QD-qlB"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QyI-Bd-lEo">
+                                <rect key="frame" x="16" y="760" width="126" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change Filter"/>
+                                <connections>
+                                    <action selector="changeFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pVU-Sq-SCT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jj8-HW-kNL">
+                                <rect key="frame" x="316" y="760" width="61" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lH0-Sq-ivc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mdd-Hg-HaC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="62o-cY-cvh"/>
+                            <constraint firstItem="mdd-Hg-HaC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6dc-b4-IgE"/>
+                            <constraint firstItem="mdd-Hg-HaC" firstAttribute="trailing" secondItem="bWp-hy-WDo" secondAttribute="trailing" id="E39-UW-8k4"/>
+                            <constraint firstItem="mdd-Hg-HaC" firstAttribute="leading" secondItem="acV-KE-76O" secondAttribute="leading" id="ETb-fA-uES"/>
+                            <constraint firstItem="mdd-Hg-HaC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LLl-MK-okM"/>
+                            <constraint firstItem="QyI-Bd-lEo" firstAttribute="top" secondItem="bWp-hy-WDo" secondAttribute="bottom" constant="8" id="NmU-zO-cMQ"/>
+                            <constraint firstItem="bWp-hy-WDo" firstAttribute="leading" secondItem="acV-KE-76O" secondAttribute="trailing" constant="18" id="cpQ-1d-njV"/>
+                            <constraint firstItem="acV-KE-76O" firstAttribute="leading" secondItem="QyI-Bd-lEo" secondAttribute="leading" id="lq7-rr-svx"/>
+                            <constraint firstAttribute="bottom" secondItem="bWp-hy-WDo" secondAttribute="bottom" constant="100" id="nkG-VX-y7u"/>
+                            <constraint firstItem="QyI-Bd-lEo" firstAttribute="top" secondItem="acV-KE-76O" secondAttribute="bottom" constant="11" id="pRo-cN-Nvz"/>
+                            <constraint firstItem="acV-KE-76O" firstAttribute="top" secondItem="mdd-Hg-HaC" secondAttribute="bottom" constant="25" id="qKo-Ml-ybF"/>
+                            <constraint firstItem="bWp-hy-WDo" firstAttribute="top" secondItem="mdd-Hg-HaC" secondAttribute="bottom" constant="20" id="rrn-CC-WPF"/>
+                            <constraint firstItem="QyI-Bd-lEo" firstAttribute="baseline" secondItem="Jj8-HW-kNL" secondAttribute="baseline" id="tIU-Ch-NdD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jj8-HW-kNL" secondAttribute="trailing" constant="16" id="wsV-tK-TEA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EoU-ET-5DI"/>
+                    <connections>
+                        <outlet property="imageView" destination="JQm-dJ-eEv" id="mg4-LV-Tbj"/>
+                        <outlet property="intensity" destination="bWp-hy-WDo" id="ueS-zQ-C3R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
