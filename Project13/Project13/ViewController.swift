@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
+    @IBOutlet weak var filterButton: UIButton!
     var currentImage: UIImage!
     
     var context: CIContext!
@@ -62,6 +63,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             popoverController.sourceRect = sender.bounds
         }
         
+        
+        
         present(ac, animated: true)
     }
     
@@ -74,12 +77,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
+        filterButton.setTitle("Filter: \(actionTitle)", for: .normal)
+        
         applyProcessing()
         
     }
     
     @IBAction func save(_ sender: Any) {
-        guard let image = imageView.image else {return}
+        guard let image = imageView.image else {
+            
+            let ac = UIAlertController(title: "Error 404", message: "Image no found!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(ac, animated: true)
+            return
+        }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
@@ -107,15 +118,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-                // we got back an error!
-                let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                present(ac, animated: true)
-            } else {
-                let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                present(ac, animated: true)
-            }
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
 }
