@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         clear.layer.borderWidth = 1
         clear.layer.borderColor = UIColor.blue.cgColor
         clear.layer.cornerRadius = 5
+        clear.alpha = 0.2
         
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -170,6 +171,15 @@ class ViewController: UIViewController {
             present(ac, animated: true)
             
             score -= 1
+            
+            UIView.animate(withDuration: 1, delay: 0) {
+                if sender.alpha != 1.0 {
+                    sender.alpha = 1
+                } else {
+                    sender.alpha = 0.2
+                    
+                }
+            }
         }
     }
     
@@ -188,6 +198,14 @@ class ViewController: UIViewController {
             button.isHidden = false
         }
         activatedButtons.removeAll()
+        UIView.animate(withDuration: 1, delay: 0) {
+            if sender.alpha != 1.0 {
+                sender.alpha = 1
+            } else {
+                sender.alpha = 0.2
+                
+            }
+        }
     }
     
     func loadLevel() {
@@ -204,7 +222,7 @@ class ViewController: UIViewController {
                         let parts = line.components(separatedBy: ": ")
                         print(parts)
                         let answer = parts[0]
-                        let clue = parts[1]
+                        let clue = parts[0]
 
                         clueString += "\(index + 1). \(clue)\n"
 
