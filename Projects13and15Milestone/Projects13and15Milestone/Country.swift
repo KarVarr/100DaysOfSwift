@@ -8,6 +8,22 @@
 import Foundation
 
 
-struct County {
-    sd
+struct County: Codable {
+    let country: String
+    let imageCountry: String
+    
+    func loadJson(fileName: String) -> Data? {
+        let decoder = JSONDecoder()
+        do {
+           if let bundlePath = Bundle.main.path(forResource: "CountyJSON", ofType: "json"),
+              let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+               return jsonData
+           }
+            
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
 }
