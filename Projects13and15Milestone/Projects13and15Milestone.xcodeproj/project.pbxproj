@@ -14,6 +14,7 @@
 		1718A31A297420AF00C9D574 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1718A318297420AF00C9D574 /* LaunchScreen.storyboard */; };
 		1718A322297421A400C9D574 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A321297421A400C9D574 /* TableViewController.swift */; };
 		1718A3262974223200C9D574 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718A3252974223200C9D574 /* Country.swift */; };
+		172834EE29757F3F001DB531 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172834ED29757F3F001DB531 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		1718A321297421A400C9D574 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1718A3252974223200C9D574 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		1718A327297422D800C9D574 /* CountyJSON.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = CountyJSON.geojson; sourceTree = "<group>"; };
+		172834ED29757F3F001DB531 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1718A30F297420AD00C9D574 /* SceneDelegate.swift */,
 				1718A321297421A400C9D574 /* TableViewController.swift */,
 				1718A313297420AD00C9D574 /* Main.storyboard */,
+				172834ED29757F3F001DB531 /* CustomTableViewCell.swift */,
 				1718A3252974223200C9D574 /* Country.swift */,
 				1718A327297422D800C9D574 /* CountyJSON.geojson */,
 				1718A316297420AF00C9D574 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1718A30E297420AD00C9D574 /* AppDelegate.swift in Sources */,
+				172834EE29757F3F001DB531 /* CustomTableViewCell.swift in Sources */,
 				1718A310297420AD00C9D574 /* SceneDelegate.swift in Sources */,
 				1718A3262974223200C9D574 /* Country.swift in Sources */,
 				1718A322297421A400C9D574 /* TableViewController.swift in Sources */,
