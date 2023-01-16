@@ -13,7 +13,7 @@ struct County: Codable {
     let imageCountry: String
     
     func loadJson(fileName: String) -> Data? {
-        let decoder = JSONDecoder()
+        //let decoder = JSONDecoder()
         do {
            if let bundlePath = Bundle.main.path(forResource: "CountyJSON", ofType: "json"),
               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {

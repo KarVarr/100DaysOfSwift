@@ -37,8 +37,9 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = country[indexPath.row]
         cell.imageOfLabel.image = UIImage(named: country[indexPath.row])
-        
-        
+        cell.imageOfLabel.layer.cornerRadius = cell.imageOfLabel.frame.size.height / 2
+        cell.imageOfLabel.clipsToBounds = true
+        cell.imageOfLabel.contentMode = .scaleAspectFill
         return cell
     }
     
@@ -53,5 +54,9 @@ class TableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    @IBAction func backAction(_ segue: UIStoryboardSegue) {
+        
+    }
     
 }
