@@ -12,6 +12,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var mapTypeButton: UIBarButtonItem!
+    
+    var mapType = MKMapType(rawValue: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         return annotationView
     }
-   
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let capital = view.annotation as? Capital else { return}
         
@@ -52,6 +55,21 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    //Challenge 2
+    @IBAction func mapButtonAction(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Map Type", message: "Choose type of map", preferredStyle: .actionSheet)
+        
+        ac.addAction(UIAlertAction(title: "Hybrid", style: .default, handler: { ac in
+            self.mapView.mapType = .hybridFlyover
+        }))
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default, handler: { ac in
+            self.mapView.mapType = .satellite
+        }))
+        ac.addAction(UIAlertAction(title: "Standart", style: .default, handler: { ac in
+            self.mapView.mapType = .standard
+        }))
         present(ac, animated: true)
     }
     
