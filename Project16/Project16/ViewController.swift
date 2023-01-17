@@ -12,17 +12,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var mapTypeButton: UIBarButtonItem!
     
     var mapType = MKMapType(rawValue: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let london = Capital(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.50722, longitude: -0.1275), info: "Home to the 2012 Summer Olympics")
-        let moscow = Capital(title: "Moscow", coordinate: CLLocationCoordinate2D(latitude: 55.751244
-                                                                                 , longitude: 37.395744), info: "Just city")
-        let yerevan = Capital(title: "Yerevan", coordinate: CLLocationCoordinate2D(latitude: 40.177200, longitude: 44.503490), info: "Yerevan the oldest city of the world!")
+        let london = Capital(title: "London",
+                             coordinate: CLLocationCoordinate2D(latitude: 51.50722, longitude: -0.1275),
+                             info: "Home to the 2012 Summer Olympics",
+                             wiki: "https://ru.wikipedia.org/wiki/Лондон")
+        let moscow = Capital(title: "Moscow",
+                             coordinate: CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.395744),
+                             info: "Just city",
+                             wiki: "https://ru.wikipedia.org/wiki/Москва")
+        let yerevan = Capital(title: "Yerevan",
+                              coordinate: CLLocationCoordinate2D(latitude: 40.177200, longitude: 44.503490),
+                              info: "Yerevan the oldest city of the world!",
+                              wiki: "https://ru.wikipedia.org/wiki/Ереван")
         
         mapView.addAnnotation(london)
         mapView.addAnnotation(moscow)
@@ -42,6 +49,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView?.rightCalloutAccessoryView = btn
         } else {
             annotationView?.annotation = annotation
+            //Challenge 1
+            if let pin = annotationView as? MKMarkerAnnotationView  {
+                pin.markerTintColor = .magenta
+            }
         }
         
         return annotationView
@@ -55,8 +66,21 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "Wikipedia", style: .default, handler: { ac in
+            self.openWiki(url: capital.wiki)
+        }))
         present(ac, animated: true)
     }
+    
+    //Challenge 3
+    func openWiki(url: String)  {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WKWebView") as? WKWebView {
+            vc.website = url
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
     //Challenge 2
     @IBAction func mapButtonAction(_ sender: UIBarButtonItem) {
         let ac = UIAlertController(title: "Map Type", message: "Choose type of map", preferredStyle: .actionSheet)

@@ -42,7 +42,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapTypeButton" destination="4XV-IO-Tf2" id="2Nu-oA-PXu"/>
                         <outlet property="mapView" destination="Cfc-Nn-LHc" id="IWz-b6-WXS"/>
                     </connections>
                 </viewController>
