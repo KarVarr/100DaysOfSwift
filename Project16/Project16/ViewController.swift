@@ -66,19 +66,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
-        ac.addAction(UIAlertAction(title: "Wikipedia", style: .default, handler: { ac in
-            self.openWiki(url: capital.wiki)
-        }))
+//        ac.addAction(UIAlertAction(title: "Wikipedia", style: .default, handler: { ac in
+//            self.openWiki(url: capital.wiki)
+//        }))
         present(ac, animated: true)
     }
     
     //Challenge 3
-    func openWiki(url: String)  {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "WKWebView") as? WKWebView {
-            vc.website = url
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+//    func openWiki(url: String)  {
+//        if let vc = storyboard?.instantiateViewController(withIdentifier: "WKWebView") as? WKWebView {
+//            vc.website = url
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
     
     
     //Challenge 2
