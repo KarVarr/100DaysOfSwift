@@ -83,6 +83,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
+       
+        
         var location = touch.location(in: self)
         
         if location.y < 100 {
@@ -102,6 +104,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeFromParent()
 
         isGameOver = true
+        //challenge 3
+        if isGameOver {
+            gameTimer?.invalidate()
+        }
     }
     
 }
