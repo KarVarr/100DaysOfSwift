@@ -12,12 +12,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var distanceReading: UILabel!
     var locationManager: CLLocationManager?
-    
+    //challenge 3
     @IBOutlet weak var circleView: UIView!
-    
-    
+    //challenge 2
+    @IBOutlet weak var nameLabel: UILabel!
     //challenge 1
     var firstDetected = true
+    var currentBeaconUuid: UUID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         
         view.backgroundColor = .gray
+        nameLabel.text = "Name of UUID"
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -51,8 +53,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                     
     }
     
-    func update(distance: CLProximity) {
+    func update(distance: CLProximity, name: String) {
         UIView.animate(withDuration: 1) {
+            self.nameLabel.text = "\(name)"
             switch distance {
             case .unknown:
                 self.view.backgroundColor = UIColor.gray
@@ -84,13 +87,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        if let beacon = beacons.first {
-            update(distance: beacon.proximity)
-        } else {
-            update(distance: .unknown)
-        }
-    }
     
     //challenge 1
     func firstDetection()  {
@@ -100,6 +96,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             present(ac, animated: true)
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        if let beacon = beacons.first {
+            if currentBeaconUuid == nil {currentBeaconUuid = region.proximityUUID}
+            guard currentBeaconUuid == region.proximityUUID else {return}
+            update(distance: beacon.proximity, name: region.identifier)
+            firstDetection()
+        } else {
+            guard currentBeaconUuid == region.proximityUUID else {return}
+            currentBeaconUuid = nil
+            update(distance: .unknown, name: "noname")
+        }
+       
+    }
+    
+    
 
 }
 
