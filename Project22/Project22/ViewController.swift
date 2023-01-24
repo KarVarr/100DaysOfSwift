@@ -13,12 +13,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var distanceReading: UILabel!
     var locationManager: CLLocationManager?
     
+    @IBOutlet weak var circleView: UIView!
+    
+    
+    //challenge 1
+    var firstDetected = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
+        
+        circleView.layer.cornerRadius = circleView.frame.height / 2
+        circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         
         view.backgroundColor = .gray
     }
@@ -52,18 +61,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             case .far:
                 self.view.backgroundColor = UIColor.blue
                 self.distanceReading.text = "FAR"
+                
+                self.circleView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
 
             case .near:
                 self.view.backgroundColor = UIColor.orange
                 self.distanceReading.text = "NEAR"
+                
+                self.circleView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
             case .immediate:
                 self.view.backgroundColor = UIColor.red
                 self.distanceReading.text = "RIGHT HERE"
                 
+                self.circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
             default:
                 self.view.backgroundColor = .gray
                 self.distanceReading.text = "UNKNOWN"
+                
+                self.circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
             }
         }
     }
@@ -72,6 +89,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             update(distance: beacon.proximity)
         } else {
             update(distance: .unknown)
+        }
+    }
+    
+    //challenge 1
+    func firstDetection()  {
+        if firstDetected {
+            let ac = UIAlertController(title: "Beacon Detected", message: "The first beacon is detected", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
     }
 
