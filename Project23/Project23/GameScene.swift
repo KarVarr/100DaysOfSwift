@@ -12,6 +12,9 @@ enum ForceBomb {
     case never, always, random
 }
 
+enum SequenceType: CaseIterable {
+    case oneNoBomb, one, twoWithOneBomb, two, three, four, chain, fastChain
+}
 
 class GameScene: SKScene {
     var gameScore: SKLabelNode!
@@ -33,6 +36,11 @@ class GameScene: SKScene {
     
     var bombSoundEffect: AVAudioPlayer?
     
+    var popupTime = 0.9
+    var sequence = [SequenceType]()
+    var sequencePosition = 0
+    var chainDelay = 3.0
+    var nextSequenceQueued = true
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "sliceBackground")
@@ -48,6 +56,17 @@ class GameScene: SKScene {
         createLives()
         createSlices()
         
+        sequence = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
+
+        for _ in 0 ... 1000 {
+            if let nextSequence = SequenceType.allCases.randomElement() {
+                sequence.append(nextSequence)
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.tossEnemies()
+        }
     }
     
     func createScore() {
@@ -243,6 +262,23 @@ class GameScene: SKScene {
     }
  
     override func update(_ currentTime: TimeInterval) {
+        if activeEnemies.count > 0 {
+            for (index, node) in activeEnemies.enumerated().reversed() {
+                if node.position.y < -140 {
+                    node.removeFromParent()
+                    activeEnemies.remove(at: index)
+                }
+            }
+        } else {
+            if !nextSequenceQueued {
+                DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in
+                    self?.tossEnemies()
+                }
+
+                nextSequenceQueued = true
+            }
+        }
+        
         var bombCount = 0
 
         for node in activeEnemies {
@@ -253,9 +289,62 @@ class GameScene: SKScene {
         }
 
         if bombCount == 0 {
-            // no bombs – stop the fuse sound!
             bombSoundEffect?.stop()
             bombSoundEffect = nil
         }
+    }
+    
+    func tossEnemies() {
+        popupTime *= 0.991
+        chainDelay *= 0.99
+        physicsWorld.speed *= 1.02
+
+        let sequenceType = sequence[sequencePosition]
+
+        switch sequenceType {
+        case .oneNoBomb:
+            createEnemy(forceBomb: .never)
+
+        case .one:
+            createEnemy()
+
+        case .twoWithOneBomb:
+            createEnemy(forceBomb: .never)
+            createEnemy(forceBomb: .always)
+
+        case .two:
+            createEnemy()
+            createEnemy()
+
+        case .three:
+            createEnemy()
+            createEnemy()
+            createEnemy()
+
+        case .four:
+            createEnemy()
+            createEnemy()
+            createEnemy()
+            createEnemy()
+
+        case .chain:
+            createEnemy()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 5.0)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 5.0 * 2)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 5.0 * 3)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 5.0 * 4)) { [weak self] in self?.createEnemy() }
+
+        case .fastChain:
+            createEnemy()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 10.0)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 10.0 * 2)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 10.0 * 3)) { [weak self] in self?.createEnemy() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (chainDelay / 10.0 * 4)) { [weak self] in self?.createEnemy() }
+        }
+
+        sequencePosition += 1
+        nextSequenceQueued = false
     }
 }
