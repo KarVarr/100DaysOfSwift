@@ -30,7 +30,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     func startHosting(action: UIAlertAction) {
         guard let mcSession = mcSession else {return}
         mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "hws-project25", discoveryInfo: nil, session: mcSession)
-        mcAdvertiserAssistant?.start()
+        mcAdvertiserAssistant?.start() 
     }
     
     func joinHosting(action: UIAlertAction) {
@@ -127,6 +127,9 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
 
         case .notConnected:
             print("Not Connected: \(peerID.displayName)")
+            let ac = UIAlertController(title: "Disconnect", message: "You lost the connection", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
 
         @unknown default:
             print("Unknown state received: \(peerID.displayName)")
