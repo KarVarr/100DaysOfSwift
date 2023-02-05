@@ -19,8 +19,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ztX-ij-Q9D">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuX-sv-oTt">
-                                <rect key="frame" x="156" y="783" width="82" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuX-sv-oTt">
+                                <rect key="frame" x="131" y="783" width="131" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="96L-VD-IoL"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Redraw"/>
                                 <connections>
@@ -34,7 +37,7 @@
                             <constraint firstItem="ztX-ij-Q9D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="36t-QO-6v2"/>
                             <constraint firstItem="ztX-ij-Q9D" firstAttribute="centerX" secondItem="xuX-sv-oTt" secondAttribute="centerX" id="A0z-gD-diz"/>
                             <constraint firstItem="ztX-ij-Q9D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kwh-Lx-S9t"/>
-                            <constraint firstItem="xuX-sv-oTt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="156" id="fcv-Vc-qX7"/>
+                            <constraint firstItem="xuX-sv-oTt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="131" id="fcv-Vc-qX7"/>
                             <constraint firstItem="ztX-ij-Q9D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qPA-uT-hvo"/>
                             <constraint firstItem="ztX-ij-Q9D" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-59" id="rNf-MB-YLp"/>
                             <constraint firstItem="xuX-sv-oTt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wsz-Li-bye"/>
