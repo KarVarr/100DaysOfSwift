@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "mouse.png",
+      "filename" : "mouse@2x 3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mouse@2x.png",
+      "filename" : "mouse@2x 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
