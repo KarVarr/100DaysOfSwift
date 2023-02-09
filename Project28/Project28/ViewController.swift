@@ -21,7 +21,10 @@ class ViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplication.willResignActiveNotification, object: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSecretMessage))
     }
+    
+    
     
     @IBAction func authenticateTapped(_ sender: Any) {
         let context = LAContext()
@@ -82,6 +85,9 @@ class ViewController: UIViewController {
         KeychainWrapper.standard.set(secret.text, forKey: "SecretMessage")
         secret.resignFirstResponder()
         secret.isHidden = true
+        
+        navigationItem.rightBarButtonItem = nil
+        
         title = "Nothing to see here"
     }
     
