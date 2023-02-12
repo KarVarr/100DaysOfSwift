@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var name = ""
+    let users = ["Ron", "Harry", "Malfoy", "Elisabet", "Jack", "Bob"]
+    @State private var currentUser = "Harry"
+    
     var body: some View {
-        Form {
-            TextField("Enter Your Name", text: $name)
-            Text("Hello \(name)")
+        NavigationView {
+            Picker("Choose the Player", selection: $currentUser) {
+                ForEach(users, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.automatic)
+            .foregroundColor(.red)
+            .navigationTitle("Users")
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
