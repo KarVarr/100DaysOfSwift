@@ -14,6 +14,14 @@ struct ContentView: View {
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
+    var totalAmount: Double {
+        let people = Double(numberOfPeople + 2)
+        let percent = checkAmount / 100 * Double(tipPercentage)
+        let sum = percent + checkAmount
+        
+        return sum / people
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -23,11 +31,11 @@ struct ContentView: View {
                             .currency(code: "USD" ))
                             .keyboardType(.decimalPad)
                     Picker("Number Of People", selection: $numberOfPeople) {
-                        ForEach(0..<100) {
+                        ForEach(2..<100) {
                             Text("\($0)")
                         }
                     } .pickerStyle(.navigationLink)
-                        
+                       
                 }
                 
                 //MARK: - PERSENT
@@ -44,15 +52,21 @@ struct ContentView: View {
                 
                 //MARK: - TOTAL
                 Section {
-                    Text(checkAmount, format: .currency(code: "USD" ))
+                    Text(totalAmount, format: .currency(code: "USD" ))
+                } header: {
+                    Text("Total sum of each person")
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.indigo)
             .navigationTitle("WeSplit")
             
-           
+            
         }
+        .foregroundColor(.teal)
         
     }
+        
     
 }
 
