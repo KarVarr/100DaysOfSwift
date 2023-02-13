@@ -13,7 +13,19 @@ struct ContentView: View {
     @State private var tipPercentage = 20
     @FocusState private var amountIsFocused: Bool
     
-    let tipPercentages = [10, 15, 20, 25, 0]
+   //Extra Challenge
+    var formatCurrency: FloatingPointFormatStyle<Double>.Currency {
+        return .currency(code:  "USD" )
+    }
+   
+    
+    //Challenge 3
+    let tipPercentages = Array(0..<101)
+    
+    var amountForCheck: Double {
+        //Challenge 2
+        return  (checkAmount / 100 * Double(tipPercentage)) + checkAmount
+    }
     
     var totalAmount: Double {
         let people = Double(numberOfPeople + 2)
@@ -29,7 +41,7 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Amount", value: $checkAmount, format:
-                            .currency(code: "USD" ))
+                                formatCurrency)
                             .keyboardType(.decimalPad)
                             .focused($amountIsFocused)
                     Picker("Number Of People", selection: $numberOfPeople) {
@@ -47,16 +59,30 @@ struct ContentView: View {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    //Challenge 3
+                    .pickerStyle(.navigationLink)
                 } header: {
                     Text("How much tip do you want to leave?")
                 }
                 
                 //MARK: - TOTAL
                 Section {
-                    Text(totalAmount, format: .currency(code: "USD" ))
+                    Text(totalAmount, format: formatCurrency)
                 } header: {
-                    Text("Total sum of each person")
+                    //Challenge 1
+                    Text("Amount per person")
+                }
+                
+                //MARK: - AMOUNT FOR THE CHECK
+                //Challenge 2
+                Section {
+                    if checkAmount == 0.0 {
+                        Text("$0.0")
+                    } else {
+                        Text(amountForCheck, format: formatCurrency)
+                    }
+                } header: {
+                    Text("total amount for the check")
                 }
             }
             .scrollContentBackground(.hidden)
