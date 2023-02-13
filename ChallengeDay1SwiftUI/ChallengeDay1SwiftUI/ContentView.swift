@@ -8,34 +8,59 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var celsius = 0.0
-    @State private var fahrenheit = 0.0
+    @State private var temp = "Celsius"
+    @State private var numberOfTemp = 10.0
+    
+    let temperatures = ["Celsius", "Fahrenheit"]
+    
+    var temperature: Double {
+        var currentTemp = 0.0
+        if temp == "Celsius" {
+            currentTemp = (numberOfTemp * 1.8) + 32.0
+        }
+        if temp == "Fahrenheit" {
+            currentTemp = (numberOfTemp - 32.0) * 0.5556
+        }
+        
+        return currentTemp
+    }
      
     @State private var result = 0.0
     var body: some View {
+        
         NavigationView {
             Form {
                 Section {
-                    TextField("Enter celsius", value: $celsius, format: .number)
+                    Picker("Temperature", selection: $temp) {
+                        ForEach(temperatures, id: \.self) {
+                            Text($0)
+                        }
+                    }.pickerStyle(.segmented)
+                        
+                  
+                } header: {
+                    Text("Fahrenheit or Celsius")
+                }
+                
+                Section {
+                    TextField("Enter celsius", value: $numberOfTemp, format: .number)
                         .keyboardType(.decimalPad)
                 } header: {
-                    Text("Celsius")
+                    Text("Enter temperature")
                 }
                 
                 Section {
-                    Text("Kelvin")
+                    Text("\(temperature, specifier: "%.1f" )")
                 } header: {
-                    Text("Fahrenheit")
+                    Text("Result")
+                        
                 }
                 
-                Section {
-                    Text("RESULT")
-                } header: {
-                    Text("Fahrenheit")
-                }
+              
             }
             .navigationTitle("Temperature conversion")
             .navigationBarTitleDisplayMode(.inline)
+            .scrollContentBackground(.hidden)
         }
         
     }
