@@ -20,20 +20,38 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Amount", value: $checkAmount, format:
-                            .currency(code: Locale.current.identifier ))
+                            .currency(code: "USD" ))
                             .keyboardType(.decimalPad)
                     Picker("Number Of People", selection: $numberOfPeople) {
                         ForEach(0..<100) {
                             Text("\($0)")
                         }
                     } .pickerStyle(.navigationLink)
+                        
                 }
+                
+                //MARK: - PERSENT
                 Section {
-                    Text(checkAmount, format: .currency(code: Locale.current.identifier ))
+                    Picker("Persent", selection: $tipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text($0, format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("How much tip do you want to leave?")
+                }
+                
+                //MARK: - TOTAL
+                Section {
+                    Text(checkAmount, format: .currency(code: "USD" ))
                 }
             }
             .navigationTitle("WeSplit")
+            
+           
         }
+        
     }
     
 }
