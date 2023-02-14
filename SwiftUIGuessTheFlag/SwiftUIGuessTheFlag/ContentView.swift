@@ -9,19 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        //        LinearGradient(gradient: Gradient(colors: [.red,.teal]), startPoint: .leading, endPoint: .bottom)
-        //            .ignoresSafeArea()
-        //    }
-        //        LinearGradient(gradient: Gradient(stops: [Gradient.Stop(color: .indigo, location: 0.3), Gradient.Stop(color: .cyan, location: 0.3)]), startPoint: .trailing, endPoint: .top)
-        //            .ignoresSafeArea()
-//        VStack(spacing: 0) {
-//            RadialGradient(gradient: Gradient(colors: [.indigo, .pink]), center: .bottomLeading, startRadius: 200, endRadius: 201)
-//            RadialGradient(gradient: Gradient(colors: [.black, .green]), center: .topTrailing, startRadius: 200, endRadius: 201)
-//
-//        }
-        AngularGradient(colors: [.red, .black, .pink, .blue, .yellow,], center: .top)
-        .ignoresSafeArea()
+        VStack {
+            Button("delete") {}
+                .buttonStyle(.automatic)
+                .tint(.cyan)
+            Button("delete") {}
+                .tint(.brown)
+                .buttonStyle(.bordered)
+            Button {
+                print("hello")
+                    
+            } label: {
+                Text("tap tap")
+                    .padding(10)
+                    
+                    .foregroundColor(.red)
+                    .background(.black)
+            }
+        }
         
+        
+    }
+    
+    func deleteAction () {
+        print("dele")
     }
     
 }
