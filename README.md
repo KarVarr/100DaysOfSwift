@@ -7,6 +7,7 @@ https://www.hackingwithswift.com/100
 
 ## Notes
 - This is 100 days of **Swift**. For 100 days of **UIKit** 
+- This is 100 days of **SwiftUI**. For 100 days of **SwiftUI** 
 
 ---
 
