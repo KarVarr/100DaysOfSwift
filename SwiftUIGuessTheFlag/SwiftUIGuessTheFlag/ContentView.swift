@@ -8,32 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
     var body: some View {
-        VStack {
-            Button("delete") {}
-                .buttonStyle(.automatic)
-                .tint(.cyan)
-            Button("delete") {}
-                .tint(.brown)
-                .buttonStyle(.bordered)
-            Button {
-                print("hello")
-                    
-            } label: {
-                Text("tap tap")
-                    .padding(10)
-                    
-                    .foregroundColor(.red)
-                    .background(.black)
-            }
+        Button ("Show Alert") {
+            showingAlert = true
+        }
+        .alert("This is Alert", isPresented: $showingAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("Ok") {}
+            
+        } message: {
+            Text("You can read this?")
         }
         
-        
     }
-    
-    func deleteAction () {
-        print("dele")
-    }
+ 
     
 }
 struct ContentView_Previews: PreviewProvider {
