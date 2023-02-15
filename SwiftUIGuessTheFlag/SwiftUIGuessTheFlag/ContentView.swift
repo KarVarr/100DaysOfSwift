@@ -22,7 +22,11 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var scoreTitle = ""
+    //Challenge 1
     @State private var score = 0
+    //Challenge 3
+    @State private var lastAnswer = 0
+    @State private var showingAnswer = false
     var body: some View {
         ZStack {
 //            LinearGradient(gradient: Gradient(colors: [ .cyan, .green, .black, .orange, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -81,21 +85,38 @@ struct ContentView: View {
         } message: {
             Text("Your score is \(score)")
         }
+        .alert("The last question", isPresented: $showingAnswer) {
+            Button("Ok", action: lastAttempt)
+        } message: {
+            Text("Your final score is \(score)")
+        }
+        
+        
     }
+    //MARK: - Function
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct!"
             score += 1
         } else {
-            scoreTitle = "Wrong!"
+            //Challenge 2
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
             score -= 1
         }
+        lastAnswer += 1
         showingScore = true
+        if lastAnswer == 8 {
+            showingAnswer = true
+        }
     }
-    
     func askQuestion () {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+    }
+    //Challenge 3
+    func lastAttempt() {
+        score = 0
+        lastAnswer = 0
     }
     
     
