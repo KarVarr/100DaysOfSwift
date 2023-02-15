@@ -8,41 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
-   @State private var countries = ["Estonia",
-                     "France",
-                     "Germany",
-                     "Ireland",
-                     "Italy",
-                     "Nigeria",
-                     "Poland",
-                     "Russia",
-                     "Spain",
-                     "UK",
-                     "US" ].shuffled()
+    @State private var countries = ["Estonia",
+                                    "France",
+                                    "Germany",
+                                    "Ireland",
+                                    "Italy",
+                                    "Nigeria",
+                                    "Poland",
+                                    "Russia",
+                                    "Spain",
+                                    "UK",
+                                    "US" ].shuffled()
     @State private var showingScore = false
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var scoreTitle = ""
     @State private var score = 0
     var body: some View {
         ZStack {
-            Color.indigo
+            LinearGradient(gradient: Gradient(colors: [ .cyan, .green,  .black, .orange, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
-            VStack (spacing: 30){
+            VStack (spacing: 20){
                 
                 VStack {
                     Text("Tap the flag of")
+                        .font(.subheadline.monospaced().weight(.bold))
                     Text(countries[correctAnswer])
+                        .font(.largeTitle.monospaced().weight(.light))
+                    
                 }
-                .foregroundColor(.white)
+                .foregroundColor(.black)
+                
                 Spacer()
                 ForEach(0..<3) {number in
                     Button {
                         flagTapped(number)
                     } label: {
                         Image(countries[number])
-                            .renderingMode(.original)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                        //.renderingMode(.original)
+                            .clipShape(Circle())
+                            .shadow(color: .black, radius: 2, x: 5, y: 5)
+                            .scaledToFill()
+                        
+                        
                     }
                 }
+                
                 Spacer()
                 
             }
