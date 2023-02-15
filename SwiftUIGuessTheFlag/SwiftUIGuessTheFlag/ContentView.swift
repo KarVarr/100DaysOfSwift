@@ -25,40 +25,56 @@ struct ContentView: View {
     @State private var score = 0
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [ .cyan, .green,  .black, .orange, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-            VStack (spacing: 20){
-                
-                VStack {
-                    Text("Tap the flag of")
-                        .font(.subheadline.monospaced().weight(.bold))
-                    Text(countries[correctAnswer])
-                        .font(.largeTitle.monospaced().weight(.light))
-                    
-                }
-                .foregroundColor(.black)
-                
-                Spacer()
-                ForEach(0..<3) {number in
-                    Button {
-                        flagTapped(number)
-                    } label: {
-                        Image(countries[number])
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                        //.renderingMode(.original)
-                            .clipShape(Circle())
-                            .shadow(color: .black, radius: 2, x: 5, y: 5)
-                            .scaledToFill()
-                        
-                        
+//            LinearGradient(gradient: Gradient(colors: [ .cyan, .green, .black, .orange, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                .ignoresSafeArea()
+            RadialGradient(stops:[
+                .init(color: .mint, location: 0.1),
+                .init(color: Color(red: 0, green: 0, blue: 0, opacity: 0.98), location: 0.7),
+                .init(color: .pink, location: 0.7)
+            ],
+                           center: .top, startRadius: 500, endRadius: 150)
+            .ignoresSafeArea()
+            VStack {
+                Text("Guess the Flag")
+                    .font(.largeTitle.bold())
+                    .padding(.top, 10)
+                    .foregroundColor(.yellow)
+                VStack (spacing: 30){
+                    VStack {
+                        Text("Tap the flag of")
+                            .font(.subheadline.monospaced().weight(.bold))
+                        Text(countries[correctAnswer])
+                            .font(.largeTitle.monospaced().weight(.light))
                     }
+                    .foregroundColor(.black)
+                    Spacer()
+                    ForEach(0..<3) {number in
+                        Button {
+                            flagTapped(number)
+                        } label: {
+                            Image(countries[number])
+                                .aspectRatio(contentMode: .fill)
+                            //.renderingMode(.original)
+                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.4), radius: 2, x: 0, y: 5)
+                                .scaledToFill()
+                        }
+                    }
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding(.top, 40)
+                ZStack {
+                    
+                    Spacer()
+                        .background(.cyan)
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        .shadow(color: .black, radius: 2, x: 0, y: 2)
+                    Text("Score: \(score)")
+                        .padding(10)
+                        .foregroundStyle(.black)
+                }
                 
             }
-            .padding(.top, 30)
         }
         .alert(scoreTitle, isPresented: $showingScore) {
             Button("Continue", action: askQuestion)
@@ -66,7 +82,6 @@ struct ContentView: View {
             Text("Your score is \(score)")
         }
     }
-    
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct!"
