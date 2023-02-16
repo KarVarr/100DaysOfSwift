@@ -76,13 +76,12 @@ struct ContentView: View {
                 //MARK: - AMOUNT FOR THE CHECK
                 //Challenge 2
                 Section {
-                    if checkAmount == 0.0 {
-                        Text("$0.0")
-                    } else {
-                        Text(amountForCheck, format: formatCurrency)
-                    }
+                    // Challenge ViewsAndModifiers
+                    checkAmount == 0.0 ? Text("$0.0") : Text(amountForCheck, format: formatCurrency)
                 } header: {
                     Text("total amount for the check")
+                    // Challenge ViewsAndModifiers
+                        .foregroundColor(tipPercentage == 0 ? .red : .teal)
                 }
             }
             .scrollContentBackground(.hidden)
