@@ -6,6 +6,22 @@
 //
 
 import SwiftUI
+// Challenge ViewsAndModifiers
+struct FlagImage: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .aspectRatio(contentMode: .fill)
+            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.4), radius: 2, x: 0, y: 5)
+            .scaledToFill()
+    }
+}
+
+extension View {
+    func flagImage() -> some View {
+        modifier(FlagImage())
+    }
+}
 
 struct ContentView: View {
     @State private var countries = ["Estonia",
@@ -19,18 +35,20 @@ struct ContentView: View {
                                     "Spain",
                                     "UK",
                                     "US" ].shuffled()
+    
     @State private var showingScore = false
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var scoreTitle = ""
+    
     //Challenge 1
     @State private var score = 0
+    
     //Challenge 3
     @State private var lastAnswer = 0
     @State private var showingAnswer = false
+    
     var body: some View {
         ZStack {
-//            LinearGradient(gradient: Gradient(colors: [ .cyan, .green, .black, .orange, .black]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//                .ignoresSafeArea()
             RadialGradient(stops:[
                 .init(color: .mint, location: 0.1),
                 .init(color: Color(red: 0, green: 0, blue: 0, opacity: 0.98), location: 0.7),
@@ -57,11 +75,8 @@ struct ContentView: View {
                             flagTapped(number)
                         } label: {
                             Image(countries[number])
-                                .aspectRatio(contentMode: .fill)
-                            //.renderingMode(.original)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
-                                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.4), radius: 2, x: 0, y: 5)
-                                .scaledToFill()
+                            // Challenge ViewsAndModifiers
+                                .flagImage()
                         }
                     }
                     Spacer()
