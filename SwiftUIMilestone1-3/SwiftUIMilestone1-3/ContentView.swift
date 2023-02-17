@@ -11,7 +11,9 @@ struct ContentView: View {
     @State private var pickRandom = "Paper"
     @State private var userAnswer = "Rock"
     @State private var winOrLose = "Win"
+    @State private var showingScore = false
     
+    @State private var questionPoint = 0
     @State private var userScore = 0
     let itemsForPick = ["Rock","Paper", "Scissors"]
     let itemsForWinOrLoose = ["Win", "Lose"]
@@ -79,6 +81,11 @@ struct ContentView: View {
             .padding()
             Spacer()
         }
+        .alert("Game Over", isPresented: $showingScore) {
+            Button("OK", action: gameOver)
+        } message: {
+            Text("Your score is \(userScore)")
+        }
     }
     
     func buttonActionPress () {
@@ -89,16 +96,26 @@ struct ContentView: View {
             pickRandom == "Paper" && userAnswer == "Rock" && winOrLose == "Lose" ||
             pickRandom == "Scissors" && userAnswer == "Paper" && winOrLose == "Lose"
         {
+            questionPoint += 1
             userScore += 1
             pickRandom = itemsForPick.randomElement()!
             winOrLose = itemsForWinOrLoose.randomElement()!
-            
         } else {
+            questionPoint += 1
             userScore -= 1
             pickRandom = itemsForPick.randomElement()!
             winOrLose = itemsForWinOrLoose.randomElement()!
         }
+        if questionPoint == 10 {
+            showingScore = true
+        }
     }
+    
+    func gameOver() {
+        questionPoint = 0
+        userScore = 0
+    }
+    
     
     
     
