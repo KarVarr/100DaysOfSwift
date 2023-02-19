@@ -7,15 +7,11 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @State private var count = 8.0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Stepper(String(format: "%.1f" ,count), value: $count, in: 4...12, step: 0.5)
     }
 }
 
