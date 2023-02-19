@@ -19,11 +19,14 @@ struct ContentView: View {
         NavigationView {
             VStack (spacing: 30){
               Text("When do you want to wake up?")
-                    .font(.headline)
                 DatePicker("Please enter time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                     .labelsHidden()
+                    .background(.indigo)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                
                 Text("Desired amount of sleep")
                 Stepper("\(sleepAmount.formatted())", value: $sleepAmount, in: 4...12)
+                
                 Text("Daily coffee intake")
                 Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
             }
@@ -31,6 +34,8 @@ struct ContentView: View {
             .background(.mint)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding()
+            .foregroundColor(.white)
+            .font(.headline)
             
             .navigationTitle("Better Rest")
             .toolbar {
