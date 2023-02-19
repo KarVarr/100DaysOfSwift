@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var userScore = 0
     let itemsForPick = ["Rock","Paper", "Scissors"]
     let itemsForWinOrLoose = ["Win", "Lose"]
-    
+
     var body: some View {
         VStack {
             Text("Rock Paper Scissors")
@@ -88,6 +88,8 @@ struct ContentView: View {
         }
     }
     
+    
+    // function
     func buttonActionPress () {
         if pickRandom == "Rock" && userAnswer == "Paper" && winOrLose == "Win" ||
             pickRandom == "Paper" && userAnswer == "Scissors" && winOrLose == "Win" ||
