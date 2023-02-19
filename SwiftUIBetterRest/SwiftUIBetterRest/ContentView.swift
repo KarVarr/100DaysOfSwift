@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var wakeUp = Date.now
+    @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
     
@@ -17,9 +17,16 @@ struct ContentView: View {
     @State private var alertMessage = ""
     @State private var showingAlert = false
     
-    
+    static var defaultWakeTime: Date {
+        var components = DateComponents()
+        components.hour = 7
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? Date.now
+        
+    }
     
     var body: some View {
+        
         NavigationView {
             VStack (spacing: 30){
               Text("When do you want to wake up?")
@@ -50,6 +57,9 @@ struct ContentView: View {
             } message: {
                  Text(alertMessage)
             }
+            
+            .padding(.bottom, 200)
+            
         }
         
         
