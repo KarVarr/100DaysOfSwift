@@ -17,6 +17,9 @@ struct ContentView: View {
                 .labelsHidden()
             DatePicker("Choose you BD", selection: $dateAndTime, in: ...Date.now, displayedComponents: .date)
                 .labelsHidden()
+            
+            Text(Date.now, format: .dateTime.hour().minute().second())
+            Text(Date.now.formatted(date: .long, time: .shortened))
         }
     }
 }
