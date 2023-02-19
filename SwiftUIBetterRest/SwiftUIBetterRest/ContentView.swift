@@ -10,8 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var count = 8.0
+    @State private var dateAndTime = Date.now
     var body: some View {
-        Stepper(String(format: "%.1f" ,count), value: $count, in: 4...12, step: 0.5)
+        VStack {
+            Stepper(String(format: "%.1f" ,count), value: $count, in: 4...12, step: 0.5)
+                .labelsHidden()
+            DatePicker("Choose you BD", selection: $dateAndTime, in: ...Date.now, displayedComponents: .date)
+                .labelsHidden()
+        }
     }
 }
 
