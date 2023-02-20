@@ -45,7 +45,7 @@ struct ContentView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .listRowSeparator(.hidden)
-                    .padding()
+                    
                     
                     Section {
                         Text("Desired amount of sleep")
@@ -53,7 +53,7 @@ struct ContentView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .listRowSeparator(.hidden)
-                    .padding()
+                    
                     
                     Section {
                         Text("Daily coffee intake")
@@ -67,24 +67,32 @@ struct ContentView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .listRowSeparator(.hidden)
-                    .padding()
+                    //Challenge 3
+                    Section {
+                        Text("Recommended bedtime: ")
+                            .font(.title)
+                        Text("\(alertMessage == "" ? "10:00 PM" : alertMessage)") 
+                            .font(.title)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
+                    
                 }
                 
                 .scrollContentBackground(.hidden)
                 .background(.mint)
                 .font(.headline)
                 .navigationTitle("Better Rest")
-                //.toolbar {
-                //    Button("Calculate", action: calculateBedtime)
-                // }
+                .toolbar {
+                    Button("Calculate", action: calculateBedtime)
+                 }
                 .alert(alertTitle, isPresented: $showingAlert) {
                     Button("OK") {}
                 } message: {
                     Text(alertMessage)
                 }
-                Text("Recommended bedtime: ")
-                Text("\(alertMessage)")
-                    .foregroundColor(.brown)
+               
+                
             }
          
             
@@ -92,7 +100,7 @@ struct ContentView: View {
         
         
     }
-    func calculateBedtime() -> String {
+    func calculateBedtime() {
         do {
             let config = MLModelConfiguration()
             let model = try SleepCalculator(configuration: config)
@@ -113,7 +121,7 @@ struct ContentView: View {
         }
         
         showingAlert = true
-        return alertMessage
+        
     }
 }
 
