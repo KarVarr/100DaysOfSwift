@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
+    //Challenge 2
+    @State private var itemsForCoffeeAmount = (1...20)
     
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -28,59 +30,69 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            Form {
+            //Challenge 1
+            VStack {
                 
-                Section {
-                    Text("When do you want to wake up?")
-                    DatePicker("Please enter time", selection: $wakeUp, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                        .background(.indigo)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                
+                Form {
+                    Section {
+                        Text("When do you want to wake up?")
+                        DatePicker("Please enter time", selection: $wakeUp, displayedComponents: .hourAndMinute)
+                            .labelsHidden()
+                            .background(.indigo)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                         
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
+                    .padding()
+                    
+                    Section {
+                        Text("Desired amount of sleep")
+                        Stepper("\(sleepAmount.formatted())", value: $sleepAmount, in: 4...12)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
+                    .padding()
+                    
+                    Section {
+                        Text("Daily coffee intake")
+                        //Challenge 2
+                        Picker("Number of cups", selection: $coffeeAmount) {
+                            ForEach(itemsForCoffeeAmount, id: \.self) {
+                                Text($0 == 1 ? "1 cup" : "\($0) cups")
+                            }
+                        }
+                        //Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
+                    .padding()
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .listRowSeparator(.hidden)
-                .padding()
                 
-                Section {
-                    Text("Desired amount of sleep")
-                    Stepper("\(sleepAmount.formatted())", value: $sleepAmount, in: 4...12)
+                .scrollContentBackground(.hidden)
+                .background(.mint)
+                .font(.headline)
+                .navigationTitle("Better Rest")
+                //.toolbar {
+                //    Button("Calculate", action: calculateBedtime)
+                // }
+                .alert(alertTitle, isPresented: $showingAlert) {
+                    Button("OK") {}
+                } message: {
+                    Text(alertMessage)
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .listRowSeparator(.hidden)
-                .padding()
-                
-                Section {
-                    Text("Daily coffee intake")
-                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .listRowSeparator(.hidden)
-                .padding()
-            
-            
-                
+                Text("Recommended bedtime: ")
+                Text("\(alertMessage)")
+                    .foregroundColor(.brown)
             }
-            .scrollContentBackground(.hidden)
-            .background(.mint)
-            .font(.headline)
-            .navigationTitle("Better Rest")
-            .toolbar {
-                Button("Calculate", action: calculateBedtime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("OK") {}
-            } message: {
-                 Text(alertMessage)
-            }
-            
          
             
         }
         
         
     }
-    func calculateBedtime() {
+    func calculateBedtime() -> String {
         do {
             let config = MLModelConfiguration()
             let model = try SleepCalculator(configuration: config)
@@ -101,7 +113,7 @@ struct ContentView: View {
         }
         
         showingAlert = true
-        
+        return alertMessage
     }
 }
 
