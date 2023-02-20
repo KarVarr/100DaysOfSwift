@@ -8,13 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
+    
+    
     var body: some View {
-        List (0..<5){
-            Text("hello me \($0)")
+        NavigationView {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .textInputAutocapitalization(.never)
+                }
+                Section {
+                    ForEach(usedWords, id: \.self) {
+                        Text ($0)
+                    }
+                }
+            }
         }
-        .listStyle(.grouped)
+        .navigationTitle(rootWord)
+        .onSubmit {addNewWords()}
+    }
+    
+    
+    func addNewWords() {
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines )
+        guard answer.count > 0 else {return}
+        
+        withAnimation {
+            usedWords.insert(answer, at: 0)
+        }
+        newWord = ""
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
