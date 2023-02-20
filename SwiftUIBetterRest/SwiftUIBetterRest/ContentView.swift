@@ -28,26 +28,42 @@ struct ContentView: View {
     var body: some View {
         
         NavigationView {
-            VStack (spacing: 30){
-              Text("When do you want to wake up?")
-                DatePicker("Please enter time", selection: $wakeUp, displayedComponents: .hourAndMinute)
-                    .labelsHidden()
-                    .background(.indigo)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+            Form {
                 
-                Text("Desired amount of sleep")
-                Stepper("\(sleepAmount.formatted())", value: $sleepAmount, in: 4...12)
+                Section {
+                    Text("When do you want to wake up?")
+                    DatePicker("Please enter time", selection: $wakeUp, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                        .background(.indigo)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowSeparator(.hidden)
+                .padding()
                 
-                Text("Daily coffee intake")
-                Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
-            }
-            .padding()
-            .background(.mint)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding()
-            .foregroundColor(.white)
-            .font(.headline)
+                Section {
+                    Text("Desired amount of sleep")
+                    Stepper("\(sleepAmount.formatted())", value: $sleepAmount, in: 4...12)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowSeparator(.hidden)
+                .padding()
+                
+                Section {
+                    Text("Daily coffee intake")
+                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowSeparator(.hidden)
+                .padding()
             
+            
+                
+            }
+            .scrollContentBackground(.hidden)
+            .background(.mint)
+            .font(.headline)
             .navigationTitle("Better Rest")
             .toolbar {
                 Button("Calculate", action: calculateBedtime)
@@ -58,7 +74,7 @@ struct ContentView: View {
                  Text(alertMessage)
             }
             
-            .padding(.bottom, 200)
+         
             
         }
         
