@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    //@State private var userScore = usedWords.count
     
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -32,8 +33,21 @@ struct ContentView: View {
                         }
                     }
                 }
+                //Challenge 3
+                Section {
+                    Text("\(usedWords.count) words!")
+                    Text("\(usedWords.map({$0.count}).reduce(0,+)) letters!")
+                    Text("All point is: \(usedWords.count + usedWords.map({$0.count}).reduce(0,+))")
+                } header: {
+                    Text("Your score")
+                }
             }
+            
             .navigationTitle(rootWord)
+            //Challenge 2
+            .toolbar {
+                Button("Restart", action: startGame)
+            }
             .onSubmit {addNewWords()}
             .onAppear(perform: startGame)
             .alert(errorTitle, isPresented: $showingError) {
@@ -48,7 +62,8 @@ struct ContentView: View {
     
     func addNewWords() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines )
-        guard answer.count > 0 else {return}
+        //Challenge 1
+        guard answer.count > 2 else {return}
         
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original")
@@ -62,7 +77,7 @@ struct ContentView: View {
         
         guard isReal(word: answer) else {
             wordError(title: "Word not recognized", message: "You can't just make them up, your know!")
-            return 
+            return
         }
         
         withAnimation {
@@ -76,9 +91,12 @@ struct ContentView: View {
             if let startWord = try? String(contentsOf: startWordsURL) {
                 let allWords = startWord.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                //Challenge 2
+                usedWords = [String]()
                 return
             }
         }
+        
         fatalError("Could not load start.txt from bundle")
     }
     
