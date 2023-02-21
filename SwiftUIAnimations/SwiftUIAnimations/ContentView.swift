@@ -8,41 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var scale = 1.0
+    @State private var scale = 0.0
     
     var body: some View {
-        VStack {
-            Spacer()
-            Stepper("Choose value", value: $scale.animation(
-                .interpolatingSpring(stiffness: 40, damping: 2)
-            ), in: 1...10)
-            Spacer()
-            Button("Tap") {
-                scale += 1.0
+        
+        Button("Tap") {
+            withAnimation(.interpolatingSpring(stiffness: 20, damping: 2)) {
+                scale += 360
             }
-            .padding(30)
-            .background(.mint)
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .scaleEffect(scale)
-//            .overlay {
-//                Circle()
-//                    .stroke()
-//                    .foregroundColor(.red)
-//                    .scaleEffect(scale)
-//                    .opacity(2 - scale)
-//                    .animation(.easeOut(duration: 1)
-//                        .repeatForever(autoreverses: false)
-//                               , value: scale)
-//            }
-            
         }
-//        .onAppear {
-//            scale = 2
-//        }
+        .padding(30)
+        .background(.mint)
+        .foregroundColor(.white)
+        .clipShape(Circle())
+        .shadow(color: .mint, radius: 2, x: 2, y: 2)
+        .rotation3DEffect(.degrees(scale), axis: (x: 0, y: 1, z: 0) )
+        
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
