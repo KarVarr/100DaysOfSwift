@@ -11,29 +11,35 @@ struct ContentView: View {
     @State private var scale = 1.0
     
     var body: some View {
-            Button("Tap me"){
-                //scale += 0.5
+        VStack {
+            Spacer()
+            Stepper("Choose value", value: $scale.animation(
+                .interpolatingSpring(stiffness: 40, damping: 2)
+            ), in: 1...10)
+            Spacer()
+            Button("Tap") {
+                scale += 1.0
             }
-        
-        .padding(50)
-        .background(.red)
-        .foregroundColor(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .overlay(
-           RoundedRectangle(cornerRadius: 10)
-                .stroke(.indigo)
-                .scaleEffect(scale)
-                .opacity(2 - scale)
-                .animation(
-                    .easeIn(duration: 1)
-                    .repeatForever(autoreverses: false),
-                    value: scale)
-        )
-        //.blur(radius: (scale - 1) * 2)
-        //.animation(.interpolatingSpring(stiffness: 50, damping: 2), value: scale)
-        .onAppear{
-            scale = 2
+            .padding(30)
+            .background(.mint)
+            .foregroundColor(.white)
+            .clipShape(Circle())
+            .scaleEffect(scale)
+//            .overlay {
+//                Circle()
+//                    .stroke()
+//                    .foregroundColor(.red)
+//                    .scaleEffect(scale)
+//                    .opacity(2 - scale)
+//                    .animation(.easeOut(duration: 1)
+//                        .repeatForever(autoreverses: false)
+//                               , value: scale)
+//            }
+            
         }
+//        .onAppear {
+//            scale = 2
+//        }
     }
 }
 
