@@ -8,21 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var scale = 0.0
+    @State private var enable = false
     
     var body: some View {
         
         Button("Tap") {
-            withAnimation(.interpolatingSpring(stiffness: 20, damping: 2)) {
-                scale += 360
-            }
+            enable.toggle()
         }
-        .padding(30)
-        .background(.mint)
+        .frame(width: 200, height: 200)
         .foregroundColor(.white)
-        .clipShape(Circle())
-        .shadow(color: .mint, radius: 2, x: 2, y: 2)
-        .rotation3DEffect(.degrees(scale), axis: (x: 0, y: 1, z: 0) )
+        .background(enable ? .indigo : .mint)
+        .animation(.easeOut, value: enable)
+        .clipShape(RoundedRectangle(cornerRadius: enable ? 50 : 0))
+        .animation(.interpolatingSpring(stiffness: 10, damping: 1), value: enable)
         
     }
 }
