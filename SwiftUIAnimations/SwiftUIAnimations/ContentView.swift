@@ -12,16 +12,28 @@ struct ContentView: View {
     
     var body: some View {
             Button("Tap me"){
-                scale += 0.5
+                //scale += 0.5
             }
         
         .padding(50)
         .background(.red)
         .foregroundColor(.white)
-        .clipShape(Circle())
-        .scaleEffect(scale)
-        .blur(radius: (scale - 1) * 2)
-        .animation(.easeOut, value: scale)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .overlay(
+           RoundedRectangle(cornerRadius: 10)
+                .stroke(.indigo)
+                .scaleEffect(scale)
+                .opacity(2 - scale)
+                .animation(
+                    .easeIn(duration: 1)
+                    .repeatForever(autoreverses: false),
+                    value: scale)
+        )
+        //.blur(radius: (scale - 1) * 2)
+        //.animation(.interpolatingSpring(stiffness: 50, damping: 2), value: scale)
+        .onAppear{
+            scale = 2
+        }
     }
 }
 
