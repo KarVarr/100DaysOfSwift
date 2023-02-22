@@ -50,6 +50,8 @@ struct ContentView: View {
     @State private var showingAnswer = false
     
     @State private var rotating = 0.0
+    @State private var opacityAmount = 1.0
+    @State private var selectedButtonIndex: Int?
     
     var body: some View {
         ZStack {
@@ -78,6 +80,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                             //Challenge 1 animation
+                            selectedButtonIndex = number
                             withAnimation {
                                 rotating += 360
                             }
@@ -86,7 +89,10 @@ struct ContentView: View {
                             // Challenge ViewsAndModifiers
                                 .flagImage()
                             //Challenge 1 animation
-                                .rotation3DEffect(.degrees(rotating), axis: (x: 0, y: 1, z: 0))
+                                .rotation3DEffect(.degrees(selectedButtonIndex == number ? rotating : 0.0), axis: (x: 0, y: 1, z: 0))
+                            //Challenge 2 animation
+                                .opacity(selectedButtonIndex == number ? 1.0 : 0.25)
+                                
                         }
                     }
                     Spacer()
@@ -127,8 +133,10 @@ struct ContentView: View {
             scoreTitle = "Wrong! That's the flag of \(countries[number])"
             score -= 1
         }
+        
         lastAnswer += 1
         showingScore = true
+        
         if lastAnswer == 8 {
             showingAnswer = true
         }
