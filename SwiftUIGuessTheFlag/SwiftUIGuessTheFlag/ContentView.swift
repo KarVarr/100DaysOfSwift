@@ -8,12 +8,14 @@
 import SwiftUI
 // Challenge ViewsAndModifiers
 struct FlagImage: ViewModifier {
+    
     func body(content: Content) -> some View {
         content
             .aspectRatio(contentMode: .fill)
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.4), radius: 2, x: 0, y: 5)
             .scaledToFill()
+            
     }
 }
 
@@ -47,6 +49,8 @@ struct ContentView: View {
     @State private var lastAnswer = 0
     @State private var showingAnswer = false
     
+    @State private var rotating = 0.0
+    
     var body: some View {
         ZStack {
             RadialGradient(stops:[
@@ -73,17 +77,22 @@ struct ContentView: View {
                     ForEach(0..<3) {number in
                         Button {
                             flagTapped(number)
+                            //Challenge 1 animation
+                            withAnimation {
+                                rotating += 360
+                            }
                         } label: {
                             Image(countries[number])
                             // Challenge ViewsAndModifiers
                                 .flagImage()
+                            //Challenge 1 animation
+                                .rotation3DEffect(.degrees(rotating), axis: (x: 0, y: 1, z: 0))
                         }
                     }
                     Spacer()
                 }
                 .padding(.top, 40)
                 ZStack {
-                    
                     Spacer()
                         .background(.cyan)
                         .clipShape(RoundedRectangle(cornerRadius: 30))
