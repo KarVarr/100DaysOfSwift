@@ -8,31 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    let letters = Array("Hello, SwiftUI")
-    @State private var enabled = false
-    @State private var dragAmount = CGSize.zero
+    @State private var showingFrame = false
     
     var body: some View {
-        HStack (spacing: 0){
-            ForEach(0..<letters.count, id: \.self) { num in
-                Text(String(letters[num]))
-                    .padding(5)
-                    .font(.title)
-                    .background(enabled ? .indigo : .mint)
-                    .offset(dragAmount)
-                    .animation(.default.delay(Double(num) / 20), value: dragAmount)
-                
+        VStack {
+            Button("Tap") {
+                withAnimation {
+                    showingFrame.toggle()
+                }
+            }
+            if showingFrame {
+                Rectangle ()
+                    .fill(.indigo)
+                    .frame(width: 300, height: 300)
+                    //.transition(.scale)
+                    .transition(.asymmetric(insertion: .scale, removal: .scale))
             }
         }
-        .gesture(
-            DragGesture()
-                .onChanged { dragAmount = $0.translation}
-                .onEnded{ _ in
-                    dragAmount = .zero
-                    enabled.toggle()
-                }
-        )
-        
     }
 }
 struct ContentView_Previews: PreviewProvider {
