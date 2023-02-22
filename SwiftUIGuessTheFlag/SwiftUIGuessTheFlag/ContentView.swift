@@ -49,7 +49,9 @@ struct ContentView: View {
     @State private var lastAnswer = 0
     @State private var showingAnswer = false
     
+    //Challenge animation
     @State private var rotating = 0.0
+    @State private var scale = 1.0
     @State private var opacityAmount = 1.0
     @State private var selectedButtonIndex: Int?
     
@@ -79,10 +81,12 @@ struct ContentView: View {
                     ForEach(0..<3) {number in
                         Button {
                             flagTapped(number)
-                            //Challenge 1 animation
+                            //Challenge animation
                             selectedButtonIndex = number
                             withAnimation {
                                 rotating += 360
+                                scale -= 0.1
+                                opacityAmount -= 0.75
                             }
                         } label: {
                             Image(countries[number])
@@ -91,8 +95,9 @@ struct ContentView: View {
                             //Challenge 1 animation
                                 .rotation3DEffect(.degrees(selectedButtonIndex == number ? rotating : 0.0), axis: (x: 0, y: 1, z: 0))
                             //Challenge 2 animation
-                                .opacity(selectedButtonIndex == number ? 1.0 : 0.25)
-                                
+                                .opacity(selectedButtonIndex == number ? 1.0 : opacityAmount)
+                            //Challenge 3 animation
+                                .scaleEffect(selectedButtonIndex == number ? 1.0 : scale)
                         }
                     }
                     Spacer()
@@ -133,10 +138,9 @@ struct ContentView: View {
             scoreTitle = "Wrong! That's the flag of \(countries[number])"
             score -= 1
         }
-        
         lastAnswer += 1
         showingScore = true
-        
+        opacityAmount = 1.0
         if lastAnswer == 8 {
             showingAnswer = true
         }
@@ -144,6 +148,9 @@ struct ContentView: View {
     func askQuestion () {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        //Challenge animation
+        opacityAmount = 1.0
+        scale = 1.0
     }
     //Challenge 3
     func lastAttempt() {
