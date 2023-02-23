@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var multiplicationTable = 1
     @State private var questions = 5
-    @State private var userAnswer = ""
+    @State private var randomNumberForQuestions = Array(1...20)
+    @State private var userAnswer = "Write your answer"
     
     @State private var questionsArray = [5,10,20]
     @State private var buttons = [1,2,3,4,5,6,7,8,9]
@@ -18,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.gray
+                Color.purple
                     .ignoresSafeArea()
                 VStack {
                     VStack {
@@ -38,7 +39,7 @@ struct ContentView: View {
                                     }
                                 }
                                 .pickerStyle(.navigationLink)
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(.brown)
                             }
                         }
@@ -48,28 +49,31 @@ struct ContentView: View {
                     VStack(alignment: .center) {
                         
                         VStack(alignment: .center) {
-                            Text("What is  \(multiplicationTable) * 5 ")
-                            TextField("Write your answer", text: $userAnswer)
-                                .frame(width: 300)
-                                .border(.red)
-                                .padding(.bottom, 30)
-                                .keyboardType(.decimalPad)
+                            Text("What is \(multiplicationTable) * \(randomNumberForQuestions[1]) ")
+                                .padding(20)
+                                .background(.black)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            Text(userAnswer)
+                                .padding(.bottom, 20)
+                                .foregroundColor(.white)
                         }
                         .font(.largeTitle)
                         
                         
                         VStack {
-                            ForEach(0..<3) {_ in
+                            ForEach(0...2, id: \.self) {i in
                                 HStack {
-                                    ForEach(0..<3) {_ in
+                                    ForEach(1...3, id:\.self) {j in
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 30)
-                                                .fill(.green)
-                                                .frame(width: 100,height: 50)
-                                            ForEach (0..<10) { num in
-                                                Button ("1") {}
-                                                   
+                                                .fill(.mint)
+                                                .frame(width: 110,height: 50)
+                                            Button (action: {}) {
+                                                Text("\(j + i * 3)")
+                                                    .font(.title)
+                                                    .foregroundColor(.white)
                                             }
+                                            
                                         }
                                     }
                                 }
@@ -77,49 +81,54 @@ struct ContentView: View {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 30)
-                                        .fill(.green)
-                                        .frame(width: 100,height: 50)
+                                        .fill(.red)
+                                        .frame(width: 110,height: 50)
                                     
-                                    Button ("del") {}
-                                        .foregroundColor(.white)
+                                    Button ("Del") {
+                                        userAnswer = "Write your answer"
+                                    }
                                     
                                 }
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 30)
-                                        .fill(.green)
-                                        .frame(width: 100,height: 50)
+                                        .fill(.mint)
+                                        .frame(width: 110,height: 50)
                                     
                                     Button ("0") {}
-                                        .foregroundColor(.white)
+                                    
                                     
                                 }
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 30)
                                         .fill(.green)
-                                        .frame(width: 100,height: 50)
+                                        .frame(width: 110,height: 50)
                                     
-                                    Button ("Submit") {}
-                                        .foregroundColor(.white)
+                                    Button ("Submit") {
+                                        
+                                    }
+                                    
                                     
                                 }
                                 
                             }
+                            .foregroundColor(.white)
+                            .font(.title)
                         }
                     }
                 }
                 
-               
+                
                 
                 
             }
             //MARK: - NavigationTitle
             .navigationTitle("Multiplication")
             .foregroundColor(.yellow)
-           
+            
         }
         
     }
-   
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
