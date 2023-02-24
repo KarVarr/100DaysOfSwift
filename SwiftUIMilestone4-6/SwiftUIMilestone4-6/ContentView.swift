@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var randomNumber = 1
     @State private var userAnswer = ""
     @State private var userResult = 0
+    @State private var count = 0
     @State private var isDisabled = true
     @State private var showingResult = false
     @State private var showingResultFalse = false
@@ -54,7 +55,7 @@ struct ContentView: View {
                     VStack(alignment: .center) {
                         
                         VStack(alignment: .center) {
-                            Text("What is \(multiplicationTable) * \(randomNumber) ")
+                            Text(count == questions  ? "Your result is: \(userResult)" : "What is \(multiplicationTable) * \(randomNumber) ")
                                 .padding(20)
                                 .background(.black)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -81,6 +82,7 @@ struct ContentView: View {
                                                     .font(.title)
                                                     .foregroundColor(.white)
                                             }
+                                            .disabled(count == questions ? true : false )
                                             
                                         }
                                     }
@@ -95,6 +97,7 @@ struct ContentView: View {
                                     Button ("Del") {
                                         userAnswer = ""
                                     }
+                                    .disabled(count == questions ? true : false )
                                     
                                 }
                                 ZStack {
@@ -103,6 +106,7 @@ struct ContentView: View {
                                         .frame(width: 110,height: 50)
                                     
                                     Button ("0") {buttonNumber(text: "0")}
+                                        .disabled(count == questions ? true : false )
                                     
                                     
                                 }
@@ -114,6 +118,7 @@ struct ContentView: View {
                                     Button ("Submit") {
                                         buttonSubmit()
                                     }
+                                    .disabled(count == questions ? true : false )
                                     
                                     
                                 }
@@ -134,7 +139,14 @@ struct ContentView: View {
             .foregroundColor(.yellow)
             .toolbar(content: {
                 Text("Result: \(userResult)")
+                    .foregroundColor(.white)
             })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Restart", action: {restart()})
+                        .foregroundColor(.green)
+                }
+            }
             
             .alert("Result", isPresented: $showingResult) {
                 Button("OK", action: {})
@@ -152,6 +164,14 @@ struct ContentView: View {
         
     }
     //MARK: - Functions
+    func restart() {
+        count = 0
+        randomNumber = 1
+        userResult = 0
+        multiplicationTable = 1
+        questions = 5
+    }
+    
     func buttonNumber(text: String) {
         userAnswer += text
     }
@@ -160,12 +180,17 @@ struct ContentView: View {
        let result = multiplicationTable * randomNumber
         if result == Int(userAnswer) {
             showingResult = true
+            count += 1
             userAnswer = ""
             userResult += 1
-            if questions {
+            if randomNumber <= questions {
                 randomNumber += 1
+            } else {
+                randomNumber = 1
+                userResult = 0
             }
         } else {
+            count += 1
             userAnswer = ""
             showingResultFalse = true
             userResult -= 1
