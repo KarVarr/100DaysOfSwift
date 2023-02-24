@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var randomNumberForQuestions = Array(1...20)
     @State private var userAnswer = ""
     @State private var isDisabled = true
+    @State private var showingResult = false
     
     @State private var questionsArray = [5,10,20]
     @State private var buttons = [1,2,3,4,5,6,7,8,9]
@@ -50,7 +51,7 @@ struct ContentView: View {
                     VStack(alignment: .center) {
                         
                         VStack(alignment: .center) {
-                            Text("What is \(multiplicationTable) * \(randomNumberForQuestions[1]) ")
+                            Text("What is \(multiplicationTable) * \(questions) ")
                                 .padding(20)
                                 .background(.black)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -72,7 +73,7 @@ struct ContentView: View {
                                             RoundedRectangle(cornerRadius: 30)
                                                 .fill(.mint)
                                                 .frame(width: 110,height: 50)
-                                            Button (action: {buttonTapped(text: "\(j + i * 3)") }) {
+                                            Button (action: {buttonNumber(text: "\(j + i * 3)") }) {
                                                 Text("\(j + i * 3)")
                                                     .font(.title)
                                                     .foregroundColor(.white)
@@ -98,7 +99,7 @@ struct ContentView: View {
                                         .fill(.mint)
                                         .frame(width: 110,height: 50)
                                     
-                                    Button ("0") {buttonTapped(text: "0")}
+                                    Button ("0") {buttonNumber(text: "0")}
                                     
                                     
                                 }
@@ -108,7 +109,7 @@ struct ContentView: View {
                                         .frame(width: 110,height: 50)
                                     
                                     Button ("Submit") {
-                                        
+                                        buttonSubmit()
                                     }
                                     
                                     
@@ -128,13 +129,25 @@ struct ContentView: View {
             //MARK: - NavigationTitle
             .navigationTitle("Multiplication")
             .foregroundColor(.yellow)
+            .alert("Result", isPresented: $showingResult) {
+                Button("OK", action: buttonSubmit)
             
+            } message: {
+                Text("Correct!!!")
+            }
         }
         
     }
     //MARK: - Functions
-    func buttonTapped(text: String) {
+    func buttonNumber(text: String) {
         userAnswer += text
+    }
+    
+    func buttonSubmit() {
+       let result = multiplicationTable * questions
+        if result == Int(userAnswer) {
+            showingResult = true
+        }
     }
     
 }
