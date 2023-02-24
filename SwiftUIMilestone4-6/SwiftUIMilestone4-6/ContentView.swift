@@ -11,7 +11,8 @@ struct ContentView: View {
     @State private var multiplicationTable = 1
     @State private var questions = 5
     @State private var randomNumberForQuestions = Array(1...20)
-    @State private var userAnswer = "Write your answer"
+    @State private var userAnswer = ""
+    @State private var isDisabled = true
     
     @State private var questionsArray = [5,10,20]
     @State private var buttons = [1,2,3,4,5,6,7,8,9]
@@ -53,9 +54,12 @@ struct ContentView: View {
                                 .padding(20)
                                 .background(.black)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                            Text(userAnswer)
+                                .padding(.bottom, 20)
+                            TextField("Write Your Answer", text: $userAnswer)
+                                .multilineTextAlignment(.center)
                                 .padding(.bottom, 20)
                                 .foregroundColor(.white)
+                                .disabled(isDisabled)
                         }
                         .font(.largeTitle)
                         
@@ -68,7 +72,7 @@ struct ContentView: View {
                                             RoundedRectangle(cornerRadius: 30)
                                                 .fill(.mint)
                                                 .frame(width: 110,height: 50)
-                                            Button (action: {}) {
+                                            Button (action: {buttonTapped(text: "\(j + i * 3)") }) {
                                                 Text("\(j + i * 3)")
                                                     .font(.title)
                                                     .foregroundColor(.white)
@@ -85,7 +89,7 @@ struct ContentView: View {
                                         .frame(width: 110,height: 50)
                                     
                                     Button ("Del") {
-                                        userAnswer = "Write your answer"
+                                        userAnswer = ""
                                     }
                                     
                                 }
@@ -94,7 +98,7 @@ struct ContentView: View {
                                         .fill(.mint)
                                         .frame(width: 110,height: 50)
                                     
-                                    Button ("0") {}
+                                    Button ("0") {buttonTapped(text: "0")}
                                     
                                     
                                 }
@@ -127,6 +131,10 @@ struct ContentView: View {
             
         }
         
+    }
+    //MARK: - Functions
+    func buttonTapped(text: String) {
+        userAnswer += text
     }
     
 }
