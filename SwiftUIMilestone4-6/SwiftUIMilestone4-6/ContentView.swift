@@ -10,10 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @State private var multiplicationTable = 1
     @State private var questions = 5
-    @State private var randomNumberForQuestions = Array(1...20)
+    @State private var randomNumberForQuestions = Array(0...20)
+    @State private var randomNumber = 1
     @State private var userAnswer = ""
+    @State private var userResult = 0
     @State private var isDisabled = true
     @State private var showingResult = false
+    @State private var showingResultFalse = false
     
     @State private var questionsArray = [5,10,20]
     @State private var buttons = [1,2,3,4,5,6,7,8,9]
@@ -51,7 +54,7 @@ struct ContentView: View {
                     VStack(alignment: .center) {
                         
                         VStack(alignment: .center) {
-                            Text("What is \(multiplicationTable) * \(questions) ")
+                            Text("What is \(multiplicationTable) * \(randomNumber) ")
                                 .padding(20)
                                 .background(.black)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -129,11 +132,21 @@ struct ContentView: View {
             //MARK: - NavigationTitle
             .navigationTitle("Multiplication")
             .foregroundColor(.yellow)
+            .toolbar(content: {
+                Text("Result: \(userResult)")
+            })
+            
             .alert("Result", isPresented: $showingResult) {
-                Button("OK", action: buttonSubmit)
+                Button("OK", action: {})
             
             } message: {
                 Text("Correct!!!")
+            }
+            
+            .alert("Wrong!", isPresented: $showingResultFalse) {
+                Button("OK", action: {})
+            } message: {
+                Text("This is wrong answer! Correct is \(multiplicationTable * randomNumber)")
             }
         }
         
@@ -144,9 +157,18 @@ struct ContentView: View {
     }
     
     func buttonSubmit() {
-       let result = multiplicationTable * questions
+       let result = multiplicationTable * randomNumber
         if result == Int(userAnswer) {
             showingResult = true
+            userAnswer = ""
+            userResult += 1
+            if questions {
+                randomNumber += 1
+            }
+        } else {
+            userAnswer = ""
+            showingResultFalse = true
+            userResult -= 1
         }
     }
     
