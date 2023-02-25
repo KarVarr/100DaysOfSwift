@@ -8,25 +8,37 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct User: Codable {
+    let firstName: String
+    let lastName: String
+}
 
-    @AppStorage("count") private var count = 0
+struct ContentView: View {
+    
+    @State private var user = User(firstName: "Taylor", lastName: "Swift")
+    
     
     var body: some View {
         VStack {
-            Button("You tapped \(count) times") {
-
-                count += 1
+            Button("Save User") {
+                let encoder = JSONEncoder()
+                
+                if let data = try? encoder.encode(user) {
+                    UserDefaults.standard.set(data, forKey: "UserData")
+                }
+                    
             }
+            
         }
     }
-      
-    
-       
-    
-    
-   
 }
+
+
+
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
