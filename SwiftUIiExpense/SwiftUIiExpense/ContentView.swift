@@ -9,16 +9,20 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var count = UserDefaults.standard.integer(forKey: "Tap")
+
+    @AppStorage("count") private var count = 0
+    
     var body: some View {
         VStack {
             Button("You tapped \(count) times") {
+
                 count += 1
-                UserDefaults.standard.set(count, forKey: "Tap")
             }
         }
     }
       
+    
+       
     
     
    
