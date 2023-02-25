@@ -9,34 +9,19 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var numbers = [Int]()
-    @State private var currentNumber = 1
-    
+    @State private var count = UserDefaults.standard.integer(forKey: "Tap")
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    ForEach(numbers, id: \.self) {
-                        Text("Row at \($0)")
-                    }
-                    .onDelete(perform: removeRow)
-                }
-                Button ("Add Rows"){
-                    numbers.append(currentNumber)
-                    currentNumber += 1
-                }
-            }
-            .padding()
-//            .navigationTitle("Title")
-            .toolbar{
-                EditButton()
+        VStack {
+            Button("You tapped \(count) times") {
+                count += 1
+                UserDefaults.standard.set(count, forKey: "Tap")
             }
         }
     }
+      
     
-    func removeRow(at offsets: IndexSet) {
-        numbers.remove(atOffsets: offsets)
-    }
+    
+   
 }
 
 struct ContentView_Previews: PreviewProvider {
