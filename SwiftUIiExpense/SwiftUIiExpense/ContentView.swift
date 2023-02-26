@@ -20,7 +20,7 @@ struct ContentView: View {
                 ForEach(expenses.items) { item in
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(item.name)
+                            Text(item.name.capitalized)
                                 .font(.headline)
                             Text(item.type)
                                 .foregroundColor(.gray)
@@ -29,6 +29,8 @@ struct ContentView: View {
                         VStack {
                             //Challenge 1
                             Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            //Challenge 2
+                                .foregroundColor(item.amount <= 10 ? . green : item.amount <= 100 ? .orange : .red)
                         }
                     }
                 }
