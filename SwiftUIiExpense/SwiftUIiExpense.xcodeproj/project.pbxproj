@@ -13,6 +13,7 @@
 		1799913329AA65BE002396F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1799913229AA65BE002396F4 /* Preview Assets.xcassets */; };
 		1799913A29AB521F002396F4 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799913929AB521F002396F4 /* ExpenseItem.swift */; };
 		1799913C29AB54BC002396F4 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799913B29AB54BC002396F4 /* Expenses.swift */; };
+		1799913E29AB663F002396F4 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799913D29AB663F002396F4 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1799913229AA65BE002396F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1799913929AB521F002396F4 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		1799913B29AB54BC002396F4 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
+		1799913D29AB663F002396F4 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				1799912B29AA65BC002396F4 /* SwiftUIiExpenseApp.swift */,
 				1799912D29AA65BC002396F4 /* ContentView.swift */,
+				1799913D29AB663F002396F4 /* AddView.swift */,
 				1799913B29AB54BC002396F4 /* Expenses.swift */,
 				1799913929AB521F002396F4 /* ExpenseItem.swift */,
 				1799912F29AA65BE002396F4 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			files = (
 				1799913C29AB54BC002396F4 /* Expenses.swift in Sources */,
 				1799912E29AA65BC002396F4 /* ContentView.swift in Sources */,
+				1799913E29AB663F002396F4 /* AddView.swift in Sources */,
 				1799913A29AB521F002396F4 /* ExpenseItem.swift in Sources */,
 				1799912C29AA65BC002396F4 /* SwiftUIiExpenseApp.swift in Sources */,
 			);
