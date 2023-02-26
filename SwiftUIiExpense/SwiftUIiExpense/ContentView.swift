@@ -16,26 +16,57 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name.capitalized)
-                                .font(.headline)
-                            Text(item.type)
-                                .foregroundColor(.gray)
+                //Challenge 3
+                Section(header: Text("Business Expenses").foregroundColor(.black)) {
+                    ForEach(expenses.items.filter {$0.type == "Business"}) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name.capitalized)
+                                    .font(.headline)
+                                Text(item.type)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            VStack {
+                                //Challenge 1
+                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                //Challenge 2
+                                    .foregroundColor(item.amount <= 10 ? . green : item.amount <= 100 ? .orange : .red)
+                            }
                         }
-                        Spacer()
-                        VStack {
-                            //Challenge 1
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                            //Challenge 2
-                                .foregroundColor(item.amount <= 10 ? . green : item.amount <= 100 ? .orange : .red)
-                        }
+                        
                     }
+                    .onDelete(perform: removeItem)
+                    .listRowBackground(Color.black)
                 }
-                .onDelete(perform: removeItem)
+                //Challenge 3
+                Section(header: Text("Personal Expenses").foregroundColor(.black)) {
+                    ForEach(expenses.items.filter {$0.type == "Personal"}) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name.capitalized)
+                                    .font(.headline)
+                                Text(item.type)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            VStack {
+                                //Challenge 1
+                                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                //Challenge 2
+                                    .foregroundColor(item.amount <= 10 ? . green : item.amount <= 100 ? .orange : .red)
+                            }
+                        }
+                        
+                    }
+                    .onDelete(perform: removeItem)
+                    .listRowBackground(Color.black)
+                }
+                
             }
+            
             .navigationTitle("iExpense")
             .toolbar {
                 Button {
@@ -47,8 +78,14 @@ struct ContentView: View {
                     AddView(expenses: expenses)
                 }
             }
+            
         }
+        .foregroundColor(Color.blue)
+        .scrollContentBackground(.hidden)
+        
     }
+    
+    
     
     func removeItem(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
