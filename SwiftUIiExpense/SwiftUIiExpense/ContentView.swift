@@ -27,7 +27,8 @@ struct ContentView: View {
                         }
                         Spacer()
                         VStack {
-                            Text(item.amount, format: .currency(code: "RUB"))
+                            //Challenge 1
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         }
                     }
                 }
