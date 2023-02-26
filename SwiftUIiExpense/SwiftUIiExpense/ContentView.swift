@@ -78,6 +78,9 @@ struct ContentView: View {
                     AddView(expenses: expenses)
                 }
             }
+            .toolbar {
+                EditButton()
+            }
             
         }
         .foregroundColor(Color.blue)
