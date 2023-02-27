@@ -20,11 +20,10 @@ struct MissionView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    Image(mission.image)
-                        .resizable()
-                        .scaledToFit()
+                    //Challenge 2
+                    ImageView(mission: mission)
                         .frame(maxWidth: geometry.size.width * 0.75)
-                        .padding([.top, .bottom])
+
                     //Challenge 1
                     Text("Launch date:  \(mission.formattedLaunchDate)")
                     
