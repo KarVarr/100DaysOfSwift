@@ -9,13 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(spacing: 20) {
-                ForEach(0..<100) {
-                    Text("Hello \($0)")
+        NavigationView {
+            List(0..<109) { row in
+                NavigationLink {
+                    Text("detail \(row)")
+                } label: {
+                    Text("Label button \(row)")
                 }
+                
+                .navigationTitle("SwiftUI NV")
             }
-            .frame(maxWidth: .infinity)
         }
        
     }
