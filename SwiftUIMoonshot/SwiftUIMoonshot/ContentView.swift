@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    let layout = [
+        GridItem(.adaptive(minimum: 80))
+    ]
+    
     var body: some View {
-        NavigationView {
-            List(0..<109) { row in
-                NavigationLink {
-                    Text("detail \(row)")
-                } label: {
-                    Text("Label button \(row)")
+        ScrollView {
+            LazyVGrid(columns: layout) {
+                ForEach(0..<300) {
+                    Text("hhelle \($0)")
                 }
-                
-                .navigationTitle("SwiftUI NV")
             }
         }
        
