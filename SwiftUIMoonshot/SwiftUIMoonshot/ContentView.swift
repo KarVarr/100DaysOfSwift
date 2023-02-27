@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingList = false
+    
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
@@ -18,48 +20,29 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            //Challenge 3
             ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(missions) { mission in
-                        NavigationLink {
-                            MissionView(mission: mission, astronauts: astronauts)
-                        } label: {
-                            VStack {
-                                Image(mission.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                    .padding(10)
-                                VStack {
-                                    Text(mission.displayName)
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                    Text(mission.formattedLaunchDate)
-                                        .font(.caption)
-                                        .foregroundColor(.white.opacity(0.5))
-                                }
-                                .padding(.vertical)
-                                .frame(maxWidth: .infinity)
-                                .background(.lightBackground)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.lightBackground)
-                        }
-                    }
+                if showingList {
+                    ListLayout()
+                } else {
+                    GridLayout()
                 }
-                .padding([.bottom, .horizontal])
             }
             .navigationTitle("Moonshot")
             .background(.darkBackground)
             .preferredColorScheme(.dark)
+            .toolbar {
+                Button {
+                    withAnimation {
+                        showingList.toggle()
+                        
+                    }
+                } label: {
+                    Image(systemName: "list.dash")
+                }
+            }
         }
-       
+        
     }
 }
 
