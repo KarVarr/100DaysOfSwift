@@ -25,6 +25,8 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.75)
                         .padding([.top, .bottom])
+                    //Challenge 1
+                    Text("Launch date:  \(mission.formattedLaunchDate)")
                     
                    
                     
@@ -117,7 +119,7 @@ struct MissionView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        MissionView(mission: missions[0], astronauts: astronauts)
+        MissionView(mission: missions[1], astronauts: astronauts)
             .preferredColorScheme(.dark)
     }
 }
