@@ -26,12 +26,28 @@ struct MissionView: View {
                         .frame(maxWidth: geometry.size.width * 0.75)
                         .padding([.top, .bottom])
                     
+                   
+                    
                     VStack(alignment: .leading) {
-                        Text("Mission Highlights: \(mission.displayName)")
+                        Rectangle()
+                             .frame(height: 2)
+                             .foregroundColor(.lightBackground)
+                             .padding(.vertical)
+                        
+                        Text("Mission Highlights")
                             .font(.title2.bold())
                             .padding(.bottom, 5)
                         
                         Text(mission.description)
+                        
+                        Rectangle()
+                             .frame(height: 2)
+                             .foregroundColor(.lightBackground)
+                             .padding(.vertical)
+                        
+                        Text("Crew of \(mission.displayName)")
+                            .font(.title2.bold())
+                            .padding(.bottom, 5)
                     }
                     .padding([.bottom, .horizontal])
                     
@@ -55,7 +71,7 @@ struct MissionView: View {
                                         
                                         VStack(alignment: .leading) {
                                             Text(crewMember.astronaut.name)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.mint)
                                                 .font(.headline)
                                             
                                             Text(crewMember.role)
