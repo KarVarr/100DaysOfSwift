@@ -7,24 +7,6 @@
 
 import SwiftUI
 
-struct Flower: Shape {
-    var petalOffset: Double = -20
-    var petalWidth: Double = 100
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        for number in stride(from: 0, to: Double.pi * 2, by: Double.pi / 8) {
-            let rotation = CGAffineTransform(rotationAngle: number)
-            let position = rotation.concatenating(CGAffineTransform(translationX: rect.width / 2, y: rect.height / 2))
-            let originalPetal = Path(ellipseIn: CGRect(x: petalOffset, y: 0, width: petalWidth, height: rect.width / 2))
-            let rotatedPetal = originalPetal.applying(position)
-            path.addPath(rotatedPetal)
-        }
-        
-        return path
-    }
-}
 
 
 
@@ -34,12 +16,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-           Flower(petalOffset: petalOffset, petalWidth: petalWidth)
-                .fill(.indigo, style: FillStyle(eoFill: true))
+         Text("HEllo")
+                Capsule()
+                .strokeBorder(ImagePaint(image: Image("US"), scale: 0.3), lineWidth: 10)
+                .frame(width: 200, height: 200)
 
-            Text("Offset")
-            Slider(value: $petalOffset, in: -40...40)
-            Slider(value: $petalWidth, in: -100...200)
+
         }
         .padding()
     }
