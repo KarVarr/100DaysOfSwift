@@ -9,21 +9,39 @@ import SwiftUI
 
 
 
-
 struct ContentView: View {
-    @State private var petalOffset = -20.0
-    @State private var petalWidth = 100.0
+    @State private var amount = 0.0
+    
     
     var body: some View {
         VStack {
-         Text("HEllo")
-                Capsule()
-                .strokeBorder(ImagePaint(image: Image("US"), scale: 0.3), lineWidth: 10)
-                .frame(width: 200, height: 200)
-
-
+            ZStack {
+                Circle()
+                    .fill(Color(red: 1, green: 0, blue: 0))
+                    .frame(width: 200 * amount)
+                    .offset(x: -50, y: -80)
+                    .blendMode(.screen)
+                
+                Circle()
+                    .fill(Color(red: 0, green: 1, blue: 0))
+                    .frame(width: 200 * amount)
+                    .offset(x: 50, y: -80)
+                    .blendMode(.screen)
+                
+                Circle()
+                    .fill(Color(red: 0, green: 0, blue: 1))
+                    .frame(width: 200 * amount)
+                    .blendMode(.screen)
+            }
+            .frame(width: 300, height: 300)
+            
+            Slider(value: $amount)
+                .padding()
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+        .ignoresSafeArea()
+        
     }
 }
 
