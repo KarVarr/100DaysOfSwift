@@ -8,8 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var pictures = [String]()
     
+    var pictures = [String]()
     let tableView = UITableView()
     
     override func viewDidLoad() {
@@ -32,15 +32,16 @@ class ViewController: UIViewController {
     
     
     func settings () {
-        title = "Main View"
+        title = "Pictures"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
         ]
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
-        tableView.allowsSelectionDuringEditing = true
+        tableView.allowsSelection = true
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -65,14 +66,27 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         55
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pictures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.imageView?.image = UIImage(named: pictures[indexPath.row])
-        cell.textLabel?.text = pictures[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell  else {
+            fatalError("The TableView not dequeue a CustomCell in ViewController")
+        }
+        
+        let images = pictures[indexPath.row]
+        guard let image = UIImage(named: images) else {
+            fatalError("Unable to load image named \(images)")
+        }
+        
+        cell.configure(with: image, and: pictures[indexPath.row])
+        
+        cell.contentView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
         return cell
     }
     
