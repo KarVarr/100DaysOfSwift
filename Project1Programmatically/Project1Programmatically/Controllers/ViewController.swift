@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -93,6 +93,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Select row at \(indexPath.row)")
+        
+        let newVC = ImagesViewController()
+        navigationController?.pushViewController(newVC, animated: true)
+        
+        
     }
     
     

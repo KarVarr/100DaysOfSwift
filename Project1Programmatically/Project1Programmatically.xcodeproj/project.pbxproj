@@ -23,6 +23,7 @@
 		17E492A629AFD25B00DE5E8A /* nssl0051.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E4929C29AFD25B00DE5E8A /* nssl0051.jpg */; };
 		17E492A729AFD25B00DE5E8A /* nssl0045.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E4929D29AFD25B00DE5E8A /* nssl0045.jpg */; };
 		17E492AE29B11DD000DE5E8A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492AD29B11DD000DE5E8A /* CustomCell.swift */; };
+		17E492B029B12BCE00DE5E8A /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		17E4929C29AFD25B00DE5E8A /* nssl0051.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0051.jpg; sourceTree = "<group>"; };
 		17E4929D29AFD25B00DE5E8A /* nssl0045.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0045.jpg; sourceTree = "<group>"; };
 		17E492AD29B11DD000DE5E8A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				17E4928029AFCF8B00DE5E8A /* ViewController.swift */,
 				17E492AD29B11DD000DE5E8A /* CustomCell.swift */,
+				17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E492B029B12BCE00DE5E8A /* ImagesViewController.swift in Sources */,
 				17E4928129AFCF8B00DE5E8A /* ViewController.swift in Sources */,
 				17E4927D29AFCF8B00DE5E8A /* AppDelegate.swift in Sources */,
 				17E492AE29B11DD000DE5E8A /* CustomCell.swift in Sources */,
