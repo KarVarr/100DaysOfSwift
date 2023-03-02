@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -85,9 +85,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.configure(with: image, and: pictures[indexPath.row])
-        
+        cell.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
+        cell.accessoryType = .disclosureIndicator
         cell.contentView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Select row at \(indexPath.row)")
     }
     
     
