@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct HabitsView: View {
+    @State private var habitsTitle = ""
+    @State private var descriptionText = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                Section {
+                    TextField("Sleep, Eat, Run...", text: $habitsTitle)
+                } header: {
+                    Text("Your Habits")
+                }
+                
+                Section {
+                    TextField("Describe your habit", text: $descriptionText)
+                } header: {
+                    Text("Description")
+                }
+                
+                
+            }
+            .listStyle(PlainListStyle())
+            
+            Image("girl")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: .infinity, height: 400)
+        }
     }
 }
 

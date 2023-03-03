@@ -9,18 +9,18 @@
 /* Begin PBXBuildFile section */
 		17E492C129B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492C029B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift */; };
 		17E492C329B2605A00DE5E8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492C229B2605A00DE5E8A /* ContentView.swift */; };
-		17E492C529B2605B00DE5E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E492C429B2605B00DE5E8A /* Assets.xcassets */; };
 		17E492C829B2605B00DE5E8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E492C729B2605B00DE5E8A /* Preview Assets.xcassets */; };
 		17E492D229B2664800DE5E8A /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492D129B2664800DE5E8A /* HabitsView.swift */; };
+		17E492DF29B2719E00DE5E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E492DE29B2719D00DE5E8A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17E492BD29B2605A00DE5E8A /* SwiftUIMilestone7-9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUIMilestone7-9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E492C029B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMilestone7_9App.swift; sourceTree = "<group>"; };
 		17E492C229B2605A00DE5E8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		17E492C429B2605B00DE5E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17E492C729B2605B00DE5E8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17E492D129B2664800DE5E8A /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		17E492DE29B2719D00DE5E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +56,8 @@
 				17E492C029B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift */,
 				17E492C229B2605A00DE5E8A /* ContentView.swift */,
 				17E492D029B2662300DE5E8A /* View */,
-				17E492C429B2605B00DE5E8A /* Assets.xcassets */,
 				17E492C629B2605B00DE5E8A /* Preview Content */,
+				17E492DE29B2719D00DE5E8A /* Assets.xcassets */,
 			);
 			path = "SwiftUIMilestone7-9";
 			sourceTree = "<group>";
@@ -136,8 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E492DF29B2719E00DE5E8A /* Assets.xcassets in Resources */,
 				17E492C829B2605B00DE5E8A /* Preview Assets.xcassets in Resources */,
-				17E492C529B2605B00DE5E8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

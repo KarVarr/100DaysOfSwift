@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "girl-walking-phone-7afae6dd7f3b4be94a2a6c3025956fff.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
