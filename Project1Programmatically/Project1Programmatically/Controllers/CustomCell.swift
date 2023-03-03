@@ -26,6 +26,7 @@ class CustomCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.textAlignment = .left
+        //Challenge 1
         label.font = .systemFont(ofSize: 24, weight: .medium)
         label.text = "Error"
         return label

@@ -88,8 +88,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let image = UIImage(named: images) else {
             fatalError("Unable to load image named \(images)")
         }
-        
-        cell.configure(with: image, and: pictures[indexPath.row], numberOf: indexPath.row + 1)
+        //Challenge 2 .sorted(by: >)
+        cell.configure(with: image, and: pictures.sorted(by: <)[indexPath.row], numberOf: indexPath.row + 1)
         cell.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
         cell.accessoryType = .disclosureIndicator
         cell.contentView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
@@ -101,7 +101,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let newVC = ImagesViewController()
         newVC.myImage.image = UIImage(named: pictures[indexPath.row] )
-        newVC.ImageTitle = pictures[indexPath.row]
+        //Challenge 3
+        newVC.ImageTitle = "Picture \(indexPath.row + 1) of \(pictures.count)"
         navigationController?.pushViewController(newVC, animated: true)
         
     }
