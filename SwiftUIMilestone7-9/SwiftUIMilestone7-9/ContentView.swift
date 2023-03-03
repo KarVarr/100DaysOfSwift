@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showingAddHabitsView = false
+    
+    
+    
+    let arr = ["walk", "run", "eat", "sleep"]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(arr, id: \.self) {
+                    Text($0)
+                }
+            }
+            .navigationTitle("Habits")
+            .toolbar {
+                Button {
+                    showingAddHabitsView = true 
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: $showingAddHabitsView) {
+                    HabitsView()
+                }
+            }
         }
-        .padding()
     }
 }
 
