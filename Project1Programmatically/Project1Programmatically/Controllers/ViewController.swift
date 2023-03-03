@@ -35,12 +35,12 @@ class ViewController: UIViewController {
     
     
     func settings () {
+        navigationItem.largeTitleDisplayMode = .always
         title = "Pictures"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.yellow
+            NSAttributedString.Key.foregroundColor: UIColor.yellow
         ]
-        navigationItem.largeTitleDisplayMode = .always
         
         
         
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         55
+        55
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,6 +101,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let newVC = ImagesViewController()
         newVC.myImage.image = UIImage(named: pictures[indexPath.row] )
+        newVC.ImageTitle = pictures[indexPath.row]
         navigationController?.pushViewController(newVC, animated: true)
         
     }

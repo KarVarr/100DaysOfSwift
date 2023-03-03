@@ -10,14 +10,27 @@ import UIKit
 class ImagesViewController: UIViewController {
 
     var myImage = UIImageView()
+    var ImageTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
+        title = ImageTitle
+        navigationItem.largeTitleDisplayMode = .never
+        
         settings()
         addView()
         layout()
-       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
     }
     
     
