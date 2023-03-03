@@ -18,10 +18,18 @@ struct HabitsView: View {
             VStack {
                 List {
                     Section {
-                        TextField("Sleep, Eat, Run...", text: $habitsTitle)
+                        ZStack(alignment: .leading) {
+                            if habitsTitle.isEmpty {
+                                Text ("Sleep, Eat, Run...")
+                                    .foregroundColor(.gray)
+                            }
+                            TextField("", text: $habitsTitle)
+                        }
                     } header: {
                         Text("Your Habits")
                     }
+                    
+                    .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
                     
                     Section {
                         TextField("Describe your habit", text: $descriptionText)
@@ -29,15 +37,17 @@ struct HabitsView: View {
                         Text("Description")
                     }
                     
-                    
+                    .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
                 }
                 .listStyle(PlainListStyle())
                 
                 Image("girl")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: .infinity, height: 400)
+                    .frame(width: .infinity, height: .infinity)
             }
+            .foregroundColor(.black)
+            .background(Color(red: 0.66, green: 0.81, blue: 0.56))
             .toolbar {
                 Button {
                     dismiss()

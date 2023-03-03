@@ -36,6 +36,7 @@ struct ContentView: View {
                     .aspectRatio( contentMode: .fit)
                     .frame(width: .infinity, height: .infinity)
             }
+            .foregroundColor(.black)
             .background(Color(red: 1.00, green: 0.92, blue: 0.64))
             .navigationTitle("Habits")
             .toolbar {
