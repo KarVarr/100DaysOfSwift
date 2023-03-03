@@ -24,6 +24,7 @@
 		17E492A729AFD25B00DE5E8A /* nssl0045.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E4929D29AFD25B00DE5E8A /* nssl0045.jpg */; };
 		17E492AE29B11DD000DE5E8A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492AD29B11DD000DE5E8A /* CustomCell.swift */; };
 		17E492B029B12BCE00DE5E8A /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */; };
+		17E492B329B2312500DE5E8A /* MyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492B229B2312500DE5E8A /* MyImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		17E4929D29AFD25B00DE5E8A /* nssl0045.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0045.jpg; sourceTree = "<group>"; };
 		17E492AD29B11DD000DE5E8A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		17E492B229B2312500DE5E8A /* MyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				17E4929029AFD19600DE5E8A /* Content */,
 				17E4929329AFD1D000DE5E8A /* Application */,
 				17E492A829B101B100DE5E8A /* Controllers */,
+				17E492B129B2310300DE5E8A /* View */,
 				17E4929229AFD1AE00DE5E8A /* Resources */,
 			);
 			path = Project1Programmatically;
@@ -130,6 +133,14 @@
 				17E492AF29B12BCE00DE5E8A /* ImagesViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		17E492B129B2310300DE5E8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17E492B229B2312500DE5E8A /* MyImage.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E492B029B12BCE00DE5E8A /* ImagesViewController.swift in Sources */,
+				17E492B329B2312500DE5E8A /* MyImage.swift in Sources */,
 				17E4928129AFCF8B00DE5E8A /* ViewController.swift in Sources */,
 				17E4927D29AFCF8B00DE5E8A /* AppDelegate.swift in Sources */,
 				17E492AE29B11DD000DE5E8A /* CustomCell.swift in Sources */,

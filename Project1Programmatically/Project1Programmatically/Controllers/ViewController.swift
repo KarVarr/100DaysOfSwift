@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     var pictures = [String]()
     let tableView = UITableView()
     
+    var image = MyImage()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settings()
@@ -38,6 +41,8 @@ class ViewController: UIViewController {
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
         ]
         
+        
+        
         tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
@@ -47,8 +52,6 @@ class ViewController: UIViewController {
     }
     
     func addViews() {
-        
-        
         view.addSubview(tableView)
     }
     
@@ -94,9 +97,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Select row at \(indexPath.row)")
         
+        
         let newVC = ImagesViewController()
         navigationController?.pushViewController(newVC, animated: true)
-        
         
     }
     
