@@ -31,6 +31,16 @@ class CustomCell: UITableViewCell {
         return label
     }()
     
+    private let myNumberOfPictures: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.text = "Error"
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addViews()
@@ -41,20 +51,26 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(with image: UIImage, and label: String) {
+    public func configure(with image: UIImage, and label: String, numberOf pictures: Int) {
         self.myImageView.image = image
         self.myLabel.text = label
+        self.myNumberOfPictures.text = "\(pictures)"
     }
     
     
     private func addViews() {
         contentView.addSubview(myImageView)
         contentView.addSubview(myLabel)
+        contentView.addSubview(myNumberOfPictures)
     }
     
     private func layout() {
         NSLayoutConstraint.activate([
-            myImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            myNumberOfPictures.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            myNumberOfPictures.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            myNumberOfPictures.widthAnchor.constraint(equalToConstant: 25),
+            
+            myImageView.leadingAnchor.constraint(equalTo: myNumberOfPictures.trailingAnchor, constant: 5),
             myImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             myImageView.widthAnchor.constraint(equalToConstant: 40),
             myImageView.heightAnchor.constraint(equalToConstant: 40),
@@ -62,6 +78,8 @@ class CustomCell: UITableViewCell {
             myLabel.leadingAnchor.constraint(equalTo: myImageView.trailingAnchor, constant: 16),
             myLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             myLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            
 
         ])
     }

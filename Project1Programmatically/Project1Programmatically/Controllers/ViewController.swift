@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     var pictures = [String]()
     let tableView = UITableView()
     
-    var image = MyImage()
-    
+    var selectedImage: String?
+    let myImage = ImagesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +36,12 @@ class ViewController: UIViewController {
     
     func settings () {
         title = "Pictures"
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.yellow
         ]
+        navigationItem.largeTitleDisplayMode = .always
+        
         
         
         
@@ -87,7 +89,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Unable to load image named \(images)")
         }
         
-        cell.configure(with: image, and: pictures[indexPath.row])
+        cell.configure(with: image, and: pictures[indexPath.row], numberOf: indexPath.row + 1)
         cell.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
         cell.accessoryType = .disclosureIndicator
         cell.contentView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
@@ -95,10 +97,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Select row at \(indexPath.row)")
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let newVC = ImagesViewController()
+        newVC.myImage.image = UIImage(named: pictures[indexPath.row] )
         navigationController?.pushViewController(newVC, animated: true)
         
     }

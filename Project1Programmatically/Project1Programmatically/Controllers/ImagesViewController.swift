@@ -9,7 +9,7 @@ import UIKit
 
 class ImagesViewController: UIViewController {
 
-    let myImage = MyImage()
+    var myImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +22,24 @@ class ImagesViewController: UIViewController {
     
     
     func settings() {
-        myImage.image.translatesAutoresizingMaskIntoConstraints = false
-        myImage.image = UIImageView(image: UIImage(named: "nssl0033"))
+        myImage.translatesAutoresizingMaskIntoConstraints = false
+        myImage.contentMode = .scaleAspectFit
+        myImage.layer.cornerRadius = 10
+        myImage.clipsToBounds = true 
     }
     
     func addView () {
-        view.addSubview(myImage.image)
+        view.addSubview(myImage)
     }
     
     func layout () {
         NSLayoutConstraint.activate([
-            myImage.image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            myImage.image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            myImage.image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            myImage.image.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            myImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            myImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            myImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            myImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            myImage.widthAnchor.constraint(equalToConstant: 200),
+            myImage.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
 
