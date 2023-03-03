@@ -8,32 +8,43 @@
 import SwiftUI
 
 struct HabitsView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var habitsTitle = ""
     @State private var descriptionText = ""
     
     var body: some View {
-        VStack {
-            List {
-                Section {
-                    TextField("Sleep, Eat, Run...", text: $habitsTitle)
-                } header: {
-                    Text("Your Habits")
-                }
-                
-                Section {
-                    TextField("Describe your habit", text: $descriptionText)
-                } header: {
-                    Text("Description")
-                }
-                
-                
-            }
-            .listStyle(PlainListStyle())
+        NavigationView {
             
-            Image("girl")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: .infinity, height: 400)
+            VStack {
+                List {
+                    Section {
+                        TextField("Sleep, Eat, Run...", text: $habitsTitle)
+                    } header: {
+                        Text("Your Habits")
+                    }
+                    
+                    Section {
+                        TextField("Describe your habit", text: $descriptionText)
+                    } header: {
+                        Text("Description")
+                    }
+                    
+                    
+                }
+                .listStyle(PlainListStyle())
+                
+                Image("girl")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: .infinity, height: 400)
+            }
+            .toolbar {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "arrowshape.turn.up.backward")
+                }
+            }
         }
     }
 }
