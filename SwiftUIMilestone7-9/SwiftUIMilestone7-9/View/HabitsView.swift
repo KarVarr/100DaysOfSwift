@@ -68,10 +68,15 @@ struct HabitsView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Image(systemName: "arrowshape.turn.up.backward")
+                        Text("Save")
+                            .padding(8)
+                            .background(.black)
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
             }
+            .navigationTitle("Add Habits")
         }
         
     }
