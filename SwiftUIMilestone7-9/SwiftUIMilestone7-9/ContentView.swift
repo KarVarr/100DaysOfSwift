@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var showingAddHabitsView = false
-    
     
     
     let arr = ["walk", "run", "eat", "sleep"]
@@ -20,9 +18,14 @@ struct ContentView: View {
             GeometryReader{ geometry in
                 VStack {
                     List {
-                        ForEach(arr, id: \.self) { item in
+                        ForEach(arr, id: \.self) { index in
                             NavigationLink(destination: DetailView()) {
-                                Text(item)
+                                VStack (alignment: .leading) {
+                                    Text(index.capitalized)
+                                    Text("desctiption")
+                                        .foregroundColor(.gray)
+                                    Text("Completed \(0) times")
+                                }
                             }
                         }
                         .listRowBackground(Color(red: 1.00, green: 0.92, blue: 0.64))

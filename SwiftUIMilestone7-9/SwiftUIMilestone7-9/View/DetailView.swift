@@ -12,9 +12,9 @@ struct DetailView: View {
     @State private var description = "Description"
     @State private var picker = 0
     
+    
+    
     var body: some View {
-        NavigationView {
-            
             List {
                 TextField("", text: $title)
                 TextField("", text: $description)
@@ -22,9 +22,11 @@ struct DetailView: View {
                 
             }
             .navigationTitle("Details")
+            .navigationBarTitleDisplayMode(.inline)
+       
         }
     }
-}
+
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
