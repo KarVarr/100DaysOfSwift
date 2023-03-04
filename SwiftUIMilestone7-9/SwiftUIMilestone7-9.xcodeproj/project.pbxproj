@@ -12,6 +12,7 @@
 		17E492C829B2605B00DE5E8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E492C729B2605B00DE5E8A /* Preview Assets.xcassets */; };
 		17E492D229B2664800DE5E8A /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492D129B2664800DE5E8A /* HabitsView.swift */; };
 		17E492DF29B2719E00DE5E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E492DE29B2719D00DE5E8A /* Assets.xcassets */; };
+		17E492E129B3C0CE00DE5E8A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492E029B3C0CE00DE5E8A /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		17E492C729B2605B00DE5E8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17E492D129B2664800DE5E8A /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		17E492DE29B2719D00DE5E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		17E492E029B3C0CE00DE5E8A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				17E492D129B2664800DE5E8A /* HabitsView.swift */,
+				17E492E029B3C0CE00DE5E8A /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E492C329B2605A00DE5E8A /* ContentView.swift in Sources */,
+				17E492E129B3C0CE00DE5E8A /* DetailView.swift in Sources */,
 				17E492D229B2664800DE5E8A /* HabitsView.swift in Sources */,
 				17E492C129B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift in Sources */,
 			);

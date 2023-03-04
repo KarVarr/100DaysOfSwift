@@ -19,14 +19,12 @@ struct ContentView: View {
         NavigationView {
             GeometryReader{ geometry in
                 VStack {
-                    
                     List {
-                        
-                        ForEach(arr, id: \.self) {
-                            Text($0)
+                        ForEach(arr, id: \.self) { item in
+                            NavigationLink(destination: DetailView()) {
+                                Text(item)
+                            }
                         }
-                        
-                        
                         .listRowBackground(Color(red: 1.00, green: 0.92, blue: 0.64))
                     }
                     .listStyle(.plain)
@@ -41,6 +39,7 @@ struct ContentView: View {
             .foregroundColor(.black)
             .background(Color(red: 1.00, green: 0.92, blue: 0.64))
             .navigationTitle("Habits")
+            
             .toolbar {
                 Button {
                     showingAddHabitsView = true 
