@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HabitsView: View {
     @Environment(\.dismiss) var dismiss
+    @StateObject var habitsArray = Habits()
     @State private var habitsTitle = ""
     @State private var descriptionText = ""
     
@@ -16,49 +17,49 @@ struct HabitsView: View {
         NavigationView {
             
             GeometryReader { geometry in
-                    VStack {
-                        List {
-                            Section {
-                                ZStack(alignment: .leading) {
-                                    if habitsTitle.isEmpty {
-                                        Text ("Sleep, Eat, Run...")
-                                            .foregroundColor(.gray)
-                                    }
-                                    TextField("", text: $habitsTitle)
+                VStack {
+                    List {
+                        Section {
+                            ZStack(alignment: .leading) {
+                                if habitsTitle.isEmpty {
+                                    Text ("Sleep, Eat, Run...")
+                                        .foregroundColor(.gray)
                                 }
-                            } header: {
-                                Text("Your Habits")
+                                TextField("", text: $habitsTitle)
                             }
-                            
-                            .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
-                            
-                            Section {
-                                ZStack(alignment: .leading) {
-                                    if descriptionText.isEmpty {
-                                        Text("Describe your habit")
-                                            .foregroundColor(.gray)
-                                    }
-                                    TextField("", text: $descriptionText)
-                                }
-                            } header: {
-                                Text("Description")
-                            }
-                            
-                            .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
+                        } header: {
+                            Text("Your Habits")
                         }
-                        .listStyle(PlainListStyle())
-                        Spacer()
-                        Image("girl")
-                            .resizable()
-                            .scaledToFit()
-                            .aspectRatio(1 / 1, contentMode: .fit)
-                            .frame( width: geometry.size.width - 100,alignment: .center)
-                            .edgesIgnoringSafeArea(.all)
-                    }
-                 
-                  
                         
-               
+                        .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
+                        
+                        Section {
+                            ZStack(alignment: .leading) {
+                                if descriptionText.isEmpty {
+                                    Text("Describe your habit")
+                                        .foregroundColor(.gray)
+                                }
+                                TextField("", text: $descriptionText)
+                            }
+                        } header: {
+                            Text("Description")
+                        }
+                        
+                        .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
+                    }
+                    .listStyle(PlainListStyle())
+                    Spacer()
+                    Image("girl")
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(1 / 1, contentMode: .fit)
+                        .frame( width: geometry.size.width - 100,alignment: .center)
+                        .edgesIgnoringSafeArea(.all)
+                }
+                
+                
+                
+                
                 .foregroundColor(.black)
                 .background(Color(red: 0.66, green: 0.81, blue: 0.56))
                 .onTapGesture {
@@ -66,6 +67,8 @@ struct HabitsView: View {
                 }
                 .toolbar {
                     Button {
+                        let newActivity = Activity(title: habitsTitle, description: descriptionText)
+                        habitsArray.addActivity(newActivity)
                         dismiss()
                     } label: {
                         Text("Save")

@@ -10,19 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @State private var showingAddHabitsView = false
     
+    @StateObject var habitsArray = Habits()
     
-    let arr = ["walk", "run", "eat", "sleep"]
     
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
                 VStack {
                     List {
-                        ForEach(arr, id: \.self) { index in
+                        ForEach(habitsArray.activities, id: \.self) { index in
                             NavigationLink(destination: DetailView()) {
                                 VStack (alignment: .leading) {
-                                    Text(index.capitalized)
-                                    Text("desctiption")
+                                    Text(index.title.capitalized)
+                                    Text(index.description)
                                         .foregroundColor(.gray)
                                     Text("Completed \(0) times")
                                 }
