@@ -17,24 +17,26 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                
-                List {
+            GeometryReader{ geometry in
+                VStack {
                     
-                    ForEach(arr, id: \.self) {
-                        Text($0)
+                    List {
+                        
+                        ForEach(arr, id: \.self) {
+                            Text($0)
+                        }
+                        
+                        
+                        .listRowBackground(Color(red: 1.00, green: 0.92, blue: 0.64))
                     }
+                    .listStyle(.plain)
+                    .background(Color(red: 1.00, green: 0.92, blue: 0.64))
                     
-                    
-                    .listRowBackground(Color(red: 1.00, green: 0.92, blue: 0.64))
+                    Image("girls")
+                        .resizable()
+                        .aspectRatio( contentMode: .fit)
+                        .frame(width: geometry.size.width)
                 }
-                .listStyle(.plain)
-                .background(Color(red: 1.00, green: 0.92, blue: 0.64))
-                
-                Image("girls")
-                    .resizable()
-                    .aspectRatio( contentMode: .fit)
-                    .frame(width: .infinity, height: .infinity)
             }
             .foregroundColor(.black)
             .background(Color(red: 1.00, green: 0.92, blue: 0.64))

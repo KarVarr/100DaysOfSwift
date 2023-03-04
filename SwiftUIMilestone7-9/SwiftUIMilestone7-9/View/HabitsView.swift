@@ -15,47 +15,65 @@ struct HabitsView: View {
     var body: some View {
         NavigationView {
             
-            VStack {
-                List {
-                    Section {
-                        ZStack(alignment: .leading) {
-                            if habitsTitle.isEmpty {
-                                Text ("Sleep, Eat, Run...")
-                                    .foregroundColor(.gray)
+            GeometryReader { geometry in
+                    VStack {
+                        List {
+                            Section {
+                                ZStack(alignment: .leading) {
+                                    if habitsTitle.isEmpty {
+                                        Text ("Sleep, Eat, Run...")
+                                            .foregroundColor(.gray)
+                                    }
+                                    TextField("", text: $habitsTitle)
+                                }
+                            } header: {
+                                Text("Your Habits")
                             }
-                            TextField("", text: $habitsTitle)
+                            
+                            .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
+                            
+                            Section {
+                                ZStack(alignment: .leading) {
+                                    if descriptionText.isEmpty {
+                                        Text("Describe your habit")
+                                            .foregroundColor(.gray)
+                                    }
+                                    TextField("", text: $descriptionText)
+                                }
+                            } header: {
+                                Text("Description")
+                            }
+                            
+                            .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
                         }
-                    } header: {
-                        Text("Your Habits")
+                        .listStyle(PlainListStyle())
+                        Spacer()
+                        Image("girl")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(1 / 1, contentMode: .fit)
+                            .frame( width: geometry.size.width - 100,alignment: .center)
+                            .edgesIgnoringSafeArea(.all)
                     }
-                    
-                    .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
-                    
-                    Section {
-                        TextField("Describe your habit", text: $descriptionText)
-                    } header: {
-                        Text("Description")
-                    }
-                    
-                    .listRowBackground(Color(red: 0.66, green: 0.81, blue: 0.56))
+                 
+                  
+                        
+               
+                .foregroundColor(.black)
+                .background(Color(red: 0.66, green: 0.81, blue: 0.56))
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
-                .listStyle(PlainListStyle())
-                
-                Image("girl")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: .infinity, height: .infinity)
-            }
-            .foregroundColor(.black)
-            .background(Color(red: 0.66, green: 0.81, blue: 0.56))
-            .toolbar {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "arrowshape.turn.up.backward")
+                .toolbar {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrowshape.turn.up.backward")
+                    }
                 }
             }
         }
+        
     }
 }
 
