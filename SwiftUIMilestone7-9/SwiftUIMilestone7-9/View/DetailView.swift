@@ -8,24 +8,37 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State private var title = "Title"
+    @StateObject var habitsArray = Habits()
+    @State private var title = "title"
     @State private var description = "Description"
     @State private var picker = 0
     
     
     
     var body: some View {
+        VStack {
             List {
-                TextField("", text: $title)
-                TextField("", text: $description)
+                Text("Title")
+                    .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
+                Text("Description")
+                    .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
                 Stepper(picker == 1 ? "Competed \(picker) time" : "Competed \(picker) times", value: $picker)
+                    .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
                 
             }
+            .listStyle(.plain)
             .navigationTitle("Details")
             .navigationBarTitleDisplayMode(.inline)
-       
+            
+            Image("woman")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
         }
+        .background(Color(red: 0.22, green: 0.68, blue: 0.62))
     }
+}
 
 
 struct DetailView_Previews: PreviewProvider {
