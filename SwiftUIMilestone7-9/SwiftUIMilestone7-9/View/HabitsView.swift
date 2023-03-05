@@ -68,6 +68,13 @@ struct HabitsView: View {
                 .toolbar {
                     Button {
                         let newActivity = Activity(title: habitsTitle, description: descriptionText)
+                        if habitsTitle.isEmpty && descriptionText.isEmpty {
+                            dismiss()
+                        }
+                        if !habitsTitle.isEmpty && descriptionText.isEmpty {
+                            
+                        }
+                        
                         habitsArray.addActivity(newActivity)
                         dismiss()
                     } label: {

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingAddHabitsView = false
-    
-    @StateObject var habitsArray = Habits()
+    @ObservedObject var habitsArray = Habits()
     
     
     var body: some View {
@@ -18,7 +17,7 @@ struct ContentView: View {
             GeometryReader{ geometry in
                 VStack {
                     List {
-                        ForEach(habitsArray.activities, id: \.self) { index in
+                        ForEach(habitsArray.activities) { index in
                             NavigationLink(destination: DetailView()) {
                                 VStack (alignment: .leading) {
                                     Text(index.title.capitalized)
@@ -50,7 +49,7 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .sheet(isPresented: $showingAddHabitsView) {
-                    HabitsView()
+                    HabitsView(habitsArray: habitsArray)
                 }
             }
         }
