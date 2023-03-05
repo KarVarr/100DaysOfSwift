@@ -13,6 +13,10 @@ struct HabitsView: View {
     @State private var habitsTitle = ""
     @State private var descriptionText = ""
     
+    @State private var showingAlert = false
+    @State private var titleForAlert = ""
+    @State private var descriptionForAlert = ""
+    
     var body: some View {
         NavigationView {
             
@@ -67,14 +71,24 @@ struct HabitsView: View {
                 }
                 .toolbar {
                     Button {
-                        let newActivity = Activity(title: habitsTitle, description: descriptionText)
+                        
                         if habitsTitle.isEmpty && descriptionText.isEmpty {
                             dismiss()
+                            return
                         }
                         if !habitsTitle.isEmpty && descriptionText.isEmpty {
-                            
+                            titleForAlert = "Empty Description"
+                            descriptionForAlert = "Please add description"
+                            addText()
+                            return
                         }
-                        
+                        if habitsTitle.isEmpty && !descriptionText.isEmpty {
+                            titleForAlert = "Empty Title"
+                            descriptionForAlert = "Please add title"
+                            addText()
+                            return
+                        }
+                        let newActivity = Activity(title: habitsTitle, description: descriptionText)
                         habitsArray.addActivity(newActivity)
                         dismiss()
                     } label: {
@@ -88,7 +102,18 @@ struct HabitsView: View {
             }
             .navigationTitle("Add Habits")
         }
+        .alert(titleForAlert, isPresented: $showingAlert) {
+            Button("Continue", action: addText)
+        } message: {
+            Text(descriptionForAlert)
+        }
         
+    }
+    
+    //MARK: - Functions
+    
+    func addText() {
+        showingAlert = true
     }
 }
 

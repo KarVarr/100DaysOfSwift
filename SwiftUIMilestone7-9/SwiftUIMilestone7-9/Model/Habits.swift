@@ -32,6 +32,8 @@ class Habits: ObservableObject {
     func addActivity(_ activity :Activity) {
         activities.append(activity)
     }
+    
+    
    
     
 }
