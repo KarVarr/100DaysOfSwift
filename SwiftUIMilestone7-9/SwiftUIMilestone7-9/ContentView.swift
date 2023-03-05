@@ -11,22 +11,26 @@ struct ContentView: View {
     @State private var showingAddHabitsView = false
     @ObservedObject var habitsArray = Habits()
     
-    
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
                 VStack {
                     List {
                         ForEach(habitsArray.activities) { index in
-                            NavigationLink(destination: DetailView()) {
+                            NavigationLink(destination: DetailView( activity: Activity(title: index.title, description: index.description))) {
                                 VStack (alignment: .leading) {
                                     Text(index.title.capitalized)
+                                        .font(.largeTitle)
+                                        .foregroundColor(.teal)
                                     Text(index.description)
                                         .foregroundColor(.gray)
-                                    Text("Completed \(0) times")
+                                    Text("Completed \(index.completedTimes) times")
+                                        .font(.caption)
+                                        .foregroundColor(.brown)
                                 }
                             }
                         }
+                        .onDelete(perform: removeItem)
                         .listRowBackground(Color(red: 1.00, green: 0.92, blue: 0.64))
                     }
                     .listStyle(.plain)
@@ -40,8 +44,8 @@ struct ContentView: View {
             }
             .foregroundColor(.black)
             .background(Color(red: 1.00, green: 0.92, blue: 0.64))
+            .fontDesign(.monospaced)
             .navigationTitle("Habits")
-            
             .toolbar {
                 Button {
                     showingAddHabitsView = true 
@@ -52,7 +56,17 @@ struct ContentView: View {
                     HabitsView(habitsArray: habitsArray)
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+            }
         }
+    }
+    
+    //MARK: - Functions
+    func removeItem(at offsets: IndexSet) {
+        habitsArray.activities.remove(atOffsets: offsets)
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct SwiftUIMilestone7_9App: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

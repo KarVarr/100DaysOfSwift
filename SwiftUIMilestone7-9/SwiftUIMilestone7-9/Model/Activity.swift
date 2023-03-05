@@ -12,4 +12,5 @@ struct Activity: Codable, Identifiable, Hashable {
     var id = UUID()
     var title: String
     var description: String
+    var completedTimes = 0
 }
