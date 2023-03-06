@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct AddressView: View {
-    @ObservedObject var order: Order
+    @ObservedObject var order: ClassOrder
     var body: some View {
-        Form {
+        List {
             Section {
-                TextField("Name", text: $order.name)
-                TextField("Street Address", text: $order.streetAddress)
-                TextField("City", text: $order.city)
-                TextField("Zip", text: $order.zip)
+                TextField("Name", text: $order.structOrder.name)
+                TextField("Street Address", text: $order.structOrder.streetAddress)
+                TextField("City", text: $order.structOrder.city)
+                TextField("Zip", text: $order.structOrder.zip)
                     .keyboardType(.numberPad)
             }
             
@@ -26,7 +26,7 @@ struct AddressView: View {
                     Text("Check out")
                 }
             }
-            .disabled(order.hasValidAddress == false)
+            .disabled(order.structOrder.hasValidAddress == false)
         }
         .navigationTitle("Delivery details")
         .navigationBarTitleDisplayMode(.inline)
@@ -36,7 +36,7 @@ struct AddressView: View {
 struct AddressView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddressView(order: Order())
+            AddressView(order: ClassOrder(structOrder: Order()))
         }
     }
 }

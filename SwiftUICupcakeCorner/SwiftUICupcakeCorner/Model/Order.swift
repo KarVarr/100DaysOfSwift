@@ -7,18 +7,27 @@
 
 import SwiftUI
 
+//Challenge 3
+class ClassOrder: ObservableObject {
+    @Published var structOrder: Order
+    
+    init(structOrder: Order) {
+        self.structOrder = structOrder
+    }
+}
 
-class Order: ObservableObject, Codable {
+struct Order: Codable {
+    
     enum CodingKeys: CodingKey {
         case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
     }
     
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
-    @Published var type = 0
-    @Published var quantity = 3
+     var type = 0
+     var quantity = 3
     
-    @Published var specialRequestEnabled = false {
+     var specialRequestEnabled = false {
         didSet {
             if specialRequestEnabled == false{
                 extraFrosting = false
@@ -26,13 +35,13 @@ class Order: ObservableObject, Codable {
             }
         }
     }
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
+     var extraFrosting = false
+     var addSprinkles = false
     
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
+     var name = ""
+     var streetAddress = ""
+     var city = ""
+     var zip = ""
     
     
     var hasValidAddress: Bool {
@@ -77,20 +86,21 @@ class Order: ObservableObject, Codable {
         try container.encode(zip, forKey: .zip)
     }
     
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        type = try container.decode(Int.self, forKey: .type)
-        quantity = try container.decode(Int.self, forKey: .quantity)
-        
-        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-        
-        name = try container.decode(String.self, forKey: .name)
-        streetAddress = try container.decode(String.self, forKey: .streetAddress)
-        city = try container.decode(String.self, forKey: .city)
-        zip = try container.decode(String.self, forKey: .zip)
-    }
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        type = try container.decode(Int.self, forKey: .type)
+//        quantity = try container.decode(Int.self, forKey: .quantity)
+//
+//        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
+//        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
+//
+//        name = try container.decode(String.self, forKey: .name)
+//        streetAddress = try container.decode(String.self, forKey: .streetAddress)
+//        city = try container.decode(String.self, forKey: .city)
+//        zip = try container.decode(String.self, forKey: .zip)
+//    }
     
     
 }
+
