@@ -7,41 +7,32 @@
 
 import SwiftUI
 
-struct Response: Codable {
-    var results: [Result]
-}
-
-struct Result: Codable {
-    var trackId: Int
-    var trackName: String
-    var collectionName: String
-    var artworkUrl30: String
-}
-
 struct ContentView: View {
     @State private var results = [Result]()
     
     var body: some View {
-        List(results, id: \.trackId) { item in
-            VStack (alignment: .leading) {
-                HStack {
-                   
-                    AsyncImage(url: URL(string: item.artworkUrl30)!)
-//                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                    Text(item.trackName)
-                        .font(.headline)
+        NavigationView {
+            List(results, id: \.trackId) { item in
+                NavigationLink(destination: DetailView(result: Result(trackId: item.trackId, trackName: item.trackName, collectionName: item.collectionName, artworkUrl30: item.artworkUrl30, artworkUrl100: item.artworkUrl100, country: item.country, trackTimeMillis: item.trackTimeMillis))) {
+                    VStack (alignment: .leading) {
+                        HStack {
+                            AsyncImage(url: URL(string: item.artworkUrl30)!)
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            Text(item.trackName)
+                                .font(.headline)
+                        }
+                        Text(item.collectionName)
+                        Text( String( format: "%.2f", Double(item.trackTimeMillis) / 60000.0) + " minuts")
+                    }
                 }
-                Text(item.collectionName)
-                
+            }.task {
+                await loadData()
             }
-        }.task {
-            await loadData()
+            .navigationTitle("Taylor Swift")
         }
     }
-    
     
     func loadData() async {
         guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song") else {
