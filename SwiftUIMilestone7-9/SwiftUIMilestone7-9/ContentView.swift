@@ -17,7 +17,7 @@ struct ContentView: View {
                 VStack {
                     List {
                         ForEach(habitsArray.activities) { index in
-                            NavigationLink(destination: DetailView( activity: Activity(title: index.title, description: index.description))) {
+                            NavigationLink(destination: DetailView( activity: Activity(title: index.title, description: index.description, completedTimes: index.completedTimes))) {
                                 VStack (alignment: .leading) {
                                     Text(index.title.capitalized)
                                         .font(.largeTitle)

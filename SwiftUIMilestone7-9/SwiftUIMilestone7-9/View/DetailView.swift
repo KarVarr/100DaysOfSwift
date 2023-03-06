@@ -43,7 +43,7 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let activity = Activity(title: "title", description: "description")
+        let activity = Activity(title: "title", description: "description", completedTimes: 0)
         DetailView(activity: activity)
     }
 }
