@@ -10,17 +10,32 @@ import SwiftUI
 struct AddressView: View {
     @ObservedObject var order: Order
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                Text("You choose \(Order.types[order.type])")
+        Form {
+            Section {
+                TextField("Name", text: $order.name)
+                TextField("Street Address", text: $order.streetAddress)
+                TextField("City", text: $order.city)
+                TextField("Zip", text: $order.zip)
+            }
             
-            Text("Your count is : \(order.quantity)")
+            Section {
+                NavigationLink {
+                    CheckoutView(order: order)
+                } label: {
+                    Text("Check out")
+                }
+            }
+            .disabled(order.hasValidAddress == false)
         }
+        .navigationTitle("Delivery details")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct AddressView_Previews: PreviewProvider {
     static var previews: some View {
-        AddressView(order: Order())
+        NavigationView {
+            AddressView(order: Order())
+        }
     }
 }
