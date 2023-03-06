@@ -15,7 +15,7 @@
 		17E492E129B3C0CE00DE5E8A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492E029B3C0CE00DE5E8A /* DetailView.swift */; };
 		17E492E429B3CFD200DE5E8A /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492E329B3CFD200DE5E8A /* Activity.swift */; };
 		17E492E729B3D07E00DE5E8A /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492E629B3D07E00DE5E8A /* Habits.swift */; };
-		17E492E929B4B6F000DE5E8A /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E492E829B4B6F000DE5E8A /* StepperView.swift */; };
+		17E4931029B6360F00DE5E8A /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4930F29B6360F00DE5E8A /* Stepper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 		17E492E029B3C0CE00DE5E8A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		17E492E329B3CFD200DE5E8A /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		17E492E629B3D07E00DE5E8A /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
-		17E492E829B4B6F000DE5E8A /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
+		17E4930F29B6360F00DE5E8A /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,6 @@
 			children = (
 				17E492D129B2664800DE5E8A /* HabitsView.swift */,
 				17E492E029B3C0CE00DE5E8A /* DetailView.swift */,
-				17E492E829B4B6F000DE5E8A /* StepperView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,6 +93,7 @@
 			children = (
 				17E492E329B3CFD200DE5E8A /* Activity.swift */,
 				17E492E629B3D07E00DE5E8A /* Habits.swift */,
+				17E4930F29B6360F00DE5E8A /* Stepper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,8 +171,8 @@
 				17E492E429B3CFD200DE5E8A /* Activity.swift in Sources */,
 				17E492C329B2605A00DE5E8A /* ContentView.swift in Sources */,
 				17E492E729B3D07E00DE5E8A /* Habits.swift in Sources */,
+				17E4931029B6360F00DE5E8A /* Stepper.swift in Sources */,
 				17E492E129B3C0CE00DE5E8A /* DetailView.swift in Sources */,
-				17E492E929B4B6F000DE5E8A /* StepperView.swift in Sources */,
 				17E492D229B2664800DE5E8A /* HabitsView.swift in Sources */,
 				17E492C129B2605A00DE5E8A /* SwiftUIMilestone7_9App.swift in Sources */,
 			);

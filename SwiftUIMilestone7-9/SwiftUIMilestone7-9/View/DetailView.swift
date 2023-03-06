@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
+    @StateObject var stepper = StepperView()
     @ObservedObject var habitArray = Habits()
     @State private var title = "title"
     @State private var description = "Description"
@@ -22,7 +23,7 @@ struct DetailView: View {
                         .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
                     Text(activity.description)
                         .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
-                   Stepper(picker == 1 ? "Competed \(picker) time" : "Competed \(picker) times", value: $picker, in: 1...100, step: 1)
+                Stepper(stepper.completedTimes == 1 ? "Competed \(stepper.completedTimes) time" : "Competed \(stepper.completedTimes) times", value: $stepper.completedTimes, in: 0...100, step: 1)
                         .listRowBackground(Color(red: 0.22, green: 0.68, blue: 0.62))
                 
             }

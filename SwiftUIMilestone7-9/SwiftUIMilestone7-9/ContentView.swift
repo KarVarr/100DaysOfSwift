@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var stp = StepperView()
     @State private var showingAddHabitsView = false
     @ObservedObject var habitsArray = Habits()
     
@@ -24,7 +25,7 @@ struct ContentView: View {
                                         .foregroundColor(.teal)
                                     Text(index.description)
                                         .foregroundColor(.gray)
-                                    Text("Completed \(index.completedTimes) times")
+                                    Text("Completed \(stp.completedTimes) times")
                                         .font(.caption)
                                         .foregroundColor(.brown)
                                 }
