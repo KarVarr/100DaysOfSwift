@@ -10,6 +10,7 @@ import SwiftUI
 struct CheckoutView: View {
     @ObservedObject var order = Order()
     
+    @State private var alertTitle = ""
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
     
@@ -40,7 +41,7 @@ struct CheckoutView: View {
         }
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Thank you!", isPresented: $showingConfirmation) {
+        .alert(alertTitle, isPresented: $showingConfirmation) {
             Button("OK") {}
         } message: {
             Text(confirmationMessage)
@@ -51,6 +52,7 @@ struct CheckoutView: View {
     func  placeOrder () async {
         guard let encoded = try? JSONEncoder().encode(order) else {
             print("Failed to encode order")
+            
             return
         }
         
@@ -64,8 +66,13 @@ struct CheckoutView: View {
             
             let decoderOrder = try JSONDecoder().decode(Order.self, from: data)
             confirmationMessage = "Your order for \(decoderOrder.quantity)x \(Order.types[decoderOrder.type].lowercased()) cupcakes is on its way!"
+            alertTitle = "Thank you!"
             showingConfirmation = true
         } catch  {
+            //Challenge 2
+            alertTitle = "There is no internet!"
+            confirmationMessage = "Check your internet connection or call your provider! "
+            showingConfirmation = true
             print("Checkout failed")
         }
     }
