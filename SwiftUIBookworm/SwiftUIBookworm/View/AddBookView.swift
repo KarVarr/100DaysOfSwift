@@ -34,13 +34,16 @@ struct AddBookView: View {
                 }
                 
                 Section {
-                    TextEditor(text: $review)
-                    
-                    Picker("Rating", selection: $rating) {
-                        ForEach(0..<6) {
-                            Text(String($0))
+                    ZStack(alignment: .leading) {
+                        if review.isEmpty {
+                            Text("Write something")
+                                .foregroundColor(.gray)
                         }
+                        TextEditor(text: $review)
                     }
+                    
+                    
+                    RatingView(rating: $rating)
                 } header: {
                     Text("Write a review")
                 }
