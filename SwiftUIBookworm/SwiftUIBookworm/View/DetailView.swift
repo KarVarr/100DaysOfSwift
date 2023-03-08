@@ -31,6 +31,7 @@ struct DetailView: View {
                 .padding()
             Text(book.review ?? "Not review")
                 .padding()
+                .foregroundColor(.white)
             
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
@@ -40,14 +41,17 @@ struct DetailView: View {
                 .navigationBarTitleDisplayMode(.inline)
         }
         .background(
-            Image(book.genre ?? "Fantasy")
-                .resizable()
-                .scaledToFill()
-                .blur(radius: 20)
-                .ignoresSafeArea()
+            ZStack {
+                Image(book.genre ?? "Fantasy")
+                    .resizable()
+                    .scaledToFill()
+                    .blur(radius: 20)
+                    .ignoresSafeArea()
                 
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+            }
         )
+        
     }
 }
-
-
