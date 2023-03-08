@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var countries: [String]!
     var score = 0
     var correctAnswer = 0
+    var count = 0
     
     var buttonFlag1 = UIButton()
     var buttonFlag2 = UIButton()
@@ -23,23 +24,29 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        correctAnswer = Int.random(in: 0...2)
-        countries = allCountries.shuffled()
         
+        title = "Guess the flag, score: \(score)"
         addView()
+        askQuestion()
         allSettings()
         layout()
-        askQuestion()
     }
     
     //MARK: - Functions
-    func askQuestion () {
+    func askQuestion (action: UIAlertAction! = nil) {
+        countries = allCountries.shuffled()
+        correctAnswer = Int.random(in: 0...2)
+        
         settings(to: buttonFlag1, with: 0)
         buttonFlag1.setBackgroundImage(UIImage(named: countries[0]), for: .normal)
         settings(to: buttonFlag2, with: 1)
         buttonFlag2.setBackgroundImage(UIImage(named: countries[1]), for: .normal)
         settings(to: buttonFlag3, with: 2)
         buttonFlag3.setBackgroundImage(UIImage(named: countries[2]), for: .normal)
+        //Challenge 2
+        if count == 10 {
+            showResult()
+        }
     }
     
     func addView() {
@@ -71,11 +78,10 @@ class ViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        title = "Guess the flag"
-    
-        
+       
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Choose the flag of \(countries[correctAnswer]) !"
+        //Challenge 1
+        titleLabel.text = "Choose the flag of \(countries[correctAnswer])!"
         titleLabel.textColor = .systemTeal
         titleLabel.font = UIFont.systemFont(ofSize: 22)
     }
@@ -105,26 +111,34 @@ class ViewController: UIViewController {
             
         ])
     }
+    
+    func showResult () {
+        let showingResult = UIAlertController(title: "Finish", message: "Your final score is \(score)", preferredStyle: .alert)
+        showingResult.addAction(UIAlertAction(title: "OK", style: .default))
+        present(showingResult, animated: true)
+        
+    }
     @objc func buttonTapped(_ sender: UIButton) {
         var title: String
         var message: String
         
         if sender.tag == correctAnswer {
             title = "Correct"
-            message = "And this is the correct answer."
+            message = "And this is the correct answer. \(score)"
             score += 1
+            count += 1
         } else {
             title = "Wrong"
-            message = "This is the wrong answer"
+            //Challenge 3
+            message = "Wrong! That’s the flag of \(countries[sender.tag])"
             score -= 1
+            count += 1
         }
-        print(sender.tag, correctAnswer)
-        print(countries!)
+        
         
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: askQuestion))
         present(ac, animated: true)
-       
       
     }
 
