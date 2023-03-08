@@ -10,6 +10,7 @@ import SwiftUI
 struct AddBookView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
+    @State private var showingAlert = false
     
     @State private var title = ""
     @State private var author = ""
@@ -17,7 +18,7 @@ struct AddBookView: View {
     @State private var genre = ""
     @State private var review = ""
     
-    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+    let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller", "Other", "Unknown"]
     
     var body: some View {
         NavigationView {
@@ -31,6 +32,7 @@ struct AddBookView: View {
                             Text($0)
                         }
                     }
+                    .pickerStyle(.menu)
                 }
                 
                 Section {
@@ -50,22 +52,30 @@ struct AddBookView: View {
                 
                 Section {
                     Button("Save") {
-                        let newBook = Book(context: moc)
-                        newBook.id = UUID()
-                        newBook.title = title
-                        newBook.author = author
-                        newBook.rating = Int16(rating)
-                        newBook.genre = genre
-                        newBook.review = review
-                        
-                        try? moc.save()
-                        dismiss()
-                        
+                        //Challenge 1
+                        if title == "" || author == "" || genre == "" {
+                            showingAlert = true
+                        } else {
+                            let newBook = Book(context: moc)
+                            newBook.id = UUID()
+                            newBook.title = title
+                            newBook.author = author
+                            newBook.rating = Int16(rating)
+                            newBook.genre = genre
+                            newBook.review = review
+                            try? moc.save()
+                            dismiss()
+                        }
                     }
                     
                 }
             }
             .navigationTitle("Add Book")
+            .alert("No data", isPresented: $showingAlert) {
+                Button("OK", action: {})
+            } message: {
+                Text("Enter title, author and genre !")
+            }
         }
     }
 }

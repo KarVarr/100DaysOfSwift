@@ -37,9 +37,15 @@ struct ContentView: View {
                         }
                     }
                 }
+                //Challenge 2
+                .padding(4)
+                .background(book.rating <= 2 ? .red.opacity(0.3) : book.rating <= 4 ? .yellow.opacity(0.3) : .green.opacity(0.3))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+              
                 
             }
             .onDelete(perform: deleteBooks)
+            
         }
         .navigationTitle("Bookworm")
         .toolbar {
