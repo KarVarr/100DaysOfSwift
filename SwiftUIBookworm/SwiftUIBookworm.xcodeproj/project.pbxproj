@@ -11,6 +11,8 @@
 		177F351D29B79630004D88F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F351C29B79630004D88F0 /* ContentView.swift */; };
 		177F351F29B79631004D88F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177F351E29B79631004D88F0 /* Assets.xcassets */; };
 		177F352229B79631004D88F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177F352129B79631004D88F0 /* Preview Assets.xcassets */; };
+		177F355129B8AF57004D88F0 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 177F354F29B8AF57004D88F0 /* Bookworm.xcdatamodeld */; };
+		177F355329B8AFA9004D88F0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F355229B8AFA9004D88F0 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		177F351C29B79630004D88F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		177F351E29B79631004D88F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		177F352129B79631004D88F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		177F355029B8AF57004D88F0 /* Bookworm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookworm.xcdatamodel; sourceTree = "<group>"; };
+		177F355229B8AFA9004D88F0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				177F351A29B79630004D88F0 /* SwiftUIBookwormApp.swift */,
 				177F351C29B79630004D88F0 /* ContentView.swift */,
+				177F354F29B8AF57004D88F0 /* Bookworm.xcdatamodeld */,
+				177F355229B8AFA9004D88F0 /* DataController.swift */,
 				177F351E29B79631004D88F0 /* Assets.xcassets */,
 				177F352029B79631004D88F0 /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				177F351D29B79630004D88F0 /* ContentView.swift in Sources */,
+				177F355329B8AFA9004D88F0 /* DataController.swift in Sources */,
+				177F355129B8AF57004D88F0 /* Bookworm.xcdatamodeld in Sources */,
 				177F351B29B79630004D88F0 /* SwiftUIBookwormApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +347,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		177F354F29B8AF57004D88F0 /* Bookworm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				177F355029B8AF57004D88F0 /* Bookworm.xcdatamodel */,
+			);
+			currentVersion = 177F355029B8AF57004D88F0 /* Bookworm.xcdatamodel */;
+			path = Bookworm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 177F350F29B79630004D88F0 /* Project object */;
 }
