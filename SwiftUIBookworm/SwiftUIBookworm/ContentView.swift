@@ -21,13 +21,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(books) { book in
+            List {
+            ForEach (books) { book in
                 NavigationLink {
                     DetailView(book: book)
                 } label: {
                     HStack {
                         EmojiRatingView(rating: book.rating)
-                            .font(.headline)
+                            .font(.largeTitle)
                         VStack(alignment: .leading) {
                             Text(book.title ?? "Unknown title")
                                 .font(.largeTitle)
@@ -36,24 +37,39 @@ struct ContentView: View {
                         }
                     }
                 }
+                
             }
-            
-            
-                .navigationTitle("Bookworm")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingAddScreen.toggle()
-                        } label: {
-                            Label("Add Book", systemImage: "plus")
-                        }
-                    }
-                }
-                .sheet(isPresented: $showingAddScreen) {
-                    AddBookView()
-                }
+            .onDelete(perform: deleteBooks)
         }
+        .navigationTitle("Bookworm")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showingAddScreen.toggle()
+                } label: {
+                    Label("Add Book", systemImage: "plus")
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+        }
+        .sheet(isPresented: $showingAddScreen) {
+            AddBookView()
+        }
+        
     }
+}
+
+func deleteBooks(at offsets: IndexSet) {
+    for offset in offsets {
+        let book = books[offset]
+        moc.delete(book)
+    }
+    try? moc.save()
+}
 }
 
 struct ContentView_Previews: PreviewProvider {
