@@ -7,33 +7,16 @@
 
 import SwiftUI
 
-struct PushButton: View {
-    let title: String
-    @Binding var isOn: Bool
-    
-    var onColor = [Color.indigo, Color.mint]
-    var offColor = [Color.green, Color.black]
-    
-    var body: some View {
-        Button(title) {
-            isOn.toggle()
-        }
-        .padding()
-        .background(LinearGradient(colors: isOn ? onColor : offColor, startPoint: .bottomLeading, endPoint: .topTrailing))
-        .foregroundColor(.white)
-        .clipShape(Capsule())
-        .shadow(radius: isOn ? 5 : 1)
-    }
-}
+
 
 
 struct ContentView: View {
-    @State private var rememberMe = false
+    @AppStorage("notes") private var notes = ""
     
     var body: some View {
-        VStack {
-            PushButton(title: "Remember Me", isOn: $rememberMe)
-            Text(rememberMe ? "On" : "Off")
+        NavigationView {
+            TextEditor(text: $notes)
+                .navigationTitle("notes")
         }
     }
 }
