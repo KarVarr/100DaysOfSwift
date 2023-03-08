@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingView: View {
     @Binding var rating: Int
     
-    var label = ""
+    var label = "Book rating"
     var maximumRating = 5
     
     var offImage: Image?
@@ -21,7 +21,7 @@ struct RatingView: View {
     
     var body: some View {
         HStack {
-            if label.isEmpty == false {
+            if !label.isEmpty {
                 Text(label)
             }
             
