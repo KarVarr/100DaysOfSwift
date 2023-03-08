@@ -7,15 +7,34 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PushButton: View {
+    let title: String
+    @Binding var isOn: Bool
+    
+    var onColor = [Color.indigo, Color.mint]
+    var offColor = [Color.green, Color.black]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button(title) {
+            isOn.toggle()
         }
         .padding()
+        .background(LinearGradient(colors: isOn ? onColor : offColor, startPoint: .bottomLeading, endPoint: .topTrailing))
+        .foregroundColor(.white)
+        .clipShape(Capsule())
+        .shadow(radius: isOn ? 5 : 1)
+    }
+}
+
+
+struct ContentView: View {
+    @State private var rememberMe = false
+    
+    var body: some View {
+        VStack {
+            PushButton(title: "Remember Me", isOn: $rememberMe)
+            Text(rememberMe ? "On" : "Off")
+        }
     }
 }
 
