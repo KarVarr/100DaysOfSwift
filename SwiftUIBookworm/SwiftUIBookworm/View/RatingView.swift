@@ -10,7 +10,7 @@ import SwiftUI
 struct RatingView: View {
     @Binding var rating: Int
     
-    var label = "Book rating"
+    var label = ""
     var maximumRating = 5
     
     var offImage: Image?

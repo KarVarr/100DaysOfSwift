@@ -20,11 +20,11 @@ struct ContentView: View {
         NavigationView {
             List(books) { book in
                 NavigationLink {
-                    Text(book.title ?? "Unknown title")
+                    DetailView(book: book)
                 } label: {
                     HStack {
                         EmojiRatingView(rating: book.rating)
-                            .font(.largeTitle)
+                            .font(.headline)
                         VStack(alignment: .leading) {
                             Text(book.title ?? "Unknown title")
                                 .font(.largeTitle)
