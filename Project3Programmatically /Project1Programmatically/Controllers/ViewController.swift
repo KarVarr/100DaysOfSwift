@@ -103,6 +103,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         newVC.myImage.image = UIImage(named: pictures[indexPath.row] )
         //Challenge 3
         newVC.ImageTitle = "Picture \(indexPath.row + 1) of \(pictures.count)"
+        newVC.imageName = pictures[indexPath.row]
         navigationController?.pushViewController(newVC, animated: true)
         
     }

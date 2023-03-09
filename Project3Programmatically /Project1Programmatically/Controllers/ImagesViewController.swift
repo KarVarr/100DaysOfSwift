@@ -11,6 +11,7 @@ class ImagesViewController: UIViewController {
 
     var myImage = UIImageView()
     var ImageTitle: String?
+    var imageName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,8 @@ class ImagesViewController: UIViewController {
             print("no image found")
             return
         }
-        
-        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        //Challenge 1 for UIActivityViewController
+        let vc = UIActivityViewController(activityItems: [image, imageName ?? "Unknown"], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
         
