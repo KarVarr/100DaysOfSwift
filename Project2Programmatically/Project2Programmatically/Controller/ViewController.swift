@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var allCountries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    
     var countries: [String]!
     var score = 0
     var correctAnswer = 0

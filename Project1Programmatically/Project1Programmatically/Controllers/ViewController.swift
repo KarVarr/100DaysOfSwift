@@ -41,7 +41,8 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.yellow
         ]
-        
+        //Challenge 2 for UIActiveVeiwController
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Recommend", style: .plain, target: self, action: #selector(recommendApp))
         
         
         
@@ -64,6 +65,16 @@ class ViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    //Challenge 2 for UIActiveVeiwController
+    @objc func recommendApp () {
+        let appLink = "https://www.google.com"
+        let image = UIImage(named: "nssl0033")
+        let appText = "Check out my new app!"
+        
+        let vc = UIActivityViewController(activityItems: [appText, appLink, image].compactMap{$0}, applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
     
     
@@ -106,6 +117,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(newVC, animated: true)
         
     }
-    
     
 }
