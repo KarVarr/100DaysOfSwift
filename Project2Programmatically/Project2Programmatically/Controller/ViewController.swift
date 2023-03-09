@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var allCountries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    var allCountries = Countries()
     
     var countries: [String]!
     var score = 0
@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     var buttonFlag1 = UIButton()
     var buttonFlag2 = UIButton()
     var buttonFlag3 = UIButton()
-   
-   
+    
+    
     var titleLabel = UILabel()
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     
     //MARK: - Functions
     func askQuestion (action: UIAlertAction! = nil) {
-        countries = allCountries.shuffled()
+        countries = allCountries.countries.shuffled()
         correctAnswer = Int.random(in: 0...2)
         
         settings(to: buttonFlag1, with: 0)
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         button.tag = tag
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-    
+        
     }
     
     func allSettings() {
@@ -79,7 +79,9 @@ class ViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         
-       
+        //Challenge 3 for UIActivityViewController
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score", style: .plain, target: self, action: #selector(showScore))
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         //Challenge 1
         titleLabel.text = "Choose the flag of \(countries[correctAnswer])!"
@@ -113,6 +115,13 @@ class ViewController: UIViewController {
         ])
     }
     
+    //Challenge 3 for UIActivityViewController
+    @objc func showScore () {
+        let vc = UIActivityViewController(activityItems: ["Your score is: \(score)"], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
+    
     func showResult () {
         let showingResult = UIAlertController(title: "Finish", message: "Your final score is \(score)", preferredStyle: .alert)
         showingResult.addAction(UIAlertAction(title: "OK", style: .default))
@@ -140,10 +149,10 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: askQuestion))
         present(ac, animated: true)
-      
+        
     }
-
     
-
+    
+    
 }
 
