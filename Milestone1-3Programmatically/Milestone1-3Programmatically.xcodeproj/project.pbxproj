@@ -14,6 +14,8 @@
 		170C4CF029BA4F200086E02B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170C4CEE29BA4F200086E02B /* LaunchScreen.storyboard */; };
 		170C4CFD29BA54100086E02B /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C4CFC29BA54100086E02B /* Countries.swift */; };
 		170C4CFF29BA57A90086E02B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C4CFE29BA57A90086E02B /* TableViewCell.swift */; };
+		170C4D0129BB6FAD0086E02B /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C4D0029BB6FAD0086E02B /* DetailController.swift */; };
+		170C4D0329BB6FEF0086E02B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C4D0229BB6FEF0086E02B /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		170C4CF129BA4F200086E02B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170C4CFC29BA54100086E02B /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		170C4CFE29BA57A90086E02B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		170C4D0029BB6FAD0086E02B /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		170C4D0229BB6FEF0086E02B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				170C4CE729BA4F1E0086E02B /* ViewController.swift */,
+				170C4D0029BB6FAD0086E02B /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				170C4CFE29BA57A90086E02B /* TableViewCell.swift */,
+				170C4D0229BB6FEF0086E02B /* ImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 				170C4CFD29BA54100086E02B /* Countries.swift in Sources */,
 				170C4CE829BA4F1E0086E02B /* ViewController.swift in Sources */,
 				170C4CE429BA4F1E0086E02B /* AppDelegate.swift in Sources */,
+				170C4D0129BB6FAD0086E02B /* DetailController.swift in Sources */,
+				170C4D0329BB6FEF0086E02B /* ImageView.swift in Sources */,
 				170C4CE629BA4F1E0086E02B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ class TableViewCell: UITableViewCell {
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
-        img.layer.cornerRadius = 30
+        img.layer.cornerRadius = 10
         img.image = UIImage(systemName: "questionmark.app.fill")
         return img
     }()
@@ -57,10 +57,10 @@ class TableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5),
+            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            image.widthAnchor.constraint(equalToConstant: 60),
-            image.heightAnchor.constraint(equalToConstant: 60),
+            image.widthAnchor.constraint(equalToConstant: 70),
+            image.heightAnchor.constraint(equalToConstant: 40),
             
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
