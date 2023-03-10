@@ -34,13 +34,21 @@ class DetailController: UIViewController {
         
         
         imageForFlag.flagImage.translatesAutoresizingMaskIntoConstraints = false
-        imageForFlag.flagImage.layer.masksToBounds = true
+        //imageForFlag.flagImage.layer.masksToBounds = true
         imageForFlag.flagImage.contentMode = .scaleAspectFill
         imageForFlag.flagImage.clipsToBounds = true
         imageForFlag.flagImage.layer.cornerRadius = 10
         imageForFlag.flagImage.layer.borderColor = UIColor.white.cgColor
         imageForFlag.flagImage.layer.borderWidth = 1
-      
+        imageForFlag.flagImage.layer.shadowColor = UIColor.red.cgColor
+        imageForFlag.flagImage.layer.shadowOpacity = 1
+        imageForFlag.flagImage.layer.shadowOffset = CGSize(width: 10, height: 10)
+        imageForFlag.flagImage.layer.shadowRadius = 8
+        imageForFlag.flagImage.layer.shouldRasterize = true
+        imageForFlag.flagImage.layer.zPosition = 1
+        let radius = imageForFlag.flagImage.layer.cornerRadius
+        imageForFlag.flagImage.layer.shadowPath = UIBezierPath(roundedRect: imageForFlag.flagImage.bounds, cornerRadius: radius).cgPath
+
     }
     
     func layout() {
@@ -50,7 +58,9 @@ class DetailController: UIViewController {
             imageForFlag.flagImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             imageForFlag.flagImage.widthAnchor.constraint(equalToConstant: 300),
             imageForFlag.flagImage.heightAnchor.constraint(equalToConstant: 200),
+            
         ])
+        imageForFlag.flagImage.layer.zPosition = 1
     }
     
     

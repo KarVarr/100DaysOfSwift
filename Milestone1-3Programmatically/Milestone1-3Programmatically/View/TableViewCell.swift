@@ -51,6 +51,8 @@ class TableViewCell: UITableViewCell {
     func settings (with image: UIImage, and title: String) {
         self.image.image = image
         self.titleLabel.text = title
+        
+        
     }
     
     func layout() {
