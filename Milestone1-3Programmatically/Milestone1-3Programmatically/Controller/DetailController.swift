@@ -25,16 +25,20 @@ class DetailController: UIViewController {
 
     func settings() {
         view.backgroundColor = .systemMint
+        imageForFlag.flagImage.translatesAutoresizingMaskIntoConstraints = false
+        imageForFlag.flagImage.contentMode = .scaleAspectFit
+        imageForFlag.flagImage.clipsToBounds = true
+        imageForFlag.flagImage.layer.cornerRadius = 10
     }
     
     func layout() {
         NSLayoutConstraint.activate([
             imageForFlag.flagImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             imageForFlag.flagImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            imageForFlag.flagImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+            imageForFlag.flagImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             imageForFlag.flagImage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            imageForFlag.flagImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageForFlag.flagImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageForFlag.flagImage.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
+            imageForFlag.flagImage.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
         ])
     }
 }
