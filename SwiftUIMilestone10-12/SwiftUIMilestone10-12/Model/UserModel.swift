@@ -9,11 +9,11 @@ import Foundation
 
 struct UserModel: Codable {
     let id: String
-      let isActive: Bool
-      let name: String
-      let age: Int
-      let company, email, address, about: String
-      let registered: Date
-      let tags: [String]
-      let friends: [FriendsModel]
+    let isActive: Bool
+    let name: String
+    let age: Int
+    let company, email, address, about: String
+    let registered: String
+    let tags: [String]
+    let friends: [FriendsModel]
 }
