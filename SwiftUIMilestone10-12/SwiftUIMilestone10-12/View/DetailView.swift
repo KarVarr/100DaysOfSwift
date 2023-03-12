@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct DetailView: View {
+    @StateObject var dataModel = DataModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .navigationTitle("Detail")
-            .navigationBarTitleDisplayMode(.inline)
+        ScrollView {
+            Text("hello\(dataModel.userData.count)")
+            List {
+                ForEach(dataModel.userData, id: \.id) { user in
+                    Section {
+                        Text("Name ")
+                            .foregroundColor(.black)
+                    } 
+                }
+            }.task {
+                await dataModel.loadData()
+            }
+            
+        }
+        .navigationTitle("Detail")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

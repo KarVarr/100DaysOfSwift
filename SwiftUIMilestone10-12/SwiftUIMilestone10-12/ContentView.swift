@@ -15,17 +15,30 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                Text("Total users: \(dataModel.userData.count)")
+                    .font(.system(size: 22,weight: .light, design: .monospaced))
+                
                 LazyVGrid(columns: adaptiveColumns ,spacing: 30) {
                     ForEach(dataModel.userData, id: \.id) { item in
                         NavigationLink(destination: DetailView()) {
                             VStack(alignment: .leading) {
                                 Text("\(item.name)")
-                                    .font(.system(size: 30, weight: .medium, design: .rounded))
+                                    .font(.system(size: 26, weight: .medium, design: .rounded))
                                     .foregroundColor(.white)
                                 Spacer()
                                 Text("Age \(item.age)")
-                                    .font(.system(size: 38, weight: .light, design: .serif))
+                                    .font(.system(size: 20, weight: .light, design: .serif))
                                     .foregroundColor(.black)
+                                HStack{
+                                    Text("User is ")
+                                        .foregroundColor(.black.opacity(0.2))
+                                    Text("\(item.isActive ? "Online" : "Offline" )")
+                                        .foregroundColor(item.isActive ? .green : .red)
+                                        
+                                }
+                                .padding(4)
+                                .background(.black.opacity(0.2))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                             .padding(.all, 15)
                             .frame(width: 170, height: 170, alignment: .topLeading)
@@ -40,6 +53,7 @@ struct ContentView: View {
                     await dataModel.loadData()
                 }
             }
+            .background(.yellow.opacity(0.2))
             .navigationTitle("Friends 😛")
         }
     }
