@@ -10,7 +10,6 @@ import Foundation
 
 class DataModel: ObservableObject {
     @Published var userData: [UserModel] = []
-    
     func loadData() async {
         
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
@@ -26,7 +25,9 @@ class DataModel: ObservableObject {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let response = try decoder.decode([UserModel].self, from: data)
-            userData = response
+            DispatchQueue.main.async {
+                self.userData = response
+            }
         } catch {
             print("Error loading data: \(error.localizedDescription)")
         }

@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var dataModel = DataModel()
     @State var colors: [Color] = [.yellow, .red, .green, .pink, .indigo, .teal, .mint, .orange, .blue, .purple]
+//    @State private var userData = UserModel()
+    @Binding var data: UserModel
     
     private var adaptiveColumns = [ GridItem(.adaptive(minimum: 170))]
     var body: some View {
@@ -34,7 +36,7 @@ struct ContentView: View {
                                         .foregroundColor(.black.opacity(0.2))
                                     Text("\(item.isActive ? "Online" : "Offline" )")
                                         .foregroundColor(item.isActive ? .green : .red)
-                                        
+                                    
                                 }
                                 .padding(4)
                                 .background(.black.opacity(0.2))
@@ -47,6 +49,7 @@ struct ContentView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                         }
+                        
                     }
                 }
                 .task {
@@ -56,13 +59,15 @@ struct ContentView: View {
             .background(.yellow.opacity(0.2))
             .navigationTitle("Friends 😛")
         }
+        
     }
-    
-    
-    
 }
+
+
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView( data: .constant(UserModel(id: "1", isActive: true, name: "name", age: 21, company: "sompany", email: "email", address: "address", about: "about", registered: "registered", tags: ["tags"], friends: [FriendsModel(id: "2", name: "name2")])))
     }
 }
