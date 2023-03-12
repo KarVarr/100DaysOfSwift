@@ -14,8 +14,7 @@
 		17D4BCA929BDD26B00C97F9C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCA829BDD26B00C97F9C /* DetailView.swift */; };
 		17D4BCAC29BDD43B00C97F9C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCAB29BDD43B00C97F9C /* FriendsModel.swift */; };
 		17D4BCAE29BDD50300C97F9C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCAD29BDD50300C97F9C /* UserModel.swift */; };
-		17D4BCB029BDD96000C97F9C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCAF29BDD96000C97F9C /* Response.swift */; };
-		17D4BCB229BE4A4900C97F9C /* TestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCB129BE4A4900C97F9C /* TestApi.swift */; };
+		17D4BCB429BE5AC600C97F9C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCB329BE5AC600C97F9C /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +26,7 @@
 		17D4BCA829BDD26B00C97F9C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		17D4BCAB29BDD43B00C97F9C /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		17D4BCAD29BDD50300C97F9C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		17D4BCAF29BDD96000C97F9C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		17D4BCB129BE4A4900C97F9C /* TestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApi.swift; sourceTree = "<group>"; };
+		17D4BCB329BE5AC600C97F9C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				17D4BCA829BDD26B00C97F9C /* DetailView.swift */,
-				17D4BCB129BE4A4900C97F9C /* TestApi.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -93,7 +90,7 @@
 			children = (
 				17D4BCAB29BDD43B00C97F9C /* FriendsModel.swift */,
 				17D4BCAD29BDD50300C97F9C /* UserModel.swift */,
-				17D4BCAF29BDD96000C97F9C /* Response.swift */,
+				17D4BCB329BE5AC600C97F9C /* DataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,11 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				17D4BC9C29BDC76E00C97F9C /* ContentView.swift in Sources */,
-				17D4BCB229BE4A4900C97F9C /* TestApi.swift in Sources */,
 				17D4BCAC29BDD43B00C97F9C /* FriendsModel.swift in Sources */,
 				17D4BCA929BDD26B00C97F9C /* DetailView.swift in Sources */,
 				17D4BCAE29BDD50300C97F9C /* UserModel.swift in Sources */,
-				17D4BCB029BDD96000C97F9C /* Response.swift in Sources */,
+				17D4BCB429BE5AC600C97F9C /* DataModel.swift in Sources */,
 				17D4BC9A29BDC76E00C97F9C /* SwiftUIMilestone10_12App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

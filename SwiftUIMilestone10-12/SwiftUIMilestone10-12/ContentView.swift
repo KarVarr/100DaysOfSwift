@@ -8,64 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var users: [UserModel] = []
+    @StateObject var dataModel = DataModel()
+    @State var colors: [Color] = [.yellow, .red, .green, .pink, .indigo, .teal, .mint, .orange, .blue, .purple]
     
     private var adaptiveColumns = [ GridItem(.adaptive(minimum: 170))]
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: adaptiveColumns ,spacing: 30) {
-                    ForEach(users, id: \.id) { item in
+                    ForEach(dataModel.userData, id: \.id) { item in
                         NavigationLink(destination: DetailView()) {
                             VStack(alignment: .leading) {
-                                Text("hello")
-                                
-                                Text("name \(item.name)")
+                                Text("\(item.name)")
                                     .font(.system(size: 30, weight: .medium, design: .rounded))
                                     .foregroundColor(.white)
-                                
-                                Text("email \(item.email)")
-                                    .font(.system(size: 24, weight: .light, design: .serif))
-                                    .foregroundColor(.gray)
+                                Spacer()
+                                Text("Age \(item.age)")
+                                    .font(.system(size: 38, weight: .light, design: .serif))
+                                    .foregroundColor(.black)
                             }
-                            .border(.black)
-                            .frame(minWidth: 170, minHeight: 170, alignment: .topLeading)
-                            .background(.mint)
+                            .padding(.all, 15)
+                            .frame(width: 170, height: 170, alignment: .topLeading)
+                            .background(colors.randomElement())
+                            
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                         }
                     }
                 }
                 .task {
-                    await loadData()
+                    await dataModel.loadData()
                 }
             }
             .navigationTitle("Friends 😛")
         }
     }
     
-    func loadData() async {
-   
-                  guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
-                        print("Invalid URL")
-                        return
-                    }
-
-                    do {
-                          let (data, _) = try await URLSession.shared.data(from: url)
-                          print(String(data: data, encoding: .utf8) ?? "")
-
-                          let decoder = JSONDecoder()
-                          decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                          let response = try decoder.decode([UserModel].self, from: data)
-                          users = response
-                      } catch {
-                          print("Error loading data: \(error.localizedDescription)")
-                      }
-        
-             
-    }
+    
     
 }
 struct ContentView_Previews: PreviewProvider {
