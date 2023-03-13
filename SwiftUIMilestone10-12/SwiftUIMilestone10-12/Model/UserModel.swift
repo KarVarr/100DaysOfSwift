@@ -16,4 +16,15 @@ struct UserModel: Codable {
     var registered: String
     var tags: [String]
     var friends: [FriendsModel]
+    
+    var formattedRegisteredDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let date = dateFormatter.date(from: registered) {
+            dateFormatter .dateFormat = "MMMM dd, yyyy"
+            return dateFormatter.string(from: date)
+        } else {
+            return registered
+        }
+    }
 }

@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var dataModel = DataModel()
     @State var colors: [Color] = [.yellow, .red, .green, .pink, .indigo, .teal, .mint, .orange, .blue, .purple]
-//    @State private var userData = UserModel()
-    @Binding var data: UserModel
+
     
     private var adaptiveColumns = [ GridItem(.adaptive(minimum: 170))]
     var body: some View {
@@ -22,7 +21,7 @@ struct ContentView: View {
                 
                 LazyVGrid(columns: adaptiveColumns ,spacing: 30) {
                     ForEach(dataModel.userData, id: \.id) { item in
-                        NavigationLink(destination: DetailView()) {
+                        NavigationLink(destination: DetailView(user: item)) {
                             VStack(alignment: .leading) {
                                 Text("\(item.name)")
                                     .font(.system(size: 26, weight: .medium, design: .rounded))
@@ -68,6 +67,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView( data: .constant(UserModel(id: "1", isActive: true, name: "name", age: 21, company: "sompany", email: "email", address: "address", about: "about", registered: "registered", tags: ["tags"], friends: [FriendsModel(id: "2", name: "name2")])))
+        ContentView()
     }
 }
