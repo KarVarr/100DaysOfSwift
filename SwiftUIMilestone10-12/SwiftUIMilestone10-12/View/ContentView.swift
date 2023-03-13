@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var users: FetchedResults<CachedUser>
+    
+    
     @StateObject var dataModel = DataModel()
     @State var colors: [Color] = [.yellow, .red, .green, .pink, .indigo, .teal, .mint, .orange, .blue, .purple]
 
@@ -15,7 +19,17 @@ struct ContentView: View {
     private var adaptiveColumns = [ GridItem(.adaptive(minimum: 170))]
     var body: some View {
         NavigationView {
+            
             ScrollView {
+                
+                VStack {
+                    List {
+                        ForEach(users, id: \.id) { user in
+                            Text("hello :\(user.unwrappedNameUser)")
+                        }
+                    }
+                }
+                
                 Text("Total users: \(dataModel.userData.count)")
                     .font(.system(size: 22,weight: .light, design: .monospaced))
                 

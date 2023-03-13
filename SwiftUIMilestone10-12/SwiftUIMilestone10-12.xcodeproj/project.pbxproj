@@ -17,6 +17,10 @@
 		17D4BCB429BE5AC600C97F9C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCB329BE5AC600C97F9C /* DataModel.swift */; };
 		17D4BCB729BF3FC100C97F9C /* CoreDataMilestone10-12.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCB529BF3FC100C97F9C /* CoreDataMilestone10-12.xcdatamodeld */; };
 		17D4BCB929BF414200C97F9C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCB829BF414200C97F9C /* DataController.swift */; };
+		17D4BCBF29BF459800C97F9C /* CachedUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCBB29BF459800C97F9C /* CachedUser+CoreDataClass.swift */; };
+		17D4BCC029BF459800C97F9C /* CachedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCBC29BF459800C97F9C /* CachedUser+CoreDataProperties.swift */; };
+		17D4BCC129BF459800C97F9C /* CachedFriend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCBD29BF459800C97F9C /* CachedFriend+CoreDataClass.swift */; };
+		17D4BCC229BF459800C97F9C /* CachedFriend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D4BCBE29BF459800C97F9C /* CachedFriend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		17D4BCB329BE5AC600C97F9C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		17D4BCB629BF3FC100C97F9C /* CoreDataMilestone10-12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataMilestone10-12.xcdatamodel"; sourceTree = "<group>"; };
 		17D4BCB829BF414200C97F9C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		17D4BCBB29BF459800C97F9C /* CachedUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		17D4BCBC29BF459800C97F9C /* CachedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		17D4BCBD29BF459800C97F9C /* CachedFriend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		17D4BCBE29BF459800C97F9C /* CachedFriend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 		17D4BCBA29BF428400C97F9C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				17D4BCBB29BF459800C97F9C /* CachedUser+CoreDataClass.swift */,
+				17D4BCBC29BF459800C97F9C /* CachedUser+CoreDataProperties.swift */,
+				17D4BCBD29BF459800C97F9C /* CachedFriend+CoreDataClass.swift */,
+				17D4BCBE29BF459800C97F9C /* CachedFriend+CoreDataProperties.swift */,
 				17D4BCB529BF3FC100C97F9C /* CoreDataMilestone10-12.xcdatamodeld */,
 				17D4BCB829BF414200C97F9C /* DataController.swift */,
 			);
@@ -181,10 +193,14 @@
 			files = (
 				17D4BC9C29BDC76E00C97F9C /* ContentView.swift in Sources */,
 				17D4BCAC29BDD43B00C97F9C /* FriendsModel.swift in Sources */,
+				17D4BCC029BF459800C97F9C /* CachedUser+CoreDataProperties.swift in Sources */,
 				17D4BCA929BDD26B00C97F9C /* DetailView.swift in Sources */,
 				17D4BCAE29BDD50300C97F9C /* UserModel.swift in Sources */,
+				17D4BCBF29BF459800C97F9C /* CachedUser+CoreDataClass.swift in Sources */,
 				17D4BCB729BF3FC100C97F9C /* CoreDataMilestone10-12.xcdatamodeld in Sources */,
+				17D4BCC229BF459800C97F9C /* CachedFriend+CoreDataProperties.swift in Sources */,
 				17D4BCB929BF414200C97F9C /* DataController.swift in Sources */,
+				17D4BCC129BF459800C97F9C /* CachedFriend+CoreDataClass.swift in Sources */,
 				17D4BCB429BE5AC600C97F9C /* DataModel.swift in Sources */,
 				17D4BC9A29BDC76E00C97F9C /* SwiftUIMilestone10_12App.swift in Sources */,
 			);
