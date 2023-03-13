@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
-
+    var progressView: UIProgressView!
+    
+    
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
-       
+        
         view = webView
     }
     
@@ -23,7 +25,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         addView()
         setting()
         layout()
-       
         
         let url = URL(string: "https://www.yandex.ru")
         webView.load(URLRequest(url: url!))
@@ -32,21 +33,37 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     func addView() {
         
+        
     }
     
     func setting() {
+        webView.translatesAutoresizingMaskIntoConstraints = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
-        webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        progressView = UIProgressView(progressViewStyle: .default)
+        progressView.sizeToFit()
+        let progressButton = UIBarButtonItem(customView: progressView)
+        
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector( webView.reload))
+        toolbarItems = [progressButton, spacer, refresh]
+        navigationController?.isToolbarHidden = false
+        navigationController?.navigationBar.backgroundColor = .red
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
     }
     func layout() {
         NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            
         ])
-      
     }
+    
     
     
     @objc func openTapped() {
@@ -67,6 +84,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
-
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        progressView.progress = Float(webView.estimatedProgress)
+    }
+    
 }
 
