@@ -8,18 +8,13 @@ import WebKit
 import UIKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
+    var site: String = ""
+    
     var webView: WKWebView!
     var progressView: UIProgressView!
-    let websites = ["yandex.ru","apple.com", "google.com", "facebook.com", "yahoo.com", "microsoft.com"]
+    let websites = WebsiteModel()
     
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        
-        view = webView
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +22,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         setting()
         layout()
         
-        
-        
-        let url = URL(string: "https://www.\(websites.first!)")
+        let url = URL(string: "https://www.\(site)")
         webView.load(URLRequest(url: url!))
-        webView.allowsBackForwardNavigationGestures = true
+        view = webView
     }
     
     func addView() {
@@ -39,7 +32,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     func setting() {
+        view.backgroundColor = .white
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
         webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        title = "WebSites VC"
+        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
@@ -59,20 +59,19 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
     }
     func layout() {
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-            
-        ])
+        //        NSLayoutConstraint.activate([
+        //            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        //            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        //            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+        //            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        //        ])
     }
     
     
     
     @objc func openTapped() {
         let ac = UIAlertController(title: "Open page", message: nil, preferredStyle: .actionSheet)
-        for website in websites {
+        for website in websites.websites {
             ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
         }
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -81,41 +80,44 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     func openPage(action: UIAlertAction) {
-        guard let actionTitle = action.title else {return}
+        guard let site = action.title else {return}
         //Challenge 1
-        if actionTitle == "apple.com" {
+        if site == "apple.com" {
             let ac = UIAlertController(title: "WARNING", message: "This site is banned!", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .cancel))
             present(ac, animated: true)
             return
         }
-        guard let url = URL(string: "https://www.\(actionTitle)") else {return}
+        guard let url = URL(string: "https://www.\(site)") else {return}
         
         webView.load(URLRequest(url: url))
         
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        title = webView.title
+        title = site
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         progressView.progress = Float(webView.estimatedProgress)
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url
-        
-        if let host = url?.host {
-            for website in websites {
-                if host.contains(website) {
-                    decisionHandler(.allow)
-                    return
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            let url = navigationAction.request.url
+    
+            if let host = url?.host {
+                for website in websites.websites {
+                    if host.contains(website) {
+                        decisionHandler(.allow)
+                        return
+                    }
                 }
             }
+            decisionHandler(.cancel)
         }
-        decisionHandler(.cancel)
-    }
     
 }
+
+
+
 
