@@ -21,7 +21,7 @@ struct ContentView: View {
                 
                 LazyVGrid(columns: adaptiveColumns ,spacing: 30) {
                     ForEach(dataModel.userData, id: \.id) { item in
-                        NavigationLink(destination: DetailView(user: item)) {
+                        NavigationLink(destination: DetailView(user: item, friends: FriendsModel(id: "3", name: "3"))) {
                             VStack(alignment: .leading) {
                                 Text("\(item.name)")
                                     .font(.system(size: 26, weight: .medium, design: .rounded))
@@ -32,9 +32,10 @@ struct ContentView: View {
                                     .foregroundColor(.black)
                                 HStack{
                                     Text("User is ")
-                                        .foregroundColor(.black.opacity(0.2))
+                                        .foregroundColor(.black.opacity(0.7))
                                     Text("\(item.isActive ? "Online" : "Offline" )")
                                         .foregroundColor(item.isActive ? .green : .red)
+                                        .font(.headline)
                                     
                                 }
                                 .padding(4)
@@ -56,7 +57,7 @@ struct ContentView: View {
                 }
             }
             .background(.yellow.opacity(0.2))
-            .navigationTitle("Friends 😛")
+            .navigationTitle("Friends 🤓")
         }
         
     }
