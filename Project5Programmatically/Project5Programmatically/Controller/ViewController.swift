@@ -8,7 +8,9 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    let cl = ["hello", "world", "i'm", "coder"]
+    
+    var allWords = [String]()
+    var usedWords = [String]()
     
     override init(style: UITableView.Style) {
         super.init(style: .insetGrouped)
@@ -20,15 +22,46 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setting()
+        words()
+        startGame()
+    }
+    
+    func setting() {
+        view.backgroundColor = .yellow
+        
         title = "Project 5"
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .yellow
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Word")
-        //let myTableViewController = UITableViewController(style: .grouped)
+    }
+    
+    func words() {
+        if let startWordURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWord = try? String(contentsOf: startWordURL) {
+                allWords = startWord.components(separatedBy: "\n")
+                
+            }
+        }
+        
+        if allWords.isEmpty {
+            allWords = ["silkworm"]
+        }
+    }
+    
+    func startGame () {
+        title = allWords.randomElement()
+        usedWords.removeAll(keepingCapacity: true)
+        tableView.reloadData()
     }
 
 
 }
+
+
+
+
 
 extension ViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -37,13 +70,13 @@ extension ViewController {
     
    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cl.count
+        usedWords.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = cl[indexPath.row]
+//        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.text = usedWords[indexPath.row]
         return cell
     }
     
