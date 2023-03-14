@@ -87,7 +87,7 @@ class ViewController: UITableViewController {
                     
                     return
                 } else {
-                    errorTitle = "Word not recognised"
+                    errorTitle = "Word not recognized"
                     errorMessage = "You can't just make them up, you know!"
                 }
             } else {
@@ -125,6 +125,10 @@ class ViewController: UITableViewController {
     }
     
     func isReal(word: String) -> Bool {
+        //Challenge 1
+        guard word.count > 2 else {return false}
+        guard word.prefix(3) != title?.prefix(3) else {return false}
+        
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
