@@ -33,6 +33,7 @@ class ViewController: UITableViewController {
         
         title = "Project 5"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Restart", style: .plain, target: self, action: #selector(restartBarButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Word")
@@ -74,8 +75,6 @@ class ViewController: UITableViewController {
     func submit (_ answer: String ) {
         let lowerAnswer = answer.lowercased()
         
-        let errorTitle: String
-        let errorMessage: String
         
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
@@ -87,22 +86,15 @@ class ViewController: UITableViewController {
                     
                     return
                 } else {
-                    errorTitle = "Word not recognized"
-                    errorMessage = "You can't just make them up, you know!"
+                    showErrorMessage(title: "Word not recognized", message: "You can't just make them up, you know!")
                 }
             } else {
-                errorTitle = "Word used already"
-                errorMessage = "Be more original!"
+                showErrorMessage(title: "Word used already", message: "Be more original!")
             }
         } else {
             guard let title = title?.lowercased() else { return }
-            errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from \(title.lowercased())"
+            showErrorMessage(title: "Word not possible", message: "You can't spell that word from \(title.lowercased())")
         }
-        
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
         
     }
     
@@ -135,7 +127,19 @@ class ViewController: UITableViewController {
         
         return misspelledRange.location == NSNotFound
     }
-
+    
+    //Challenge 2
+    func showErrorMessage(title errorTitle: String, message errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    //Challenge 3
+    @objc func restartBarButton() {
+        startGame()
+    }
+    
 }
 
 
@@ -147,14 +151,13 @@ extension ViewController {
         60
     }
     
-   
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         usedWords.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
-//        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = usedWords[indexPath.row]
         return cell
     }
