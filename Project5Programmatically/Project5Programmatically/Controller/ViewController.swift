@@ -64,6 +64,7 @@ class ViewController: UITableViewController {
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) {
             [weak self, weak ac] _ in
+            
             guard let answer = ac?.textFields?[0].text else {return}
             self?.submit(answer)
         }
@@ -79,7 +80,8 @@ class ViewController: UITableViewController {
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
                 if isReal(word: lowerAnswer) {
-                    usedWords.insert(answer, at: 0)
+                    //Challenge Bonus
+                    usedWords.insert(lowerAnswer, at: 0)
                     
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
@@ -113,6 +115,7 @@ class ViewController: UITableViewController {
     }
     
     func isOriginal(word: String) -> Bool {
+        
         return !usedWords.contains(word)
     }
     
