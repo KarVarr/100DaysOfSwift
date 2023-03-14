@@ -33,6 +33,7 @@ class ViewController: UITableViewController {
         
         title = "Project 5"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Word")
     }
@@ -54,6 +55,24 @@ class ViewController: UITableViewController {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
+    }
+    
+    @objc func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter Answer", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] _ in
+            guard let answer = ac?.textFields?[0].text else {return}
+            self?.submit(answer)
+        }
+        
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+    }
+    
+    func submit (_ answer: String ) {
+        
     }
 
 
