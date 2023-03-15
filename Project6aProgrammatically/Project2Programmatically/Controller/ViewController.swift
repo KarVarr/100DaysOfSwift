@@ -20,9 +20,9 @@ class ViewController: UIViewController {
     var buttonFlag2 = UIButton()
     var buttonFlag3 = UIButton()
     
-    
     var titleLabel = UILabel()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,8 +69,13 @@ class ViewController: UIViewController {
         button.layer.shadowRadius = 8
         button.layer.cornerRadius = 10
         button.tag = tag
+        button.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.imageView?.contentMode = .scaleAspectFit
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        
         
     }
     
@@ -97,19 +102,20 @@ class ViewController: UIViewController {
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
             
             buttonFlag1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonFlag1.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-            buttonFlag1.widthAnchor.constraint(equalToConstant: 200),
-            buttonFlag1.heightAnchor.constraint(equalToConstant: 100),
+            buttonFlag1.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            buttonFlag1.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+            buttonFlag1.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
             
             buttonFlag2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonFlag2.topAnchor.constraint(equalTo: buttonFlag1.bottomAnchor, constant: 20),
-            buttonFlag2.widthAnchor.constraint(equalToConstant: 200),
-            buttonFlag2.heightAnchor.constraint(equalToConstant: 100),
+            buttonFlag2.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+            buttonFlag2.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
             
             buttonFlag3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonFlag3.topAnchor.constraint(equalTo: buttonFlag2.bottomAnchor, constant: 20),
-            buttonFlag3.widthAnchor.constraint(equalToConstant: 200),
-            buttonFlag3.heightAnchor.constraint(equalToConstant: 100),
+            buttonFlag3.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            buttonFlag3.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+            buttonFlag3.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
             
             
         ])
@@ -151,6 +157,8 @@ class ViewController: UIViewController {
         present(ac, animated: true)
         
     }
+    
+   
     
     
     
