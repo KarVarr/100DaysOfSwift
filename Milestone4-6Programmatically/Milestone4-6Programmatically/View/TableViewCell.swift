@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .orange
-        label.font = .systemFont(ofSize: 24, weight: .light)
+        label.font = .systemFont(ofSize: 24, weight: .bold)
         label.text = "N/A"
         return label
     }()
@@ -22,7 +22,7 @@ class TableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .brown
-        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.font = .systemFont(ofSize: 22, weight: .light)
         label.text = "No item"
         return label
     }()
