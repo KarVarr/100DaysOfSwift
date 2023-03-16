@@ -9,6 +9,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     let list = ListOfItems()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +32,12 @@ class TableViewController: UITableViewController {
     }
     
     func settings() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         
     }
     
     func layout() {
-        
+      
     }
     
     
@@ -47,7 +48,7 @@ class TableViewController: UITableViewController {
         ac.addTextField()
         let submitAction = UIAlertAction(title: "Add +", style: .default) {
             [weak self, weak ac] _ in
-            guard let item = ac?.textFields?[0].text else {return}
+            guard let item = ac?.textFields?[0].text?.uppercased() else {return}
             self?.submit(item)
         }
         
@@ -66,6 +67,10 @@ class TableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        77
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.newItemArray.count
@@ -73,10 +78,12 @@ class TableViewController: UITableViewController {
 
  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = list.newItemArray[indexPath.row]
-  
-
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else {
+            fatalError("The TableView not dequeue a CustomCell")
+        }
+        cell.configure(numberOf: list.newItemArray.count, row: list.newItemArray[indexPath.row])
+        
+        cell.contentView.backgroundColor = #colorLiteral(red: 0.5656551123, green: 0.8747014403, blue: 0.6658728719, alpha: 1)
         return cell
     }
     
