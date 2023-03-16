@@ -10,38 +10,49 @@ import UIKit
 class TableViewController: UITableViewController {
     let list = ListOfItems()
     
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigation()
-        addView()
         settings()
-        layout()
         
+    
     }
     
     func navigation() {
         title = "Shopping list"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewItem))
-    }
-    
-    func addView() {
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewItem))
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareList))
+        navigationItem.rightBarButtonItems = [addButton, shareButton]
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(newItems))
         
     }
+    
     
     func settings() {
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
-        
     }
     
-    func layout() {
-      
-    }
+
+    
     
     
     //MARK: - Functions
+    @objc func shareList () {
+        let list = list.newItemArray.joined(separator: "\n")
+        
+        let vc = UIActivityViewController(activityItems: [list], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
+    
+    @objc func newItems () {
+        
+    }
     
     @objc func addNewItem () {
         let ac = UIAlertController(title: "New item", message: "Add a new item to the list", preferredStyle: .alert)
@@ -65,20 +76,20 @@ class TableViewController: UITableViewController {
     
     
     
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         77
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.newItemArray.count
     }
-
- 
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else {
             fatalError("The TableView not dequeue a CustomCell")
         }
         cell.configure(numberOf: list.newItemArray.count, row: list.newItemArray[indexPath.row])
@@ -90,7 +101,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-
-
+    
+    
+    
 }
