@@ -12,6 +12,7 @@
 		17F8227329C36CBF004854F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F8227229C36CBF004854F2 /* Assets.xcassets */; };
 		17F8227629C36CBF004854F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F8227429C36CBF004854F2 /* LaunchScreen.storyboard */; };
 		17F8228129C36DDC004854F2 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8228029C36DDC004854F2 /* TableViewController.swift */; };
+		17F8228429C37052004854F2 /* ListOfItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8228329C37052004854F2 /* ListOfItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		17F8227529C36CBF004854F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17F8227729C36CBF004854F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17F8228029C36DDC004854F2 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		17F8228329C37052004854F2 /* ListOfItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		17F8226829C36CBE004854F2 /* Milestone4-6Programmatically */ = {
 			isa = PBXGroup;
 			children = (
+				17F8228229C3703B004854F2 /* Model */,
 				17F8227E29C36CD7004854F2 /* Application */,
 				17F8227F29C36CDF004854F2 /* Controller */,
 				17F8227D29C36CCA004854F2 /* Resources */,
@@ -86,6 +89,14 @@
 				17F8228029C36DDC004854F2 /* TableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		17F8228229C3703B004854F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17F8228329C37052004854F2 /* ListOfItems.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				17F8226A29C36CBE004854F2 /* AppDelegate.swift in Sources */,
 				17F8228129C36DDC004854F2 /* TableViewController.swift in Sources */,
 				17F8226C29C36CBE004854F2 /* SceneDelegate.swift in Sources */,
+				17F8228429C37052004854F2 /* ListOfItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
