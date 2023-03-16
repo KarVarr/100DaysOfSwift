@@ -104,18 +104,18 @@ class ViewController: UIViewController {
             buttonFlag1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonFlag1.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             buttonFlag1.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
-            buttonFlag1.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+            buttonFlag2.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1, constant: 50),
             
             buttonFlag2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonFlag2.topAnchor.constraint(equalTo: buttonFlag1.bottomAnchor, constant: 20),
             buttonFlag2.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
-            buttonFlag2.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+            buttonFlag2.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1, constant: 3),
             
             buttonFlag3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonFlag3.topAnchor.constraint(equalTo: buttonFlag2.bottomAnchor, constant: 20),
             buttonFlag3.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 20),
             buttonFlag3.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
-            buttonFlag3.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+            buttonFlag2.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1, constant: 3),
             
             
         ])
