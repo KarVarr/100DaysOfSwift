@@ -4,34 +4,48 @@
 //
 //  Created by Karen Vardanian on 17.03.2023.
 //
-
+import CoreImage
+import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingConfirmation = false
-    @State private var backgroundColor = Color.white
+    @State private var image: Image?
+    @State private var rangeSlider = 0.5
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-                .frame(width: 300, height: 300)
-                .background(backgroundColor)
-                .onTapGesture {
-                    showingConfirmation = true
-                }
-                .confirmationDialog("Change color", isPresented: $showingConfirmation) {
-                    Button("Red") {backgroundColor = .red}
-                    Button("Green") {backgroundColor = .green}
-                    Button("Mint") {backgroundColor = .mint}
-                    Button("Cancel", role: .cancel){}
-                } message: {
-                    Text("Change text color")
+            image?
+                .resizable()
+                .scaledToFit()
+            
+            Slider(value: $rangeSlider, in: 0...1)
+                .onChange(of: rangeSlider) { newValue in
+                    print("\(newValue)")
+                    loadImage()
                 }
         }
-        .padding()
+        .onAppear(perform: loadImage)
+        
+
+    }
+    
+    
+    func loadImage() {
+        guard let inputImage = UIImage(named: "Unknown") else {return}
+        let beginImage = CIImage(image: inputImage)
+     
+        let context = CIContext()
+        let currentFilter = CIFilter.sepiaTone()
+        
+        currentFilter.inputImage = beginImage
+        currentFilter.intensity = Float(rangeSlider)
+        
+        guard let outputImage = currentFilter.outputImage else {return}
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            let uiImage = UIImage(cgImage: cgimg)
+            image = Image(uiImage: uiImage)
+        }
+        
     }
 }
 
