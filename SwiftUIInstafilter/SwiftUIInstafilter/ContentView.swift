@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var image: Image?
-    @State private var rangeSlider = 0.5
+    @State private var showingImagePicker = false
     
     var body: some View {
         VStack {
@@ -18,35 +18,16 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
             
-            Slider(value: $rangeSlider, in: 0...1)
-                .onChange(of: rangeSlider) { newValue in
-                    print("\(newValue)")
-                    loadImage()
-                }
+            Button("Select Image") {
+                showingImagePicker = true
+            }
         }
-        .onAppear(perform: loadImage)
-        
-
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker()
+        }
     }
     
-    
-    func loadImage() {
-        guard let inputImage = UIImage(named: "Unknown") else {return}
-        let beginImage = CIImage(image: inputImage)
      
-        let context = CIContext()
-        let currentFilter = CIFilter.sepiaTone()
-        
-        currentFilter.inputImage = beginImage
-        currentFilter.intensity = Float(rangeSlider)
-        
-        guard let outputImage = currentFilter.outputImage else {return}
-        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-            let uiImage = UIImage(cgImage: cgimg)
-            image = Image(uiImage: uiImage)
-        }
-        
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
