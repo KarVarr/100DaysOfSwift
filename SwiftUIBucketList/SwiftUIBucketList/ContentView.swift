@@ -4,31 +4,41 @@
 //
 //  Created by Karen Vardanian on 19.03.2023.
 //
-
+import MapKit
 import SwiftUI
 
-struct Users: Identifiable, Comparable {
-    static func < (lhs: Users, rhs: Users) -> Bool {
-        lhs.firstName < rhs.firstName
-    }
-    
+struct Location: Identifiable {
     let id = UUID()
-    let firstName: String
-    let lastName: String
+    let name: String
+    let coordinate: CLLocationCoordinate2D
 }
 
 struct ContentView: View {
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     
-    let users = [
-       Users(firstName: "Colin", lastName: "Farel"),
-       Users(firstName: "Monika", lastName: "Beluchi"),
-       Users(firstName: "Bob", lastName: "Marley"),
-    ].sorted(by: <)
+    let locations = [
+        Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
+        Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076))
+    ]
     
     var body: some View {
-        List(users) {user in
-            Text("\(user.firstName) \(user.lastName)")
+        Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+            MapAnnotation(coordinate: location.coordinate) {
+                VStack {
+                    Image(systemName: "info.circle")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 32))
+                    Text("\(location.name)")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .padding(10)
+                        .background(.black.opacity(0.3))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+
+                }
+            }
         }
+            .ignoresSafeArea()
     }
 }
 
