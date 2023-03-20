@@ -8,15 +8,11 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
-    
-    @State private var locations = [Location]()
-    
-    @State private var selectedPlace: Location?
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+            Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
                 MapAnnotation(coordinate: location.coordinate) {
                     VStack {
                         Image(systemName: "star.circle")
@@ -30,7 +26,7 @@ struct ContentView: View {
                             .fixedSize()
                     }
                     .onTapGesture {
-                        selectedPlace = location
+                        viewModel.selectedPlace = location
                     }
                 }
             }
@@ -46,8 +42,7 @@ struct ContentView: View {
                 HStack {
                    Spacer()
                     Button {
-                        let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
-                        locations.append(newLocation)
+                        viewModel.addLocation()
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -61,11 +56,9 @@ struct ContentView: View {
             }
             
         }
-        .sheet(item: $selectedPlace) { place in
-            EditView(location: place) { newLocation in
-                if let index = locations.firstIndex(of: place) {
-                    locations[index] = newLocation
-                }
+        .sheet(item: $viewModel.selectedPlace) { place in
+            EditView(location: place) {
+                viewModel.update(location: $0)
             }
         }
         
