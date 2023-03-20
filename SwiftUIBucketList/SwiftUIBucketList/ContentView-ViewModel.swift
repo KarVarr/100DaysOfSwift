@@ -18,6 +18,7 @@ extension ContentView {
         @Published var selectedPlace: Location?
         
         @Published var isUnlocked = false
+        @Published var showingErrorAlert = false
         
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
         
@@ -68,7 +69,10 @@ extension ContentView {
                             self.isUnlocked = true
                         }
                     } else {
-                        //error
+                        print("error \(String(describing: authenticationError?.localizedDescription))")
+                        Task { @MainActor in
+                            self.showingErrorAlert = true
+                        }
                     }
                 }
             } else {

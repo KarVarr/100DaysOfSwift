@@ -46,13 +46,15 @@ struct ContentView: View {
                             viewModel.addLocation()
                         } label: {
                             Image(systemName: "plus")
+                            //Challenge 1
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
                         }
-                        .padding()
-                        .background(.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
+                        
                     }
                 }
                 
@@ -61,6 +63,9 @@ struct ContentView: View {
                 EditView(location: place) {
                     viewModel.update(location: $0)
                 }
+            }
+            .alert("Error authentication", isPresented: $viewModel.showingErrorAlert) {
+                Button("Ok") {}
             }
             
         } else {
@@ -71,9 +76,7 @@ struct ContentView: View {
             .background(.indigo)
             .foregroundColor(.white)
             .clipShape(Capsule())
-    }
-        
-            
+        }
     }
 }
 
