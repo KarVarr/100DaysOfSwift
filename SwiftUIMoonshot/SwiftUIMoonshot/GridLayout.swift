@@ -28,13 +28,16 @@ struct GridLayout: View {
                             .scaledToFit()
                             .frame(width: 100, height: 100)
                             .padding(10)
+                            .accessibilityLabel(mission.image)
                         VStack {
                             Text(mission.displayName)
                                 .font(.headline)
                                 .foregroundColor(.white)
+                                .accessibilityLabel(mission.displayName)
                             Text(mission.formattedLaunchDate)
                                 .font(.caption)
                                 .foregroundColor(.white.opacity(0.5))
+                                .accessibilityLabel(mission.formattedLaunchDate)
                         }
                         .padding(.vertical)
                         .frame(maxWidth: .infinity)

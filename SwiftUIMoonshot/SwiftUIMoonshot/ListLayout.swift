@@ -23,14 +23,17 @@ struct ListLayout: View {
                             .scaledToFit()
                             .frame(width: 50, height: 50)
                             .padding(10)
+                            .accessibilityLabel(mission.image)
                         Spacer()
                         VStack (alignment: .leading) {
                             Text(mission.displayName)
                                 .font(.headline)
                                 .foregroundColor(.white)
+                                .accessibilityLabel(mission.displayName)
                             Text(mission.formattedLaunchDate)
                                 .font(.caption)
                                 .foregroundColor(.white.opacity(0.5))
+                                .accessibilityLabel(mission.formattedLaunchDate)
                         }
                         .padding()
                     }

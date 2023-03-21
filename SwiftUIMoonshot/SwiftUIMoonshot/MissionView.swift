@@ -23,7 +23,7 @@ struct MissionView: View {
                     //Challenge 2
                     ImageView(mission: mission)
                         .frame(maxWidth: geometry.size.width * 0.75)
-
+                        .accessibilityLabel("Image \(mission.image)")
                     //Challenge 1
                     Text("Launch date:  \(mission.formattedLaunchDate)")
                     
@@ -38,8 +38,10 @@ struct MissionView: View {
                         Text("Mission Highlights")
                             .font(.title2.bold())
                             .padding(.bottom, 5)
+                            .accessibilityLabel("Mission Highlights")
                         
                         Text(mission.description)
+                            .accessibilityLabel("Mission description \(mission.description)")
                         
                         Rectangle()
                              .frame(height: 2)
@@ -69,12 +71,12 @@ struct MissionView: View {
                                                     lineWidth: 1)
                                             )
                                             .padding(.trailing, 5)
-                                        
+                                            .accessibilityLabel("Logo id name \(crewMember.astronaut.id)")
                                         VStack(alignment: .leading) {
                                             Text(crewMember.astronaut.name)
                                                 .foregroundColor(.mint)
                                                 .font(.headline)
-                                            
+                                                .accessibilityLabel("Astronaut name is  \(crewMember.astronaut.name)")
                                             Text(crewMember.role)
                                                 .foregroundColor(.secondary)
                                         }

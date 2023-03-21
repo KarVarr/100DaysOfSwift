@@ -36,7 +36,6 @@ struct ContentView: View {
                 Button {
                     withAnimation {
                         showingList.toggle()
-                        
                     }
                 } label: {
                     Image(systemName: "list.dash")
@@ -54,6 +53,7 @@ struct ContentView: View {
                 }
             }
         }
+        .accessibilityLabel("Moonshot")
         
     }
 }

@@ -36,11 +36,17 @@ struct ContentView: View {
                                     .foregroundColor(item.amount <= 10 ? . green : item.amount <= 100 ? .orange : .red)
                             }
                         }
+                        //Challenge Accessibility 2
+                        .accessibilityElement()
+                        .accessibilityLabel("Name \(item.name) and value \(item.amount)")
+                        .accessibilityHint(String(item.type))
                         
                     }
                     .onDelete(perform: removeItem)
                     .listRowBackground(Color.black)
+                    
                 }
+                
                 //Challenge 3
                 Section(header: Text("Personal Expenses").foregroundColor(.black)) {
                     ForEach(expenses.items.filter {$0.type == "Personal"}) { item in
