@@ -71,7 +71,7 @@ struct EditView: View {
             }
         }
     }
-    
+    //Challenge 3
     init(location: Location, onSave: @escaping (Location) -> Void) {
         self.onSave = onSave
         _editViewModel = StateObject(wrappedValue: EditViewModel(location: location, name: "name", description: "desc", pages: []))
