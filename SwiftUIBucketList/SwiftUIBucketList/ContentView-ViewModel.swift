@@ -76,7 +76,7 @@ extension ContentView {
                     }
                 }
             } else {
-                //TODO: no biometrics
+                showingErrorAlert = true
             }
         }
     }

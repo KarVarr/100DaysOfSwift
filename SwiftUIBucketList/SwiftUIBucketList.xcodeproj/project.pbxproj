@@ -16,6 +16,7 @@
 		17F822C929C8A902004854F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F822C829C8A902004854F2 /* Result.swift */; };
 		17F822CB29C8C4D0004854F2 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F822CA29C8C4D0004854F2 /* ContentView-ViewModel.swift */; };
 		17F822CD29C8C975004854F2 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F822CC29C8C975004854F2 /* FileManager-DocumentsDirectory.swift */; };
+		17F822CF29C8DFEE004854F2 /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F822CE29C8DFEE004854F2 /* EditView-ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		17F822C829C8A902004854F2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		17F822CA29C8C4D0004854F2 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 		17F822CC29C8C975004854F2 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		17F822CE29C8DFEE004854F2 /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +68,11 @@
 				17F822CA29C8C4D0004854F2 /* ContentView-ViewModel.swift */,
 				17F822CC29C8C975004854F2 /* FileManager-DocumentsDirectory.swift */,
 				17F822C629C89F21004854F2 /* EditView.swift */,
+				17F822CE29C8DFEE004854F2 /* EditView-ViewModel.swift */,
 				17F822C429C87F77004854F2 /* Location.swift */,
+				17F822C829C8A902004854F2 /* Result.swift */,
 				17F822BA29C73350004854F2 /* Assets.xcassets */,
 				17F822BC29C73350004854F2 /* Preview Content */,
-				17F822C829C8A902004854F2 /* Result.swift */,
 			);
 			path = SwiftUIBucketList;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				17F822CB29C8C4D0004854F2 /* ContentView-ViewModel.swift in Sources */,
 				17F822C929C8A902004854F2 /* Result.swift in Sources */,
 				17F822C529C87F77004854F2 /* Location.swift in Sources */,
+				17F822CF29C8DFEE004854F2 /* EditView-ViewModel.swift in Sources */,
 				17F822C729C89F21004854F2 /* EditView.swift in Sources */,
 				17F822B729C7334E004854F2 /* SwiftUIBucketListApp.swift in Sources */,
 			);
