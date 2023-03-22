@@ -8,22 +8,69 @@
 import SwiftUI
 
 struct AddUserImage: View {
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var showingAlert = false
+    @State private var userName = "User name"
+    
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Image(systemName: "plus")
+        VStack {
+            Text("Add user photo")
+                .font(.largeTitle)
+                .foregroundColor(.indigo)
+                .padding([.top, .leading])
+            if (image == nil) {
+                Image(systemName: "questionmark.square")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 400)
+                    .padding()
+                    .foregroundColor(.orange)
+            }
+             
+            image? 
                 .resizable()
-                .scaledToFit()
-                .border(.red)
-                .frame(width: .infinity, height: 400)
+                .scaledToFill()
+                .frame(width: 300, height: 400)
                 .padding()
-            Text("User name")
+            
+            Text(userName)
                 .padding()
+                .font(.title)
+            
             Spacer()
+            
+            Button("Pick image") {
+                showingImagePicker = true
+            }
+            .padding()
+            .background(.mint)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
         }
-        .navigationTitle("Add your photo")
-        .navigationBarTitleDisplayMode(.inline)
+        .alert("User Name", isPresented: $showingAlert) {
+            TextField("Enter your name", text: $userName)
+            Button("Ok") {}
+        } message: {
+            Text("Please write your name")
+        }
+        
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
+        .onChange(of: inputImage) { _ in loadImage()}
         
     }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else {return}
+        image = Image(uiImage: inputImage)
+        showingAlert = true
+    }
+    
 }
 
 struct AddUserImage_Previews: PreviewProvider {

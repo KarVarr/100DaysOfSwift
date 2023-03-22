@@ -9,16 +9,27 @@ import SwiftUI
 
 struct UserDetailView: View {
     var body: some View {
-        ZStack {
-   
+        VStack {
+            ZStack(alignment: .bottomTrailing) {
+                
                 Image(systemName: "circle")
                     .resizable()
                     .scaledToFit()
                     .border(.red)
                 
+                Text("hello")
+                    .padding()
+                    .background(.black.opacity(0.5))
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
+                
+            }
+            Spacer()
             
-            Text("hello")
         }
+        .padding(.top)
     }
 }
 
