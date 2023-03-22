@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.dismiss) var dismiss
+    @State private var showingPhotoView = false
+    
+    @State private var list = [
+        "user1", "user2", "user3", "user4", "user5"
+    ]
+
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(list, id: \.self) { user in
+                    NavigationLink("Detail View") {
+                        UserDetailView()
+                    }
+                }
+            }
+            .navigationTitle("MeetUP")
+            .navigationViewStyle(.stack)
+            .toolbar {
+                Button {
+                    showingPhotoView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: $showingPhotoView) {
+                    AddUserImage()
+                }
+                
+            }
+            
         }
-        .padding()
     }
 }
 
