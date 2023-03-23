@@ -9,47 +9,53 @@ import SwiftUI
 
 struct AddUserImage: View {
     @State private var image: Image?
-    @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-    @State private var showingAlert = false
     @State private var userName = "User name"
+    @State private var showingAlert = false
+    @State private var showingImagePicker = false
     
     
     var body: some View {
-        VStack {
-            Text("Add user photo")
-                .font(.largeTitle)
-                .foregroundColor(.indigo)
-                .padding([.top, .leading])
-            if (image == nil) {
-                Image(systemName: "questionmark.square")
+        NavigationView {
+            VStack {
+                if (image == nil) {
+                    Image(systemName: "questionmark.square")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 400)
+                        .padding()
+                        .foregroundColor(.orange)
+                }
+                
+                image?
                     .resizable()
-                    .scaledToFit()
-                    .frame(height: 400)
+                    .scaledToFill()
+                    .frame(width: 300, height: 400)
                     .padding()
-                    .foregroundColor(.orange)
-            }
-             
-            image? 
-                .resizable()
-                .scaledToFill()
-                .frame(width: 300, height: 400)
+                
+                Text(userName)
+                    .padding()
+                    .font(.title)
+                
+                Spacer()
+                
+                Button("Pick image") {
+                    showingImagePicker = true
+                }
                 .padding()
-            
-            Text(userName)
-                .padding()
-                .font(.title)
-            
-            Spacer()
-            
-            Button("Pick image") {
-                showingImagePicker = true
+                .background(.mint)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            .padding()
-            .background(.mint)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            
+            .navigationTitle("Add a photo")
+            .toolbar {
+                Button {
+                    
+                } label: {
+                    Text("Save")
+                }
+
+            }
         }
         .alert("User Name", isPresented: $showingAlert) {
             TextField("Enter your name", text: $userName)

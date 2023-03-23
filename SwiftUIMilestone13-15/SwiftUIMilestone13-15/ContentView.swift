@@ -20,13 +20,23 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(list, id: \.self) { user in
-                    NavigationLink("Detail View") {
-                        UserDetailView()
+                    NavigationLink(destination: UserDetailView()) {
+                        Image(systemName: "questionmark.square")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100,height: 100)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.trailing)
+                        Text("user name")
+                        
                     }
                 }
+                .listRowBackground(Color.orange.opacity(0.8))
             }
+            .listStyle(.plain)
+            .background(.orange.opacity(0.7))
             .navigationTitle("MeetUP")
-            .navigationViewStyle(.stack)
+            
             .toolbar {
                 Button {
                     showingPhotoView = true
@@ -40,6 +50,7 @@ struct ContentView: View {
             }
             
         }
+
     }
 }
 
