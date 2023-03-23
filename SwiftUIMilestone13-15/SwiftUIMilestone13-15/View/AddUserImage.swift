@@ -4,10 +4,15 @@
 //
 //  Created by Karen Vardanian on 22.03.2023.
 //
-
+import CoreData
 import SwiftUI
 
 struct AddUserImage: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var users: FetchedResults<UserData>
+    
+    @Environment(\.dismiss) var dismiss
+    
     @State private var image: Image?
     @State private var inputImage: UIImage?
     @State private var userName = "User name"
@@ -50,7 +55,8 @@ struct AddUserImage: View {
             .navigationTitle("Add a photo")
             .toolbar {
                 Button {
-                    
+                    saveDataUser()
+                    dismiss()
                 } label: {
                     Text("Save")
                 }
@@ -69,6 +75,14 @@ struct AddUserImage: View {
         }
         .onChange(of: inputImage) { _ in loadImage()}
         
+    }
+    
+    func saveDataUser () {
+        let user = UserData(context: moc)
+        user.id = UUID()
+        user.name = userName
+        
+        try? moc.save()
     }
     
     func loadImage() {

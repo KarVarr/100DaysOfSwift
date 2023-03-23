@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var users: FetchedResults<UserData>
+    
+    
     @Environment(\.dismiss) var dismiss
     @State private var showingPhotoView = false
     
@@ -19,7 +23,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(list, id: \.self) { user in
+                ForEach(users, id: \.id) { user in
                     NavigationLink(destination: UserDetailView()) {
                         Image(systemName: "questionmark.square")
                             .resizable()
@@ -27,7 +31,7 @@ struct ContentView: View {
                             .frame(width: 100,height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.trailing)
-                        Text("user name")
+                        Text(user as! DateInterval)
                         
                     }
                 }

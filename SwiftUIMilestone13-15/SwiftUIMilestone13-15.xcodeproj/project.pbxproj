@@ -15,6 +15,8 @@
 		17F8230729CB63FE004854F2 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8230629CB63FE004854F2 /* UserDetailView.swift */; };
 		17F8230929CB707A004854F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8230829CB707A004854F2 /* ImagePicker.swift */; };
 		17F8230B29CB7204004854F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8230A29CB7204004854F2 /* ImageSaver.swift */; };
+		17F8231329CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */; };
+		17F8231529CCAF88004854F2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231429CCAF88004854F2 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		17F8230629CB63FE004854F2 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		17F8230829CB707A004854F2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		17F8230A29CB7204004854F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		17F8231229CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUIMilestone13.xcdatamodel; sourceTree = "<group>"; };
+		17F8231429CCAF88004854F2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +65,8 @@
 			children = (
 				17F822F629CB5735004854F2 /* SwiftUIMilestone13_15App.swift */,
 				17F822F829CB5735004854F2 /* ContentView.swift */,
-				17F8230429CB59D9004854F2 /* AddUserImage.swift */,
-				17F8230629CB63FE004854F2 /* UserDetailView.swift */,
-				17F8230A29CB7204004854F2 /* ImageSaver.swift */,
-				17F8230829CB707A004854F2 /* ImagePicker.swift */,
+				17F8230F29CCAEEE004854F2 /* View */,
+				17F8231029CCAEFE004854F2 /* Model */,
 				17F822FA29CB5737004854F2 /* Assets.xcassets */,
 				17F822FC29CB5737004854F2 /* Preview Content */,
 			);
@@ -77,6 +79,26 @@
 				17F822FD29CB5737004854F2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		17F8230F29CCAEEE004854F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17F8230429CB59D9004854F2 /* AddUserImage.swift */,
+				17F8230629CB63FE004854F2 /* UserDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17F8231029CCAEFE004854F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17F8230A29CB7204004854F2 /* ImageSaver.swift */,
+				17F8230829CB707A004854F2 /* ImagePicker.swift */,
+				17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */,
+				17F8231429CCAF88004854F2 /* DataController.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +172,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F8230729CB63FE004854F2 /* UserDetailView.swift in Sources */,
+				17F8231329CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld in Sources */,
 				17F8230B29CB7204004854F2 /* ImageSaver.swift in Sources */,
 				17F8230529CB59D9004854F2 /* AddUserImage.swift in Sources */,
 				17F8230929CB707A004854F2 /* ImagePicker.swift in Sources */,
+				17F8231529CCAF88004854F2 /* DataController.swift in Sources */,
 				17F822F929CB5735004854F2 /* ContentView.swift in Sources */,
 				17F822F729CB5735004854F2 /* SwiftUIMilestone13_15App.swift in Sources */,
 			);
@@ -355,6 +379,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				17F8231229CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodel */,
+			);
+			currentVersion = 17F8231229CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodel */;
+			path = SwiftUIMilestone13.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 17F822EB29CB5735004854F2 /* Project object */;
 }
