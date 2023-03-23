@@ -21,8 +21,10 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(users, id: \.id) { user in
-                    NavigationLink(destination: UserDetailView(name: user.name ?? "Unknown", image: Image(uiImage: UIImage(data: user.userPhoto ?? Data()) ?? UIImage(systemName: "questionmark.square")!))) {
-                        Image(systemName: "questionmark.square")
+                    let imageConvert = Image(uiImage: UIImage(data: user.userPhoto ?? Data()) ?? UIImage(systemName: "questionmark.square")!)
+                    
+                    NavigationLink(destination: UserDetailView(name: user.name ?? "Unknown", image: imageConvert)) {
+                        Image(uiImage: UIImage(data: user.userPhoto ?? Data() ) ?? UIImage())
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100,height: 100)

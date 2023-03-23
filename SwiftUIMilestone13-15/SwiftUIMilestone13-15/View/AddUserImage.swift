@@ -32,7 +32,7 @@ struct AddUserImage: View {
                 
                 image?
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(width: 300, height: 400)
                     .padding()
                 
@@ -50,6 +50,7 @@ struct AddUserImage: View {
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
+            .background(.indigo.opacity(0.34))
             .navigationTitle("Add a photo")
             .toolbar {
                 Button {
@@ -83,6 +84,7 @@ struct AddUserImage: View {
         user.name = userName
         user.userPhoto = imageData
         
+        
         try? moc.save()
     }
     
@@ -90,8 +92,7 @@ struct AddUserImage: View {
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
         showingAlert = true
-        
-        }
+    }
     
     
 }
