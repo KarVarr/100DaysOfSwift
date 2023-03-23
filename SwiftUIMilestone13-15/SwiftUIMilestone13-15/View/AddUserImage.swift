@@ -9,13 +9,11 @@ import SwiftUI
 
 struct AddUserImage: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var users: FetchedResults<UserData>
-    
     @Environment(\.dismiss) var dismiss
     
     @State private var image: Image?
     @State private var inputImage: UIImage?
-    @State private var userName = "User name"
+    @State private var userName = ""
     @State private var showingAlert = false
     @State private var showingImagePicker = false
     
@@ -78,9 +76,12 @@ struct AddUserImage: View {
     }
     
     func saveDataUser () {
+        guard let inputImage = inputImage, let imageData = inputImage.jpegData(compressionQuality: 1.0) else { return }
+        
         let user = UserData(context: moc)
         user.id = UUID()
         user.name = userName
+        user.userPhoto = imageData
         
         try? moc.save()
     }
@@ -89,7 +90,9 @@ struct AddUserImage: View {
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
         showingAlert = true
-    }
+        
+        }
+    
     
 }
 

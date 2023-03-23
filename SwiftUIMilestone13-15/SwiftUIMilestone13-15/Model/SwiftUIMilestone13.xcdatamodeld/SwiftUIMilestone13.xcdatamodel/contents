@@ -3,5 +3,6 @@
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="userPhoto" optional="YES" attributeType="Binary"/>
     </entity>
 </model>

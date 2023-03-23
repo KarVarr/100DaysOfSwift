@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct UserDetailView: View {
+    let name: String
+    let image: Image
+    
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                
-                Image(systemName: "circle")
-                    .resizable()
-                    .scaledToFit()
-                    .border(.red)
-                
-                Text("hello")
-                    .padding()
-                    .background(.black.opacity(0.5))
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding()
+                    Image(systemName: "circle")
+                        .resizable()
+                        .scaledToFit()
+                        .border(.red)
+                    
+                    Text(name)
+                        .padding()
+                        .background(.black.opacity(0.5))
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding()
                 
             }
             Spacer()
@@ -35,6 +37,6 @@ struct UserDetailView: View {
 
 struct UserDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        UserDetailView()
+        UserDetailView(name: "User", image: Image(systemName: "questionmark.square"))
     }
 }
