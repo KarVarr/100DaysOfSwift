@@ -17,6 +17,7 @@
 		17F8230B29CB7204004854F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8230A29CB7204004854F2 /* ImageSaver.swift */; };
 		17F8231329CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */; };
 		17F8231529CCAF88004854F2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231429CCAF88004854F2 /* DataController.swift */; };
+		17F8231829CDE855004854F2 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231729CDE855004854F2 /* Resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		17F8230A29CB7204004854F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		17F8231229CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUIMilestone13.xcdatamodel; sourceTree = "<group>"; };
 		17F8231429CCAF88004854F2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		17F8231729CDE855004854F2 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		17F822F529CB5735004854F2 /* SwiftUIMilestone13-15 */ = {
 			isa = PBXGroup;
 			children = (
+				17F8231629CDE83F004854F2 /* Helpers */,
 				17F822F629CB5735004854F2 /* SwiftUIMilestone13_15App.swift */,
 				17F822F829CB5735004854F2 /* ContentView.swift */,
 				17F8230F29CCAEEE004854F2 /* View */,
@@ -99,6 +102,14 @@
 				17F8231429CCAF88004854F2 /* DataController.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		17F8231629CDE83F004854F2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				17F8231729CDE855004854F2 /* Resources.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				17F8230529CB59D9004854F2 /* AddUserImage.swift in Sources */,
 				17F8230929CB707A004854F2 /* ImagePicker.swift in Sources */,
 				17F8231529CCAF88004854F2 /* DataController.swift in Sources */,
+				17F8231829CDE855004854F2 /* Resources.swift in Sources */,
 				17F822F929CB5735004854F2 /* ContentView.swift in Sources */,
 				17F822F729CB5735004854F2 /* SwiftUIMilestone13_15App.swift in Sources */,
 			);

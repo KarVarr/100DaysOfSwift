@@ -19,11 +19,12 @@ struct UserDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(color: .black, radius: 5, x: 4, y: 4)
                 
                 Text(name)
                     .padding()
-                    .background(.black.opacity(0.5))
-                    .foregroundColor(.white)
+                    .background(Resources.AppColor.secondary.opacity(0.8))
+                    .foregroundColor(.secondary)
                     .font(.largeTitle)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding()
@@ -36,8 +37,7 @@ struct UserDetailView: View {
         }
         .padding(.top)
         .background(image.resizable().scaledToFill().blur(radius: 30))
-        .background(.mint)
-
+        .background(Resources.AppColor.light)
     }
     
     

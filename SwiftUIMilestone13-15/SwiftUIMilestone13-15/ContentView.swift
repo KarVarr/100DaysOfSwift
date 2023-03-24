@@ -23,23 +23,23 @@ struct ContentView: View {
                 ForEach(users, id: \.id) { user in
                     let imageConvert = Image(uiImage: UIImage(data: user.userPhoto ?? Data()) ?? UIImage(systemName: "questionmark.square")!)
                     
-                    NavigationLink(destination: UserDetailView(name: user.name ?? "Unknown", image: imageConvert)) {
+                    NavigationLink(destination: UserDetailView(name: user.name ?? Resources.String.ContentView.unknown, image: imageConvert)) {
                         Image(uiImage: UIImage(data: user.userPhoto ?? Data() ) ?? UIImage())
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100,height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.trailing)
-                        Text(user.name ?? "Unknown")
+                        Text(user.name ?? Resources.String.ContentView.unknown)
                         
                     }
                 }
                 .onDelete(perform: deleteUsers)
-                .listRowBackground(Color.orange.opacity(0.8))
+                .listRowBackground(Resources.AppColor.secondary)
             }
             .listStyle(.plain)
-            .background(.orange.opacity(0.7))
-            .navigationTitle("MeetUP")
+            .background(Resources.AppColor.main)
+            .navigationTitle(Resources.String.ContentView.mainTitle)
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -58,6 +58,7 @@ struct ContentView: View {
                     EditButton()
                 }
             }
+           
             
             
         }

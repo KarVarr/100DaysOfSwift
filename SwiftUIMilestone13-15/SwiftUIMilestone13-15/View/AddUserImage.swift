@@ -27,7 +27,7 @@ struct AddUserImage: View {
                         .scaledToFit()
                         .frame(height: 400)
                         .padding()
-                        .foregroundColor(.orange)
+                        .foregroundColor(Resources.AppColor.dark)
                 }
                 
                 image?
@@ -46,12 +46,12 @@ struct AddUserImage: View {
                     showingImagePicker = true
                 }
                 .padding()
-                .background(.mint)
-                .foregroundColor(.white)
+                .background(Resources.AppColor.dark)
+                .foregroundColor(.secondary)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            .background(.indigo.opacity(0.34))
-            .navigationTitle("Add a photo")
+            .background(Resources.AppColor.main)
+            .navigationTitle(Resources.String.AddUserImage.navTitle)
             .toolbar {
                 Button {
                     saveDataUser()
@@ -62,11 +62,11 @@ struct AddUserImage: View {
 
             }
         }
-        .alert("User Name", isPresented: $showingAlert) {
-            TextField("Enter your name", text: $userName)
+        .alert(Resources.String.AddUserImage.Alert.title, isPresented: $showingAlert) {
+            TextField(Resources.String.AddUserImage.Alert.textField, text: $userName)
             Button("Ok") {}
         } message: {
-            Text("Please write your name")
+            Text(Resources.String.AddUserImage.Alert.message)
         }
         
         .sheet(isPresented: $showingImagePicker) {
