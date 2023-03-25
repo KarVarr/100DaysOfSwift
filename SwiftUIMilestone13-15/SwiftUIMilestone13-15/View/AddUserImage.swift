@@ -33,8 +33,7 @@ struct AddUserImage: View {
                 image?
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 300, height: 400)
-                    .padding()
+                    .frame(height: 400)
                 
                 Text(userName)
                     .padding()
@@ -51,6 +50,7 @@ struct AddUserImage: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .background(Resources.AppColor.main)
+            
             .navigationTitle(Resources.String.AddUserImage.navTitle)
             .toolbar {
                 Button {
@@ -59,7 +59,6 @@ struct AddUserImage: View {
                 } label: {
                     Text("Save")
                 }
-
             }
         }
         .alert(Resources.String.AddUserImage.Alert.title, isPresented: $showingAlert) {
@@ -73,7 +72,8 @@ struct AddUserImage: View {
             ImagePicker(image: $inputImage)
         }
         .onChange(of: inputImage) { _ in loadImage()}
-        
+     
+        .preferredColorScheme(.light)
     }
     
     func saveDataUser () {

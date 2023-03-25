@@ -13,6 +13,7 @@ enum Resources {
         enum ContentView {
             static let mainTitle = "MeetUP"
             static let unknown = "Unknown"
+            static let newFriend = "New friends can be added by clicking on the + button"
         }
         
         enum AddUserImage {

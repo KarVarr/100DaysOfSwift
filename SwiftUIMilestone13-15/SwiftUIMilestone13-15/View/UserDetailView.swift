@@ -13,34 +13,37 @@ struct UserDetailView: View {
     
     
     var body: some View {
-        VStack {
-            ZStack(alignment: .bottomTrailing) {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: .black, radius: 5, x: 4, y: 4)
-                
-                Text(name)
-                    .padding()
-                    .background(Resources.AppColor.secondary.opacity(0.8))
-                    .foregroundColor(.secondary)
-                    .font(.largeTitle)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding()
-                    .fixedSize()
+        GeometryReader { geo in
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                 
+                    image
+                        .resizable()
+                        .frame(maxWidth: geo.size.width, maxHeight: geo.size.height / 2.5)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: .black, radius: 5, x: 4, y: 4)
+                        .padding(.horizontal, 10)
+                    
+                    Text(name)
+                        .padding()
+                        .background(Resources.AppColor.secondary.opacity(0.8))
+                        .foregroundColor(.secondary)
+                        .font(.largeTitle)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding()
+                        .fixedSize()
+                    
+                }
+                Spacer()
+                Text("Hello this is a map")
                 
             }
-            .padding(.horizontal)
-            Spacer()
-            
+            .padding(.top)
+            .background(image.resizable().scaledToFill().blur(radius: 30))
+            .background(Resources.AppColor.light)
+            .preferredColorScheme(.light)
         }
-        .padding(.top)
-        .background(image.resizable().scaledToFill().blur(radius: 30))
-        .background(Resources.AppColor.light)
     }
-    
-    
 }
 
 struct UserDetailView_Previews: PreviewProvider {
