@@ -96,6 +96,7 @@
 		17F8231029CCAEFE004854F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				17F8231A29CF5FAE004854F2 /* Map */,
 				17F8230A29CB7204004854F2 /* ImageSaver.swift */,
 				17F8230829CB707A004854F2 /* ImagePicker.swift */,
 				17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */,
@@ -110,6 +111,13 @@
 				17F8231729CDE855004854F2 /* Resources.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		17F8231A29CF5FAE004854F2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
