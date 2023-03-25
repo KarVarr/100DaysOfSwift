@@ -91,6 +91,7 @@ struct AddUserImage: View {
     func loadImage() {
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
+        LocationFetcher().start()
         showingAlert = true
     }
     

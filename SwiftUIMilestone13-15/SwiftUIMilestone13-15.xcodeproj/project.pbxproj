@@ -18,6 +18,7 @@
 		17F8231329CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231129CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld */; };
 		17F8231529CCAF88004854F2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231429CCAF88004854F2 /* DataController.swift */; };
 		17F8231829CDE855004854F2 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231729CDE855004854F2 /* Resources.swift */; };
+		17F8231C29CF68C7004854F2 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8231B29CF68C7004854F2 /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		17F8231229CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUIMilestone13.xcdatamodel; sourceTree = "<group>"; };
 		17F8231429CCAF88004854F2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		17F8231729CDE855004854F2 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		17F8231B29CF68C7004854F2 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		17F8231A29CF5FAE004854F2 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				17F8231B29CF68C7004854F2 /* LocationFetcher.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				17F8230729CB63FE004854F2 /* UserDetailView.swift in Sources */,
 				17F8231329CCAF2E004854F2 /* SwiftUIMilestone13.xcdatamodeld in Sources */,
+				17F8231C29CF68C7004854F2 /* LocationFetcher.swift in Sources */,
 				17F8230B29CB7204004854F2 /* ImageSaver.swift in Sources */,
 				17F8230529CB59D9004854F2 /* AddUserImage.swift in Sources */,
 				17F8230929CB707A004854F2 /* ImagePicker.swift in Sources */,
@@ -330,6 +334,7 @@
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +364,7 @@
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

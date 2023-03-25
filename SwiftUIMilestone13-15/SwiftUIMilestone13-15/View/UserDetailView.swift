@@ -11,7 +11,15 @@ struct UserDetailView: View {
     let name: String
     let image: Image
     
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    let locationFetcher = LocationFetcher()
+    
+    @State private var mapRegion: MKCoordinateRegion
+    
+    init(name: String, image: Image) {
+        self.name = name
+        self.image = image
+        _mapRegion = State(initialValue: MKCoordinateRegion(center: locationFetcher.lastKnownLocation ?? CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)))
+    }
     
     
     var body: some View {
