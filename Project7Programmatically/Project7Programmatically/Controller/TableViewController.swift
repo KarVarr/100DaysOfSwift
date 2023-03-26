@@ -16,7 +16,9 @@ class TableViewController: UITableViewController {
         
         title = "News"
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        //Challenge 1
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "API", style: .plain, target: self, action: #selector(showingAPI))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterArray))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         
         let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
@@ -26,6 +28,16 @@ class TableViewController: UITableViewController {
             }
         }
         showingError()
+        
+    }
+    //Challenge 1
+   @objc func showingAPI () {
+       let ac = UIAlertController(title: "API", message: "Data comes from the 'We The People API of the Whitehouse'", preferredStyle: .alert)
+       ac.addAction(UIAlertAction(title: "OK", style: .default))
+       present(ac, animated: true)
+    }
+    
+    @objc func filterArray() {
         
     }
     
