@@ -29,11 +29,11 @@ class DetailViewController: UIViewController {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
         body {
-        font-size: 150%;
-        color: blue;
+        font-size: 110%;
+        color: black;
         }
         h1 {
-        color: mint;
+        color: blue;
         }
         h2 {
         color: gray;

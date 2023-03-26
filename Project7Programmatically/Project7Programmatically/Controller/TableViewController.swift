@@ -25,7 +25,14 @@ class TableViewController: UITableViewController {
                 parse(json: data)
             }
         }
+        showingError()
         
+    }
+    
+    func showingError() {
+        let ac = UIAlertController(title: "Loading Error", message: "Something goes wrong, check your connection!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     
@@ -57,8 +64,7 @@ class TableViewController: UITableViewController {
         let petition = petitions[indexPath.row]
         
         cell.textLabel?.text = petition.title
-        cell.detailTextLabel?.text = petition.body
-        cell.detailTextLabel?.textColor = .red
+        cell.detailTextLabel?.text = petition.title
         cell.accessoryType = .disclosureIndicator
 
         return cell
