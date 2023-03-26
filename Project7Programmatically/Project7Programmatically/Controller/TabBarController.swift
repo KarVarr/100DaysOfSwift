@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
         
         
 //
@@ -43,3 +43,4 @@ class TabBarController: UITabBarController {
 
 
 }
+

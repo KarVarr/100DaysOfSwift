@@ -46,6 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBarController() -> UITabBarController {
         let tabBarController = TabBarController()
         UITabBar.appearance().backgroundColor = .gray.withAlphaComponent(0.4)
+        tabBarController.view.backgroundColor = .white
         tabBarController.viewControllers = [createVC(), createTable()]
         return tabBarController
     }
