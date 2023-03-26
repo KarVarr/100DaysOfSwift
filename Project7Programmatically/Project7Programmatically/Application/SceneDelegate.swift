@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createTable() -> UINavigationController {
-        let table = TableViewController(style: .insetGrouped)
+        let table = TableViewController()
         table.title = "View Title"
         table.tabBarItem = UITabBarItem(title: "Table", image: UIImage(systemName: "person.circle"), tag: 1)
         return UINavigationController(rootViewController: table)

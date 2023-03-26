@@ -44,11 +44,10 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 77
+        return 80
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return petitions.count
     }
 
@@ -59,6 +58,7 @@ class TableViewController: UITableViewController {
         
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
+        cell.detailTextLabel?.textColor = .red
         cell.accessoryType = .disclosureIndicator
 
         return cell
@@ -66,7 +66,9 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        let vc = DetailViewController()
+        vc.detailItem = petitions[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 
