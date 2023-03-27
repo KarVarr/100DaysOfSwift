@@ -39,12 +39,27 @@ class ViewController: UIViewController {
     
     func settingsView() {
         view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-        btnView.buttonsView.backgroundColor = .systemPink.withAlphaComponent(0.9)
+        btnView.buttonsView.backgroundColor = .orange
         btnView.buttonsView.layer.cornerRadius = 10
         btnView.buttonsView.layer.shadowOpacity = 0.5
         btnView.buttonsView.layer.shadowColor = UIColor.black.cgColor
         btnView.buttonsView.layer.shadowRadius = 3
         btnView.buttonsView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        let width = 150
+        let height = 80
+        
+        for row in 0..<4 {
+            for col in 0..<5 {
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterButton.setTitle("WWW", for: .normal)
+                letterButton.frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                
+                btnView.buttonsView.addSubview(letterButton)
+                letterButtons.append(letterButton)
+            }
+        }
 
     }
     
@@ -80,7 +95,11 @@ class ViewController: UIViewController {
             btnView.buttonsView.topAnchor.constraint(equalTo: button.submit.bottomAnchor, constant: 20),
             btnView.buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
+        
+       
     }
+    
+   
 
 }
 
