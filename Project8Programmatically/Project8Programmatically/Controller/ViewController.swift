@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let score = Labels()
+    let labels = Labels()
     
     var cluesLabel: UILabel!
     var answersLabel: UILabel!
     var currentAnswer: UITextField!
-    var scoreLabel: UILabel!
+//    var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
     override func loadView() {
@@ -24,12 +24,14 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
     }
 
     func addView() {
         view = UIView()
-        view.addSubview(score.scoreLabel)
+        view.addSubview(labels.scoreLabel)
+        view.addSubview(labels.cluesLabel)
+        view.addSubview(labels.answersLabel)
     }
     
     func settingsView() {
@@ -40,8 +42,17 @@ class ViewController: UIViewController {
     
     func layoutView() {
         NSLayoutConstraint.activate([
-            score.scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            score.scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+            labels.scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            labels.scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            labels.cluesLabel.topAnchor.constraint(equalTo: labels.scoreLabel.bottomAnchor),
+            labels.cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor,constant: 100),
+            labels.cluesLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6, constant: -100),
+            
+            labels.answersLabel.topAnchor.constraint(equalTo: labels.scoreLabel.bottomAnchor),
+            labels.answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
+            labels.answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4, constant: -100),
+            labels.answersLabel.heightAnchor.constraint(equalTo: labels.cluesLabel.heightAnchor),
         ])
     }
 

@@ -15,4 +15,23 @@ struct Labels {
         label.text = "Score: 0"
         return label
     }()
+    
+    var cluesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.text = "CLUES"
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    var answersLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.text = "ANSWERS"
+        label.numberOfLines = 0
+        label.textAlignment = .right
+        return label
+    }()
 }
