@@ -26,9 +26,12 @@ class TableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         
         let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let url = URL(string: urlString) {
+                if let data = try? Data(contentsOf: url) {
+                    self?.parse(json: data)
+                }
             }
         }
         showingError()
@@ -40,7 +43,7 @@ class TableViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-//Challenge 3
+    //Challenge 3
     @objc func filterArray() {
         let ac = UIAlertController(title: "Filter title", message: "Find what you wont!", preferredStyle: .alert)
         ac.addTextField()
