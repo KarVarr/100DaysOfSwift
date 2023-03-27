@@ -15,6 +15,7 @@
 		178548CB29D1BE4600A06D85 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CA29D1BE4600A06D85 /* Labels.swift */; };
 		178548CD29D1CAC900A06D85 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CC29D1CAC900A06D85 /* TextField.swift */; };
 		178548CF29D1D29600A06D85 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CE29D1D29600A06D85 /* Buttons.swift */; };
+		178548D129D1D66B00A06D85 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548D029D1D66B00A06D85 /* ButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		178548CA29D1BE4600A06D85 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		178548CC29D1CAC900A06D85 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		178548CE29D1D29600A06D85 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		178548D029D1D66B00A06D85 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				178548CA29D1BE4600A06D85 /* Labels.swift */,
 				178548CC29D1CAC900A06D85 /* TextField.swift */,
 				178548CE29D1D29600A06D85 /* Buttons.swift */,
+				178548D029D1D66B00A06D85 /* ButtonsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				178548B329D1B6BE00A06D85 /* AppDelegate.swift in Sources */,
 				178548B529D1B6BE00A06D85 /* SceneDelegate.swift in Sources */,
 				178548CF29D1D29600A06D85 /* Buttons.swift in Sources */,
+				178548D129D1D66B00A06D85 /* ButtonsView.swift in Sources */,
 				178548CD29D1CAC900A06D85 /* TextField.swift in Sources */,
 				178548CB29D1BE4600A06D85 /* Labels.swift in Sources */,
 			);

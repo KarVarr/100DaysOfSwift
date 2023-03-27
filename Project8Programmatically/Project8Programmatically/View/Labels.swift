@@ -22,6 +22,7 @@ struct Labels {
         label.font = UIFont.systemFont(ofSize: 24)
         label.text = "CLUES"
         label.numberOfLines = 0
+        label.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         return label
     }()
     
@@ -31,6 +32,7 @@ struct Labels {
         label.font = UIFont.systemFont(ofSize: 24)
         label.text = "ANSWERS"
         label.numberOfLines = 0
+        label.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         label.textAlignment = .right
         return label
     }()
