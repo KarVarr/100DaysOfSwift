@@ -91,13 +91,17 @@ class ViewController: UIViewController {
             textField.currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             textField.currentAnswer.topAnchor.constraint(equalTo: labels.cluesLabel.bottomAnchor, constant: 20),
             
-            button.submit.topAnchor.constraint(equalTo: textField.currentAnswer.bottomAnchor),
+            button.submit.topAnchor.constraint(equalTo: textField.currentAnswer.bottomAnchor, constant: 20),
             button.submit.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
             button.submit.heightAnchor.constraint(equalToConstant: 44),
+            //Challenge 1
+            button.submit.widthAnchor.constraint(equalToConstant: 80),
             
             button.clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             button.clear.centerYAnchor.constraint(equalTo: button.submit.centerYAnchor),
             button.clear.heightAnchor.constraint(equalToConstant: 44),
+            //Challenge 1
+            button.clear.widthAnchor.constraint(equalToConstant: 80),
             
             btnView.buttonsView.widthAnchor.constraint(equalToConstant: 750),
             btnView.buttonsView.heightAnchor.constraint(equalToConstant: 320),
@@ -119,20 +123,39 @@ class ViewController: UIViewController {
         
         if let solutionPosition = solutions.firstIndex(of: answerText) {
             activatedButtons.removeAll()
-            
             var splitAnswers = labels.answersLabel.text?.components(separatedBy: "\n")
             splitAnswers?[solutionPosition] = answerText
             labels.answersLabel.text = splitAnswers?.joined(separator: "\n")
             
             textField.currentAnswer.text = ""
             score += 1
-            
-            if score % 7 == 0 {
+            //Challenge 3
+            if noButtons() {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        } else {
+            //Challenge 2
+            textField.currentAnswer.text = ""
+            for btn in activatedButtons {
+                btn.isHidden = false
+            }
+            let ac = UIAlertController(title: "Wrong!", message: "Your enters an incorrect", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(ac, animated: true)
+            //Challenge 3
+            score -= 1
         }
+    }
+    //Challenge 3
+    func noButtons() -> Bool {
+        for button in letterButtons {
+            if button.isHidden == false {
+                return false
+            }
+        }
+        return true
     }
     
     @objc func clearTapped(_ sender: UIButton) {
@@ -143,6 +166,7 @@ class ViewController: UIViewController {
         }
         
         activatedButtons.removeAll()
+        score = 0
     }
     
     
@@ -167,7 +191,6 @@ class ViewController: UIViewController {
                     let solutionWord = answer.replacingOccurrences(of: "|", with: "")
                     solutionString += "\(solutionWord.count) letters\n"
                     solutions.append(solutionWord)
-                    
                     let bits = answer.components(separatedBy: "|")
                     letterBits += bits
                 }
