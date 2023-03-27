@@ -15,6 +15,12 @@ class ViewController: UIViewController {
     
     var letterButtons = [UIButton]()
     
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
+
+    var score = 0
+    var level = 1
+    
     override func loadView() {
         addView()
         settingsView()
@@ -23,7 +29,8 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        loadLevel()
     }
 
     func addView() {
@@ -35,16 +42,11 @@ class ViewController: UIViewController {
         view.addSubview(button.submit)
         view.addSubview(button.clear)
         view.addSubview(btnView.buttonsView)
+        
     }
     
     func settingsView() {
         view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-        btnView.buttonsView.backgroundColor = .orange
-        btnView.buttonsView.layer.cornerRadius = 10
-        btnView.buttonsView.layer.shadowOpacity = 0.5
-        btnView.buttonsView.layer.shadowColor = UIColor.black.cgColor
-        btnView.buttonsView.layer.shadowRadius = 3
-        btnView.buttonsView.layer.shadowOffset = CGSize(width: 0, height: 2)
         
         let width = 150
         let height = 80
@@ -55,17 +57,21 @@ class ViewController: UIViewController {
                 letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                 letterButton.setTitle("WWW", for: .normal)
                 letterButton.frame = CGRect(x: col * width, y: row * height, width: width, height: height)
-                
+                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
                 btnView.buttonsView.addSubview(letterButton)
                 letterButtons.append(letterButton)
             }
         }
+        
+        button.submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
+        button.clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        
 
     }
     
     func layoutView() {
         NSLayoutConstraint.activate([
-            labels.scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            labels.scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
             labels.scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
             labels.cluesLabel.topAnchor.constraint(equalTo: labels.scoreLabel.bottomAnchor),
@@ -95,8 +101,54 @@ class ViewController: UIViewController {
             btnView.buttonsView.topAnchor.constraint(equalTo: button.submit.bottomAnchor, constant: 20),
             btnView.buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
-        
-       
+    }
+    
+    @objc func letterTapped(_ sender: UIButton) {
+    }
+
+    @objc func submitTapped(_ sender: UIButton) {
+    }
+
+    @objc func clearTapped(_ sender: UIButton) {
+    }
+    
+    func loadLevel() {
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+
+        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
+            if let levelContents = try? String(contentsOf: levelFileURL) {
+                var lines = levelContents.components(separatedBy: "\n")
+                lines.shuffle()
+
+                for (index, line) in lines.enumerated() {
+                    let parts = line.components(separatedBy: ": ")
+                    let answer = parts[0]
+                    let clue = parts[1]
+
+                    clueString += "\(index + 1). \(clue)\n"
+
+                    let solutionWord = answer.replacingOccurrences(of: "|", with: "")
+                    solutionString += "\(solutionWord.count) letters\n"
+                    solutions.append(solutionWord)
+
+                    let bits = answer.components(separatedBy: "|")
+                    letterBits += bits
+                }
+            }
+        }
+
+        labels.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+        labels.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        letterBits.shuffle()
+
+        if letterBits.count == letterButtons.count {
+            for i in 0..<letterButtons.count {
+                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            }
+        }
     }
     
    

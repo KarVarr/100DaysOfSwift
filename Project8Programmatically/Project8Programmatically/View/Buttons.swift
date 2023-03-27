@@ -23,5 +23,5 @@ struct Buttons {
         return button
     }()
     
-    
+
 }

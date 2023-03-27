@@ -16,6 +16,8 @@
 		178548CD29D1CAC900A06D85 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CC29D1CAC900A06D85 /* TextField.swift */; };
 		178548CF29D1D29600A06D85 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CE29D1D29600A06D85 /* Buttons.swift */; };
 		178548D129D1D66B00A06D85 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548D029D1D66B00A06D85 /* ButtonsView.swift */; };
+		178548D529D1E48300A06D85 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 178548D329D1E48300A06D85 /* level2.txt */; };
+		178548D629D1E48300A06D85 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 178548D429D1E48300A06D85 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		178548CC29D1CAC900A06D85 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		178548CE29D1D29600A06D85 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		178548D029D1D66B00A06D85 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		178548D329D1E48300A06D85 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		178548D429D1E48300A06D85 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		178548B129D1B6BE00A06D85 /* Project8Programmatically */ = {
 			isa = PBXGroup;
 			children = (
+				178548D229D1E47600A06D85 /* Model */,
 				178548C629D1B9DA00A06D85 /* Application */,
 				178548C929D1BDFB00A06D85 /* View */,
 				178548C829D1BDF200A06D85 /* Controller */,
@@ -106,6 +111,15 @@
 				178548D029D1D66B00A06D85 /* ButtonsView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		178548D229D1E47600A06D85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				178548D429D1E48300A06D85 /* level1.txt */,
+				178548D329D1E48300A06D85 /* level2.txt */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				178548BF29D1B6BF00A06D85 /* LaunchScreen.storyboard in Resources */,
+				178548D629D1E48300A06D85 /* level1.txt in Resources */,
 				178548BC29D1B6BF00A06D85 /* Assets.xcassets in Resources */,
+				178548D529D1E48300A06D85 /* level2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
