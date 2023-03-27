@@ -13,6 +13,8 @@
 		178548BC29D1B6BF00A06D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178548BB29D1B6BF00A06D85 /* Assets.xcassets */; };
 		178548BF29D1B6BF00A06D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178548BD29D1B6BF00A06D85 /* LaunchScreen.storyboard */; };
 		178548CB29D1BE4600A06D85 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CA29D1BE4600A06D85 /* Labels.swift */; };
+		178548CD29D1CAC900A06D85 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CC29D1CAC900A06D85 /* TextField.swift */; };
+		178548CF29D1D29600A06D85 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548CE29D1D29600A06D85 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		178548BE29D1B6BF00A06D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		178548C029D1B6BF00A06D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		178548CA29D1BE4600A06D85 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		178548CC29D1CAC900A06D85 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		178548CE29D1D29600A06D85 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				178548CA29D1BE4600A06D85 /* Labels.swift */,
+				178548CC29D1CAC900A06D85 /* TextField.swift */,
+				178548CE29D1D29600A06D85 /* Buttons.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +178,8 @@
 				178548B729D1B6BE00A06D85 /* ViewController.swift in Sources */,
 				178548B329D1B6BE00A06D85 /* AppDelegate.swift in Sources */,
 				178548B529D1B6BE00A06D85 /* SceneDelegate.swift in Sources */,
+				178548CF29D1D29600A06D85 /* Buttons.swift in Sources */,
+				178548CD29D1CAC900A06D85 /* TextField.swift in Sources */,
 				178548CB29D1BE4600A06D85 /* Labels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

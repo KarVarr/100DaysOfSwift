@@ -9,11 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     let labels = Labels()
+    let textField = TextField()
+    let button = Buttons()
     
-    var cluesLabel: UILabel!
-    var answersLabel: UILabel!
-    var currentAnswer: UITextField!
-//    var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
     override func loadView() {
@@ -32,6 +30,9 @@ class ViewController: UIViewController {
         view.addSubview(labels.scoreLabel)
         view.addSubview(labels.cluesLabel)
         view.addSubview(labels.answersLabel)
+        view.addSubview(textField.currentAnswer)
+        view.addSubview(button.submit)
+        view.addSubview(button.clear)
     }
     
     func settingsView() {
@@ -53,6 +54,14 @@ class ViewController: UIViewController {
             labels.answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
             labels.answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4, constant: -100),
             labels.answersLabel.heightAnchor.constraint(equalTo: labels.cluesLabel.heightAnchor),
+            
+            textField.currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textField.currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            textField.currentAnswer.topAnchor.constraint(equalTo: labels.cluesLabel.bottomAnchor, constant: 20),
+            
+            button.submit.topAnchor.constraint(equalTo: textField.currentAnswer.bottomAnchor),
+            button.submit.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
+            button.submit.heightAnchor.constraint(equalToConstant: 44),
         ])
     }
 
