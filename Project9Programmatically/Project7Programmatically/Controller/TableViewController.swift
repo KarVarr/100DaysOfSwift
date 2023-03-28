@@ -31,10 +31,11 @@ class TableViewController: UITableViewController {
             if let url = URL(string: urlString) {
                 if let data = try? Data(contentsOf: url) {
                     self?.parse(json: data)
+                    return
                 }
             }
+            self?.showingError()
         }
-        showingError()
         
     }
     //Challenge 1
@@ -79,9 +80,12 @@ class TableViewController: UITableViewController {
     }
     
     func showingError() {
-        let ac = UIAlertController(title: "Loading Error", message: "Something goes wrong, check your connection!", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        DispatchQueue.main.async {
+            
+            let ac = UIAlertController(title: "Loading Error", message: "Something goes wrong, check your connection!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
     }
     
     
@@ -90,7 +94,9 @@ class TableViewController: UITableViewController {
         
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
