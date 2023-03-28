@@ -25,19 +25,44 @@ class TableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterArray))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         
-        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    self?.parse(json: data)
-                    return
-                }
-            }
-            self?.showingError()
-        }
+        performSelector(inBackground: #selector(fetchJSON), with: nil)
         
     }
+    
+    @objc func fetchJSON() {
+        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        
+        
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+                return
+            }
+        }
+        performSelector(onMainThread: #selector(showingError), with: nil, waitUntilDone: false)
+    }
+    
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
+        
+        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+            petitions = jsonPetitions.results
+            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            performSelector(onMainThread: #selector(showingError), with: nil, waitUntilDone: false)
+        }
+    }
+    
+    @objc func showingError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+    }
+    
+    
+    
+    
+    
     //Challenge 1
     @objc func showingAPI () {
         let ac = UIAlertController(title: "API", message: "Data comes from the 'We The People API of the Whitehouse'", preferredStyle: .alert)
@@ -79,26 +104,7 @@ class TableViewController: UITableViewController {
         }
     }
     
-    func showingError() {
-        DispatchQueue.main.async {
-            
-            let ac = UIAlertController(title: "Loading Error", message: "Something goes wrong, check your connection!", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
-    }
     
-    
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-        
-        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
-            petitions = jsonPetitions.results
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
     
     
     
