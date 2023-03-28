@@ -170,13 +170,15 @@ class ViewController: UIViewController {
     }
     
     
-    
+    //Challenge project 9 GCD
     func loadLevel() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            
         var clueString = ""
         var solutionString = ""
         var letterBits = [String]()
         
-        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
+            if let levelFileURL = Bundle.main.url(forResource: "level\(self.level)", withExtension: "txt") {
             if let levelContents = try? String(contentsOf: levelFileURL) {
                 var lines = levelContents.components(separatedBy: "\n")
                 lines.shuffle()
@@ -190,23 +192,27 @@ class ViewController: UIViewController {
                     
                     let solutionWord = answer.replacingOccurrences(of: "|", with: "")
                     solutionString += "\(solutionWord.count) letters\n"
-                    solutions.append(solutionWord)
+                    self.solutions.append(solutionWord)
                     let bits = answer.components(separatedBy: "|")
                     letterBits += bits
                 }
             }
         }
         
-        labels.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        labels.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            DispatchQueue.main.async {
+                
+                self.labels.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+                self.labels.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
         
         letterBits.shuffle()
         
-        if letterBits.count == letterButtons.count {
-            for i in 0..<letterButtons.count {
-                letterButtons[i].setTitle(letterBits[i], for: .normal)
+                if letterBits.count == self.letterButtons.count {
+            for i in 0..<self.letterButtons.count {
+                self.letterButtons[i].setTitle(letterBits[i], for: .normal)
             }
         }
+    }
+    }
     }
     
     func levelUp(action: UIAlertAction) {

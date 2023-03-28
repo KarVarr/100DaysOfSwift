@@ -14,13 +14,26 @@ class ViewController: UIViewController {
     
     var selectedImage: String?
     let myImage = ImagesViewController()
+    //Challenge project9
+    private let imageLoadingQueue = DispatchQueue(label: "com.example.imageLoadingQueue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settings()
         addViews()
         layout()
+        //Challenge project9
+        imageLoadingQueue.async {
+            self.loadImages()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
+    }
+    //Challenge project9
+    func loadImages() {
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -30,7 +43,6 @@ class ViewController: UIViewController {
                 pictures.append(item)
             }
         }
-        
     }
     
     
