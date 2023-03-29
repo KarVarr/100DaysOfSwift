@@ -14,7 +14,7 @@
 		178548F029D480B100A06D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178548EE29D480B100A06D85 /* LaunchScreen.storyboard */; };
 		178548FC29D4845D00A06D85 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 178548FB29D4845D00A06D85 /* words.txt */; };
 		178548FF29D48AED00A06D85 /* WordLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548FE29D48AED00A06D85 /* WordLabel.swift */; };
-		1785490129D48F4600A06D85 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785490029D48F4600A06D85 /* ButtonsView.swift */; };
+		1785490129D48F4600A06D85 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785490029D48F4600A06D85 /* KeyboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		178548F129D480B100A06D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		178548FB29D4845D00A06D85 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		178548FE29D48AED00A06D85 /* WordLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabel.swift; sourceTree = "<group>"; };
-		1785490029D48F4600A06D85 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		1785490029D48F4600A06D85 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				178548FE29D48AED00A06D85 /* WordLabel.swift */,
-				1785490029D48F4600A06D85 /* ButtonsView.swift */,
+				1785490029D48F4600A06D85 /* KeyboardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				178548E829D480AF00A06D85 /* ViewController.swift in Sources */,
-				1785490129D48F4600A06D85 /* ButtonsView.swift in Sources */,
+				1785490129D48F4600A06D85 /* KeyboardView.swift in Sources */,
 				178548E429D480AF00A06D85 /* AppDelegate.swift in Sources */,
 				178548FF29D48AED00A06D85 /* WordLabel.swift in Sources */,
 				178548E629D480AF00A06D85 /* SceneDelegate.swift in Sources */,

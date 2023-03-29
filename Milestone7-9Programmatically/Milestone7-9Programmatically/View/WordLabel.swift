@@ -14,6 +14,7 @@ class WordLabel {
         label.text = "HELLO"
         label.font = UIFont(name: "BradleyHandITCTT-Bold", size: 40)
         label.textColor = .systemPink
+        
         return label
     }()
 }
