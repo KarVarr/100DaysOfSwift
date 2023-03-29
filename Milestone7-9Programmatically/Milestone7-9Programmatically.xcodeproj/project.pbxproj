@@ -10,9 +10,9 @@
 		178548E429D480AF00A06D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548E329D480AF00A06D85 /* AppDelegate.swift */; };
 		178548E629D480AF00A06D85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548E529D480AF00A06D85 /* SceneDelegate.swift */; };
 		178548E829D480AF00A06D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178548E729D480AF00A06D85 /* ViewController.swift */; };
-		178548EB29D480AF00A06D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178548E929D480AF00A06D85 /* Main.storyboard */; };
 		178548ED29D480B100A06D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178548EC29D480B100A06D85 /* Assets.xcassets */; };
 		178548F029D480B100A06D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178548EE29D480B100A06D85 /* LaunchScreen.storyboard */; };
+		178548FC29D4845D00A06D85 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 178548FB29D4845D00A06D85 /* words.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,10 @@
 		178548E329D480AF00A06D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		178548E529D480AF00A06D85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		178548E729D480AF00A06D85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		178548EA29D480AF00A06D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		178548EC29D480B100A06D85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		178548EF29D480B100A06D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		178548F129D480B100A06D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		178548FB29D4845D00A06D85 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,47 @@
 		178548E229D480AF00A06D85 /* Milestone7-9Programmatically */ = {
 			isa = PBXGroup;
 			children = (
+				178548FA29D4845300A06D85 /* Model */,
+				178548F729D4820D00A06D85 /* Application */,
+				178548F929D4822600A06D85 /* Controller */,
+				178548F829D4821600A06D85 /* Resources */,
+			);
+			path = "Milestone7-9Programmatically";
+			sourceTree = "<group>";
+		};
+		178548F729D4820D00A06D85 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				178548E329D480AF00A06D85 /* AppDelegate.swift */,
 				178548E529D480AF00A06D85 /* SceneDelegate.swift */,
-				178548E729D480AF00A06D85 /* ViewController.swift */,
-				178548E929D480AF00A06D85 /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		178548F829D4821600A06D85 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				178548EC29D480B100A06D85 /* Assets.xcassets */,
 				178548EE29D480B100A06D85 /* LaunchScreen.storyboard */,
 				178548F129D480B100A06D85 /* Info.plist */,
 			);
-			path = "Milestone7-9Programmatically";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		178548F929D4822600A06D85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				178548E729D480AF00A06D85 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		178548FA29D4845300A06D85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				178548FB29D4845D00A06D85 /* words.txt */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +157,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178548FC29D4845D00A06D85 /* words.txt in Resources */,
 				178548F029D480B100A06D85 /* LaunchScreen.storyboard in Resources */,
 				178548ED29D480B100A06D85 /* Assets.xcassets in Resources */,
-				178548EB29D480AF00A06D85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +179,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		178548E929D480AF00A06D85 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				178548EA29D480AF00A06D85 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		178548EE29D480B100A06D85 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,12 +313,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Milestone7-9Programmatically/Info.plist";
+				INFOPLIST_FILE = "Milestone7-9Programmatically/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +325,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karen.Milestone7-9Programmatically";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +343,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Milestone7-9Programmatically/Info.plist";
+				INFOPLIST_FILE = "Milestone7-9Programmatically/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +355,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.karen.Milestone7-9Programmatically";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
