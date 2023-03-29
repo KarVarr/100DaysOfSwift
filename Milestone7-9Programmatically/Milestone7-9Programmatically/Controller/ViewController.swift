@@ -21,9 +21,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        words()
+        startGame()
         addViews()
         settings()
-        words()
+        buttonsSetting()
         layoutViews()
     }
     
@@ -39,8 +41,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func startGame() {
+        let newWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        wordLabel.label.text = String(repeating: " *", count: newWord?.count ?? 0)
+    }
+    
     @objc func letterTapped (_ sender: UIButton) {
-        print("\(sender)")
         if let letterTitle = sender.title(for: .normal) {
             wordLabel.label.text = letterTitle
         }
@@ -63,9 +70,27 @@ extension ViewController {
         
         title = "Hangman Game ⚗︎"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Repeat", style: .plain, target: self, action: #selector(startGame))
         
         
         
+    }
+    
+    func layoutViews() {
+        NSLayoutConstraint.activate([
+            keyboardView.keyboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            keyboardView.keyboardView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            keyboardView.keyboardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            keyboardView.keyboardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            keyboardView.keyboardView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 2.5),
+            
+            
+            wordLabel.label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            wordLabel.label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+    
+    func buttonsSetting() {
         let width = 50
         let height = 80
         
@@ -86,19 +111,5 @@ extension ViewController {
                 letterButtons.append(letterButton)
             }
         }
-    }
-    
-    func layoutViews() {
-        NSLayoutConstraint.activate([
-            keyboardView.keyboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            keyboardView.keyboardView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            keyboardView.keyboardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            keyboardView.keyboardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            keyboardView.keyboardView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 2.5),
-            
-            
-            wordLabel.label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            wordLabel.label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
     }
 }
