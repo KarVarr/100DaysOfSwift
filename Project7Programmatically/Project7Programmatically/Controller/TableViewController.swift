@@ -40,15 +40,18 @@ class TableViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-//Challenge 3
+    //Challenge 3
     @objc func filterArray() {
+        
         let ac = UIAlertController(title: "Filter title", message: "Find what you wont!", preferredStyle: .alert)
         ac.addTextField()
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             self?.filterWord = ac?.textFields?[0].text ?? ""
             self?.filterData()
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
             
         })
         present(ac, animated: true)
