@@ -13,20 +13,24 @@ class ViewController: UIViewController {
     
     var letterButtons = [UIButton]()
     let letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
+    
+    var currentWord: String = "HELLO"
+    var currentLetters = [String]()
     
     let wordLabel = WordLabel()
     var keyboardView = KeyboardView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         words()
-        startGame()
+//        startGame()
         addViews()
         settings()
         buttonsSetting()
         layoutViews()
+        
+        currentWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Hello"
     }
     
     func words() {
@@ -42,19 +46,37 @@ class ViewController: UIViewController {
     }
     
     @objc func startGame() {
-        let newWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines)
+        currentWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Hello"
         
-        wordLabel.label.text = String(repeating: " *", count: newWord?.count ?? 0)
+        wordLabel.label.text = String(repeating: " *", count: currentWord.count )
     }
     
-    @objc func letterTapped (_ sender: UIButton) {
+    @objc func letterTapped(_ sender: UIButton) {
         if let letterTitle = sender.title(for: .normal) {
-            wordLabel.label.text = letterTitle
+           
+            if currentWord.contains(letterTitle) {
+                currentLetters.append(letterTitle)
+                
+                var wordText = ""
+                
+                for i in currentWord {
+                    if currentLetters.contains(String(i)) {
+                        wordText += "\(String(i))"
+                    } else {
+                        wordText += "*"
+                    }
+                }
+                wordLabel.label.text = wordText.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            
+            
         }
         
     }
 
 
+    
+    
 }
 
 //MARK: - Settings
@@ -63,6 +85,7 @@ extension ViewController {
     func addViews() {
         view.addSubview(keyboardView.keyboardView)
         view.addSubview(wordLabel.label)
+        view.addSubview(wordLabel.attempts)
     }
     
     func settings() {

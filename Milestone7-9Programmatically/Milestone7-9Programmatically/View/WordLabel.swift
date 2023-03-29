@@ -17,4 +17,13 @@ class WordLabel {
         
         return label
     }()
+    
+    var attempts: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Attempt: 7"
+        label.font = UIFont(name: "BradleyHandITCTT-Bold", size: 40)
+        label.textColor = .white
+        return label
+    }()
 }
