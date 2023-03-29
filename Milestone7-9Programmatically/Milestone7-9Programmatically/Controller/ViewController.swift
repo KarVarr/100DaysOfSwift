@@ -9,11 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
     var allWords = [String]()
     
     var letterButtons = [UIButton]()
     let letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
+    var countAttempt = 7 {
+        didSet {
+            wordLabel.attempts.text = "Attempt: \(countAttempt)"
+        }
+    }
     var currentWord: String = "HELLO"
     var currentLetters = [String]()
     
@@ -24,13 +30,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         words()
-//        startGame()
+        //        startGame()
         addViews()
         settings()
         buttonsSetting()
         layoutViews()
         
         currentWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Hello"
+        
+        
     }
     
     func words() {
@@ -47,13 +55,18 @@ class ViewController: UIViewController {
     
     @objc func startGame() {
         currentWord = allWords.randomElement()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Hello"
-        
+        wordLabel.attempts.text = "Attempt: 7"
         wordLabel.label.text = String(repeating: " *", count: currentWord.count )
+        countAttempt = 7
+        currentLetters.removeAll()
+        for button in letterButtons {
+                button.setTitleColor(UIColor.systemBlue, for: .normal)
+            }
     }
     
     @objc func letterTapped(_ sender: UIButton) {
         if let letterTitle = sender.title(for: .normal) {
-           
+            
             if currentWord.contains(letterTitle) {
                 currentLetters.append(letterTitle)
                 
@@ -62,19 +75,32 @@ class ViewController: UIViewController {
                 for i in currentWord {
                     if currentLetters.contains(String(i)) {
                         wordText += "\(String(i))"
+                        sender.isUserInteractionEnabled = true
+                        sender.setTitleColor(UIColor.gray, for: .normal)
                     } else {
                         wordText += "*"
                     }
                 }
                 wordLabel.label.text = wordText.trimmingCharacters(in: .whitespacesAndNewlines)
+            } else {
+                countAttempt -= 1
+                
+                if countAttempt == 0 {
+                    let ac = UIAlertController(title: "You lose", message: "Try again and you might be lucky this time!", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default) {_ in
+                        self.startGame()
+                    })
+                    present(ac, animated: true)
+                    sender.isUserInteractionEnabled = false
+                }
             }
             
             
         }
         
     }
-
-
+    
+    
     
     
 }
@@ -93,7 +119,7 @@ extension ViewController {
         
         title = "Hangman Game ⚗︎"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Repeat", style: .plain, target: self, action: #selector(startGame))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(startGame))
         
         
         
@@ -110,6 +136,11 @@ extension ViewController {
             
             wordLabel.label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             wordLabel.label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            wordLabel.attempts.topAnchor.constraint(equalTo: wordLabel.label.bottomAnchor, constant: 50),
+            wordLabel.attempts.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            
         ])
     }
     

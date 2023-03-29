@@ -11,7 +11,7 @@ class WordLabel {
     var label: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "HELLO"
+        label.text = "Hey, press Start"
         label.font = UIFont(name: "BradleyHandITCTT-Bold", size: 40)
         label.textColor = .systemPink
         
@@ -21,9 +21,9 @@ class WordLabel {
     var attempts: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Attempt: 7"
+        label.text = "🫵"
         label.font = UIFont(name: "BradleyHandITCTT-Bold", size: 40)
-        label.textColor = .white
+        label.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         return label
     }()
 }
