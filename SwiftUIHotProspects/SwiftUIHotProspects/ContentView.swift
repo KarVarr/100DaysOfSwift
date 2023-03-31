@@ -14,7 +14,9 @@ import SwiftUI
 struct EditView: View {
     @EnvironmentObject var user: User
     var body: some View {
-        TextField("Name", text: $user.name)
+        VStack {
+            TextField("Name", text: $user.name)
+        }
     }
 }
 
@@ -28,13 +30,34 @@ struct DisplayName: View {
 
 struct ContentView: View {
     @StateObject var user = User()
+    @State private var selectedName = "Edit"
     
     var body: some View {
-        VStack {
-            EditView()
-            DisplayName()
+        TabView(selection: $selectedName) {
+                Text("Display name")
+                    .onTapGesture {
+                        selectedName = "Name"
+                    }
+                    .tabItem {
+                        Label("Edit", systemImage: "paperplane.fill")
+                    }
+                    .tag("Edit")
+                    .background(.gray)
+              
+            .edgesIgnoringSafeArea(.top)
+            
+                Text("Return main display")
+                    .onTapGesture {
+                        selectedName = "Edit"
+                    }
+                    .tabItem {
+                        Label("Name", systemImage: "paperplane")
+                    }
+                    .tag("Name")
+                    .background(.mint)
+               
+            
         }
-        .environmentObject(user)
     }
 }
 
