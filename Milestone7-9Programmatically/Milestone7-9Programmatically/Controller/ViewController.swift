@@ -141,12 +141,13 @@ extension ViewController {
             wordLabel.attempts.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             
+            
         ])
     }
     
     func buttonsSetting() {
         let width = 50
-        let height = 80
+        let height = 85
         
         for row in 0..<4 {
             for col in 0..<7 {
