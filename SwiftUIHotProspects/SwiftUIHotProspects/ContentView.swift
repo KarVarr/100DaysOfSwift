@@ -7,56 +7,27 @@
 
 import SwiftUI
 
-@MainActor class User: ObservableObject {
-    @Published var name = "Taylor Swift"
-}
-
-struct EditView: View {
-    @EnvironmentObject var user: User
-    var body: some View {
-        VStack {
-            TextField("Name", text: $user.name)
+@MainActor class DeleyedUpdater: ObservableObject {
+    var value = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+    
+    init() {
+        for i in 1...10 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
+                self.value += 1
+            }
         }
     }
 }
 
-struct DisplayName: View {
-    @EnvironmentObject var user: User
-    
-    var body: some View {
-        Text(user.name)
-    }
-}
-
 struct ContentView: View {
-    @StateObject var user = User()
-    @State private var selectedName = "Edit"
-    
+   @StateObject private var update = DeleyedUpdater()
     var body: some View {
-        TabView(selection: $selectedName) {
-                Text("Display name")
-                    .onTapGesture {
-                        selectedName = "Name"
-                    }
-                    .tabItem {
-                        Label("Edit", systemImage: "paperplane.fill")
-                    }
-                    .tag("Edit")
-                    .background(.gray)
-              
-            .edgesIgnoringSafeArea(.top)
-            
-                Text("Return main display")
-                    .onTapGesture {
-                        selectedName = "Edit"
-                    }
-                    .tabItem {
-                        Label("Name", systemImage: "paperplane")
-                    }
-                    .tag("Name")
-                    .background(.mint)
-               
-            
+        VStack{
+            Text("second \(update.value)")
         }
     }
 }
