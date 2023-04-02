@@ -26,8 +26,27 @@ struct ProspectsView: View {
                             .font(.headline)
                         Text(prospect.emailAddress)
                             .foregroundColor(.secondary)
+                    
+                    }
+                    .swipeActions {
+                        if prospect.isContacted {
+                            Button {
+                                prospects.toggle(prospect)
+                            } label: {
+                                Label("Yes", systemImage: "person.crop.circle.badge.xmark")
+                            }
+                            .tint(.red)
+                        } else {
+                            Button {
+                                prospects.toggle(prospect)
+                            } label: {
+                                Label("No", systemImage: "person.crop.circle.fill.badge.checkmark")
+                            }
+                            .tint(.green)
+                        }
                     }
                 }
+                
             }
             .navigationTitle(title)
             .toolbar {
