@@ -13,6 +13,7 @@
 		1785491629D72BF500A06D85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1785491529D72BF500A06D85 /* Preview Assets.xcassets */; };
 		1785492029D9F19600A06D85 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785491F29D9F19600A06D85 /* ProspectsView.swift */; };
 		1785492229D9F1A200A06D85 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785492129D9F1A200A06D85 /* MeView.swift */; };
+		178C51CC29D9F7CC00445574 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178C51CB29D9F7CC00445574 /* Prospect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1785491529D72BF500A06D85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1785491F29D9F19600A06D85 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
 		1785492129D9F1A200A06D85 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		178C51CB29D9F7CC00445574 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,8 @@
 		1785490D29D72BF400A06D85 /* SwiftUIHotProspects */ = {
 			isa = PBXGroup;
 			children = (
-				1785490E29D72BF400A06D85 /* SwiftUIHotProspectsApp.swift */,
-				1785491029D72BF400A06D85 /* ContentView.swift */,
-				1785491F29D9F19600A06D85 /* ProspectsView.swift */,
-				1785492129D9F1A200A06D85 /* MeView.swift */,
+				178C51CE29D9F88800445574 /* Model */,
+				178C51CD29D9F88200445574 /* View */,
 				1785491229D72BF500A06D85 /* Assets.xcassets */,
 				1785491429D72BF500A06D85 /* Preview Content */,
 			);
@@ -71,6 +71,25 @@
 				1785491529D72BF500A06D85 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		178C51CD29D9F88200445574 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1785490E29D72BF400A06D85 /* SwiftUIHotProspectsApp.swift */,
+				1785491029D72BF400A06D85 /* ContentView.swift */,
+				1785491F29D9F19600A06D85 /* ProspectsView.swift */,
+				1785492129D9F1A200A06D85 /* MeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		178C51CE29D9F88800445574 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				178C51CB29D9F7CC00445574 /* Prospect.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1785492229D9F1A200A06D85 /* MeView.swift in Sources */,
+				178C51CC29D9F7CC00445574 /* Prospect.swift in Sources */,
 				1785491129D72BF400A06D85 /* ContentView.swift in Sources */,
 				1785492029D9F19600A06D85 /* ProspectsView.swift in Sources */,
 				1785490F29D72BF400A06D85 /* SwiftUIHotProspectsApp.swift in Sources */,
