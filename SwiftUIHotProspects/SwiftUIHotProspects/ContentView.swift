@@ -7,28 +7,18 @@
 
 import SwiftUI
 
-@MainActor class DeleyedUpdater: ObservableObject {
-    var value = 0 {
-        willSet {
-            objectWillChange.send()
-        }
-    }
-    
-    init() {
-        for i in 1...10 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
-                self.value += 1
-            }
-        }
-    }
-}
+
 
 struct ContentView: View {
-   @StateObject private var update = DeleyedUpdater()
+  
     var body: some View {
-        VStack{
-            Text("second \(update.value)")
-        }
+        Image("images")
+            .interpolation(.none)
+            .resizable()
+            .scaledToFit()
+            .frame(maxHeight: .infinity)
+            .background(.mint)
+            .ignoresSafeArea()
     }
 }
 
