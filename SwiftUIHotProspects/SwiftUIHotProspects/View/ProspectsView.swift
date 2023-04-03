@@ -17,6 +17,8 @@ struct ProspectsView: View {
         case name, recent
     }
     
+    let listOfPeople = PeopleNameAndEmails()
+    
     @EnvironmentObject var prospects: Prospects
     let filter: FilterType
     
@@ -36,6 +38,7 @@ struct ProspectsView: View {
                             Text(prospect.emailAddress)
                                 .foregroundColor(.secondary)
                         }
+                        
                         Spacer()
                         //Challenge 1
                         if prospect.isContacted {
@@ -46,6 +49,7 @@ struct ProspectsView: View {
                                 .foregroundColor(.red)
                         }
                     }
+                    
                     .swipeActions {
                         if prospect.isContacted {
                             Button {
@@ -70,9 +74,14 @@ struct ProspectsView: View {
                             .tint(.indigo)
                         }
                     }
+                    
                 }
-                
+                .listRowSeparator(.hidden)
+                .listRowBackground(LinearGradient(colors: [Color.pink.opacity(0.8), Color.blue], startPoint: .bottomLeading, endPoint: .topTrailing))
             }
+            .listStyle(.plain)
+            .background(LinearGradient(colors: [Color.orange, Color.green, Color.yellow], startPoint: .topLeading, endPoint: .bottom))
+            
             .navigationTitle(title)
             .toolbar {
                 Button {
@@ -104,9 +113,8 @@ struct ProspectsView: View {
                     }
                 }
             }
-            
             .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+                CodeScannerView(codeTypes: [.qr], simulatedData: listOfPeople.arrayOfList.randomElement() ?? "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
             }
         }
     }
