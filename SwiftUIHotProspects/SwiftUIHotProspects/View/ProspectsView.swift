@@ -44,9 +44,12 @@ struct ProspectsView: View {
                         if prospect.isContacted {
                             Image(systemName: "person.fill.checkmark")
                                 .foregroundColor(.mint)
+                                .font(.system(size: 24))
+                                
                         } else {
                             Image(systemName: "person.fill.questionmark")
-                                .foregroundColor(.red)
+                                .foregroundColor(.orange)
+                                .font(.system(size: 24))
                         }
                     }
                     
@@ -77,7 +80,7 @@ struct ProspectsView: View {
                     
                 }
                 .listRowSeparator(.hidden)
-                .listRowBackground(LinearGradient(colors: [Color.pink.opacity(0.8), Color.blue], startPoint: .bottomLeading, endPoint: .topTrailing))
+                .listRowBackground(LinearGradient(colors: [Color.pink.opacity(0.8), Color.blue.opacity(0.85)], startPoint: .bottomLeading, endPoint: .topTrailing))
             }
             .listStyle(.plain)
             .background(LinearGradient(colors: [Color.orange, Color.green, Color.yellow], startPoint: .topLeading, endPoint: .bottom))
@@ -99,17 +102,22 @@ struct ProspectsView: View {
                         Label("Filter", systemImage: "list.number")
                     }
                     //Challenge 3
-                    .confirmationDialog("Filter list", isPresented: $isShowingFilterDialog) {
+                    .confirmationDialog("Filter list", isPresented: $isShowingFilterDialog, titleVisibility: .visible) {
                         Button {
-                            sort = .name
+                            withAnimation {
+                                sort = .name
+                            }
                         } label: {
                             Text("Sorter by name")
                         }
                         Button {
-                            sort = .recent
+                            withAnimation {
+                                sort = .recent
+                            }
                         } label: {
                             Text("Most recent")
                         }
+                       
                     }
                 }
             }
