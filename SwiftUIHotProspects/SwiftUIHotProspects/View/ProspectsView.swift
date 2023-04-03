@@ -13,21 +13,38 @@ struct ProspectsView: View {
         case none, contacted, uncontacted
     }
     
+    enum Sorted {
+        case name, recent
+    }
+    
     @EnvironmentObject var prospects: Prospects
     let filter: FilterType
     
     @State private var isShowingScanner = false
+    @State private var isShowingFilterDialog = false
+    
+    @State var sort: Sorted = .name
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
-                    
+                ForEach(sortedProspects) { prospect in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        //Challenge 1
+                        if prospect.isContacted {
+                            Image(systemName: "person.fill.checkmark")
+                                .foregroundColor(.mint)
+                        } else {
+                            Image(systemName: "person.fill.questionmark")
+                                .foregroundColor(.red)
+                        }
                     }
                     .swipeActions {
                         if prospect.isContacted {
@@ -63,7 +80,31 @@ struct ProspectsView: View {
                 } label: {
                     Label("Scan",systemImage: "qrcode.viewfinder")
                 }
+                
             }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isShowingFilterDialog = true
+                    } label: {
+                        Label("Filter", systemImage: "list.number")
+                    }
+                    //Challenge 3
+                    .confirmationDialog("Filter list", isPresented: $isShowingFilterDialog) {
+                        Button {
+                            sort = .name
+                        } label: {
+                            Text("Sorter by name")
+                        }
+                        Button {
+                            sort = .recent
+                        } label: {
+                            Text("Most recent")
+                        }
+                    }
+                }
+            }
+            
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
             }
@@ -91,6 +132,15 @@ struct ProspectsView: View {
             return prospects.people.filter {$0.isContacted}
         case .uncontacted:
             return prospects.people.filter{!$0.isContacted}
+        }
+    }
+    
+    var sortedProspects: [Prospect] {
+        switch sort {
+        case .name:
+            return filteredProspects.sorted{ $0.name < $1.name}
+        case.recent:
+            return filteredProspects.sorted{ $0.date > $1.date}
         }
     }
     

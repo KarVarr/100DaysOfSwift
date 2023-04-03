@@ -12,6 +12,8 @@ class Prospect: Identifiable, Codable {
     var name = "Anonymous"
     var emailAddress = ""
     fileprivate(set) var isContacted = false
+    //Challenge 3
+    var date = Date()
 }
 
 @MainActor class Prospects: ObservableObject {
