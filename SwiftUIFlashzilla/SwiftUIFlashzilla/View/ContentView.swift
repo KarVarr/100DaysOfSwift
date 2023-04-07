@@ -38,6 +38,7 @@ struct ContentView: View {
                     .padding(.vertical, 5)
                     .background(.black.opacity(0.5))
                     .clipShape(Capsule())
+                    .padding()
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
                         CardView(card: cards[index]) {
@@ -48,7 +49,16 @@ struct ContentView: View {
                         .stacked(at: index, in: cards.count)
                     }
                 }
+                .allowsHitTesting(timeRemaining > 0)
+                if cards.isEmpty {
+                    Button("Start again", action: resetCard)
+                        .padding()
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
+                }
             }
+            
             
             if differentiateWithoutColor {
                 VStack {
@@ -79,7 +89,9 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                isActive = true
+                if cards.isEmpty == false {
+                    isActive = true
+                }
             } else {
                 isActive = false
             }
@@ -87,8 +99,18 @@ struct ContentView: View {
         
     }
     
+    func resetCard() {
+        cards = [Card](repeating: Card.example, count: 10)
+        timeRemaining = 100
+        isActive = true
+    }
+    
     func removeCard(at index: Int) {
         cards.remove(at: index)
+        
+        if cards.isEmpty {
+            isActive = false
+        }
     }
     
 }
