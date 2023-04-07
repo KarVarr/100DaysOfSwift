@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172B4C5029E0667E007BF961 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4C4F29E0667E007BF961 /* Card.swift */; };
+		172B4C5229E06704007BF961 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4C5129E06704007BF961 /* CardView.swift */; };
 		178C51E329DB366D00445574 /* SwiftUIFlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */; };
 		178C51E529DB366D00445574 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178C51E429DB366D00445574 /* ContentView.swift */; };
 		178C51E729DB366E00445574 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178C51E629DB366E00445574 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		172B4C4F29E0667E007BF961 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		172B4C5129E06704007BF961 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		178C51DF29DB366D00445574 /* SwiftUIFlashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIFlashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFlashzillaApp.swift; sourceTree = "<group>"; };
 		178C51E429DB366D00445574 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172B4C4D29E0666A007BF961 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */,
+				178C51E429DB366D00445574 /* ContentView.swift */,
+				172B4C5129E06704007BF961 /* CardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		172B4C4E29E06670007BF961 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				172B4C4F29E0667E007BF961 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		178C51D629DB366D00445574 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +73,8 @@
 		178C51E129DB366D00445574 /* SwiftUIFlashzilla */ = {
 			isa = PBXGroup;
 			children = (
-				178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */,
-				178C51E429DB366D00445574 /* ContentView.swift */,
+				172B4C4E29E06670007BF961 /* Model */,
+				172B4C4D29E0666A007BF961 /* View */,
 				178C51E629DB366E00445574 /* Assets.xcassets */,
 				178C51E829DB366E00445574 /* Preview Content */,
 			);
@@ -138,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				178C51E529DB366D00445574 /* ContentView.swift in Sources */,
+				172B4C5029E0667E007BF961 /* Card.swift in Sources */,
+				172B4C5229E06704007BF961 /* CardView.swift in Sources */,
 				178C51E329DB366D00445574 /* SwiftUIFlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
