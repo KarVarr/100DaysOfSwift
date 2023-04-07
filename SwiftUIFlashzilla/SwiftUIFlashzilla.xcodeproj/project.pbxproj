@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		172B4C5029E0667E007BF961 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4C4F29E0667E007BF961 /* Card.swift */; };
 		172B4C5229E06704007BF961 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4C5129E06704007BF961 /* CardView.swift */; };
+		172B4C5529E09B4C007BF961 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4C5429E09B4C007BF961 /* EditCards.swift */; };
 		178C51E329DB366D00445574 /* SwiftUIFlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */; };
 		178C51E529DB366D00445574 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178C51E429DB366D00445574 /* ContentView.swift */; };
 		178C51E729DB366E00445574 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178C51E629DB366E00445574 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		172B4C4F29E0667E007BF961 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		172B4C5129E06704007BF961 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		172B4C5429E09B4C007BF961 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		178C51DF29DB366D00445574 /* SwiftUIFlashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIFlashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFlashzillaApp.swift; sourceTree = "<group>"; };
 		178C51E429DB366D00445574 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 				178C51E229DB366D00445574 /* SwiftUIFlashzillaApp.swift */,
 				178C51E429DB366D00445574 /* ContentView.swift */,
 				172B4C5129E06704007BF961 /* CardView.swift */,
+				172B4C5429E09B4C007BF961 /* EditCards.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				178C51E529DB366D00445574 /* ContentView.swift in Sources */,
 				172B4C5029E0667E007BF961 /* Card.swift in Sources */,
 				172B4C5229E06704007BF961 /* CardView.swift in Sources */,
+				172B4C5529E09B4C007BF961 /* EditCards.swift in Sources */,
 				178C51E329DB366D00445574 /* SwiftUIFlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

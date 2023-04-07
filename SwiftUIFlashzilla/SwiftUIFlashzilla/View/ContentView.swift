@@ -19,12 +19,13 @@ struct ContentView: View {
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
     @Environment(\.scenePhase) var scenePhase
     
-    @State private var cards = [Card](repeating: Card.example, count: 10)
+    @State private var cards = [Card]()
     
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State private var isActive = true
+    @State private var showingEditScreen = false
     
     var body: some View {
         ZStack {
@@ -61,6 +62,26 @@ struct ContentView: View {
                         .clipShape(Capsule())
                 }
             }
+            
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button {
+                        showingEditScreen = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .padding()
+                            .background(.black.opacity(0.5))
+                            .clipShape(Circle())
+                    }
+                }
+
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
             
             
             if differentiateWithoutColor || voiceOverEnabled{
@@ -117,13 +138,23 @@ struct ContentView: View {
                 isActive = false
             }
         }
+        .sheet(isPresented: $showingEditScreen,onDismiss: resetCard, content: EditCards.init)
+        .onAppear(perform: resetCard)
         
     }
     
+    func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "Cards") {
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decoded
+            }
+        }
+    }
+    
     func resetCard() {
-        cards = [Card](repeating: Card.example, count: 10)
         timeRemaining = 100
         isActive = true
+        loadData()
     }
     
     func removeCard(at index: Int) {
