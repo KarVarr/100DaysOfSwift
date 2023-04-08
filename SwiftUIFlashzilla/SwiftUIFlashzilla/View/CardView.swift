@@ -25,17 +25,22 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 40, style: .continuous)
                 .fill(
                     differentiateWithoutColor
-                    ? .yellow
-                    : .yellow
+                    ? .white
+                    : .white
                         .opacity(1 - Double(abs(offset.width / 50)))
                 )
+           
                 .background(
                     differentiateWithoutColor
                     ? nil
                     : RoundedRectangle(cornerRadius: 40, style: .continuous)
-                        .fill(offset.width > 0 ? .green : .red)
+                    //Challenge 2
+                        .fill(backgroundColor(offset))
+                        .scaleEffect(offset.width > 0 ? 0.9 : 0.9)
                 )
-                .shadow(color: .gray.opacity(0.4),radius: 5, x: 10, y: 10)
+                
+                .shadow(color: .black.opacity(0.4),radius: 10)
+            
             
             VStack {
                 if voiceOverEnabled {
@@ -88,6 +93,18 @@ struct CardView: View {
         }
         .animation(.spring(), value: offset)
     }
+    
+    func backgroundColor(_ offset: CGSize) -> Color {
+        if offset.width > 0 {
+            return .green
+        }
+        if offset.width < 0 {
+            return .red
+        }
+        
+        return .white
+    }
+    
 }
 
 struct CardView_Previews: PreviewProvider {

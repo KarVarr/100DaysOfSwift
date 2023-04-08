@@ -67,9 +67,12 @@ struct EditCards: View {
            let trimmedAnswer = newAnswer.trimmingCharacters(in: .whitespaces)
            guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
 
-           let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
+           let card = Card(id: UUID(), prompt: trimmedPrompt, answer: trimmedAnswer)
            cards.insert(card, at: 0)
            saveData()
+           // Challenge 1
+           newPrompt = ""
+           newAnswer = ""
        }
 
        func removeCards(at offsets: IndexSet) {

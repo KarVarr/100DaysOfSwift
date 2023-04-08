@@ -29,9 +29,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Image("background")
-                .resizable()
-                .ignoresSafeArea()
+            
             VStack {
                 Text("Time: \(timeRemaining)")
                     .font(.largeTitle)
@@ -42,7 +40,7 @@ struct ContentView: View {
                     .clipShape(Capsule())
                     .padding()
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
+                    ForEach(0..<cards.count) { index in
                         CardView(card: cards[index]) {
                             withAnimation {
                                 removeCard(at: index)
@@ -122,6 +120,8 @@ struct ContentView: View {
                 }
             }
         }
+        .background(LinearGradient(stops: [Gradient.Stop(color: .blue, location: 0.1),Gradient.Stop(color: .pink, location: 0.4)],
+                                           startPoint: .topLeading, endPoint: .bottomTrailing))
         .onReceive(timer) { time in
             guard isActive else { return }
             
