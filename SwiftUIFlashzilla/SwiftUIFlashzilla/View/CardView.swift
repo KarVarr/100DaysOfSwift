@@ -25,8 +25,8 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 40, style: .continuous)
                 .fill(
                     differentiateWithoutColor
-                    ? .white
-                    : .white
+                    ? .yellow
+                    : .yellow
                         .opacity(1 - Double(abs(offset.width / 50)))
                 )
            
@@ -36,7 +36,7 @@ struct CardView: View {
                     : RoundedRectangle(cornerRadius: 40, style: .continuous)
                     //Challenge 2
                         .fill(backgroundColor(offset))
-                        .scaleEffect(offset.width > 0 ? 0.9 : 0.9)
+                        
                 )
                 
                 .shadow(color: .black.opacity(0.4),radius: 10)
