@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  DiceWithNumber6.swift
 //  SwiftUIMilestone16-18
 //
 //  Created by Karen Vardanian on 09.04.2023.
@@ -7,22 +7,23 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DiceWithNumber6: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
                 .fill(.green)
-                .shadow(radius: 5)
+                .shadow(radius: 6, x: 10, y: 10)
                 .frame(maxWidth: 200, maxHeight: 200)
             
             Circle()
                 .fill(.white)
                 .frame(width: 30, height: 30)
+                .offset(x: -60.0, y:0.0)
             
             Circle()
                 .fill(.white)
                 .frame(width: 30, height: 30)
-                .offset(x: 60.0, y: 60.0)
+                .offset(x: 60.0, y: 0.0)
             
             Circle()
                 .fill(.white)
@@ -44,12 +45,11 @@ struct ContentView: View {
                 .frame(width: 30, height: 30)
                 .offset(x: 60.0, y: -60.0)
         }
-        .border(.red)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct DiceWithNumber6_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DiceWithNumber6()
     }
 }
