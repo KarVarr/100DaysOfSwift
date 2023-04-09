@@ -9,13 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .fill(.green)
+                .shadow(radius: 5)
+                .frame(maxWidth: 200, maxHeight: 200)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+                .offset(x: 60.0, y: 60.0)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+                .offset(x: 60.0, y: 60.0)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+                .offset(x: -60.0, y: -60.0)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+                .offset(x: -60.0, y: 60.0)
+            
+            Circle()
+                .fill(.white)
+                .frame(width: 30, height: 30)
+                .offset(x: 60.0, y: -60.0)
         }
-        .padding()
+        .border(.red)
     }
 }
 
