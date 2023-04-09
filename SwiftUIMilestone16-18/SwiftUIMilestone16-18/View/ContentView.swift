@@ -45,12 +45,13 @@ struct ContentView: View {
                 
                 Text("Win : \(resultOfWin(scoreUser, scoreAI)) !")
                     .frame(width: geo.size.width)
-                    .truncationMode(.tail)
-                      .shadow(color: .purple, radius: 4, x: 5, y: 5)
+                    
                     .padding()
                     .background(.black)
                     .foregroundColor(.purple)
                     .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
                     .shadow(radius: 6, x: 0, y: 10)
                 
                 Spacer()
@@ -72,15 +73,28 @@ struct ContentView: View {
                 
                 Button("Roll the Dice", action: rollDice)
                     .padding()
-                    .background(.mint)
+                    
+                    .background(LinearGradient(gradient: Gradient(colors: [.red, .blue, .pink, .orange]), startPoint: .bottomTrailing, endPoint: .topLeading))
                     .foregroundColor(.white)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .stroke(Color.white, lineWidth: 2)
+                    )
+                    .shadow(radius: 5)
+                    
             }
             .frame(width: geo.size.width)
-
+            
         }
+        .background(LinearGradient(gradient: Gradient(stops: [
+            Gradient.Stop(color: .indigo, location: 0.20),
+            Gradient.Stop(color: .yellow, location: 0.50),
+            Gradient.Stop(color: .orange, location: 0.80),
+            
+        ]), startPoint: .bottomTrailing, endPoint: .topLeading))
     }
     
     func rollDice() {
