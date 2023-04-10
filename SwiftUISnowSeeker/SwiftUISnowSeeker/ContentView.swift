@@ -9,24 +9,38 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var searchText = ""
-    let names = ["Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat", ]
+    let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    @State private var searchingText = ""
+   
     var body: some View {
         NavigationView {
-            List(filteredNames, id: \.self) { name in
-                Text(name)
+            List(resorts) { resort in
+                NavigationLink {
+                    Text(resort.name)
+                } label: {
+                    Image(resort.country)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 25)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(.black, lineWidth: 1)
+                        )
+                    
+                    VStack(alignment: .leading) {
+                        Text(resort.name)
+                            .font(.headline)
+                        Text("\(resort.runs) runs")
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
-            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .automatic))
-            .navigationTitle("hello")
+            .searchable(text: $searchingText)
+            .navigationTitle("Resorts")
         }
     }
-    var filteredNames: [String] {
-        if searchText.isEmpty {
-            return names
-        } else {
-            return names.filter{ $0.localizedCaseInsensitiveContains(searchText)}
-        }
-    }
+  
 }
 
 struct ContentView_Previews: PreviewProvider {
