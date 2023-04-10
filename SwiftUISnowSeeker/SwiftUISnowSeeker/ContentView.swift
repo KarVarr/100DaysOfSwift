@@ -7,15 +7,25 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct UserView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Group {
+            Text("Name: Paul")
+            Text("Country: England")
+            Text("Pets: Luna and Arya")
         }
-        .padding()
+    }
+}
+
+struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+    
+    var body: some View {
+        if sizeClass == .compact {
+            VStack(content: UserView.init)
+        } else {
+            HStack(content: UserView.init)
+        }
     }
 }
 
