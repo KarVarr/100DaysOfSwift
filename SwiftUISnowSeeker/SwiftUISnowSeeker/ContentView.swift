@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct UserView: View {
-    var body: some View {
-        Group {
-            Text("Name: Paul")
-            Text("Country: England")
-            Text("Pets: Luna and Arya")
-        }
-    }
-}
 
 struct ContentView: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
-    
+    @State private var searchText = ""
+    let names = ["Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat","Jacny", "Bob", "Jack", "Anna", "Diana", "DonDon", "Gone", "Hello", "Some name", "FWT", "Rat", ]
     var body: some View {
-        if sizeClass == .compact {
-            VStack(content: UserView.init)
+        NavigationView {
+            List(filteredNames, id: \.self) { name in
+                Text(name)
+            }
+            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .automatic))
+            .navigationTitle("hello")
+        }
+    }
+    var filteredNames: [String] {
+        if searchText.isEmpty {
+            return names
         } else {
-            HStack(content: UserView.init)
+            return names.filter{ $0.localizedCaseInsensitiveContains(searchText)}
         }
     }
 }
