@@ -25,7 +25,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(filteredResorts) { resort in
                 NavigationLink {
                     Text(resort.name)
                 } label: {
@@ -47,12 +47,19 @@ struct ContentView: View {
                     }
                 }
             }
-            .searchable(text: $searchingText)
+            .searchable(text: $searchingText, prompt: "Search for a resort")
             .navigationTitle("Resorts")
             
             WelcomeView()
         }
         .phoneOnlyStackNavigationView()
+    }
+    var filteredResorts: [Resort] {
+        if searchingText.isEmpty {
+            return resorts
+        } else {
+            return resorts.filter{$0.name.localizedCaseInsensitiveContains(searchingText)}
+        }
     }
   
 }
