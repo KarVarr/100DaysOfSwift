@@ -18,6 +18,7 @@
 		172B4CBC29E46A6F007BF961 /* ResortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4CBB29E46A6F007BF961 /* ResortView.swift */; };
 		172B4CBE29E46B3C007BF961 /* SkiDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4CBD29E46B3C007BF961 /* SkiDetailsView.swift */; };
 		172B4CC029E46B81007BF961 /* ResortDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4CBF29E46B81007BF961 /* ResortDetailsView.swift */; };
+		172B4CC229E5C200007BF961 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B4CC129E5C200007BF961 /* Facility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		172B4CBB29E46A6F007BF961 /* ResortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortView.swift; sourceTree = "<group>"; };
 		172B4CBD29E46B3C007BF961 /* SkiDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDetailsView.swift; sourceTree = "<group>"; };
 		172B4CBF29E46B81007BF961 /* ResortDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortDetailsView.swift; sourceTree = "<group>"; };
+		172B4CC129E5C200007BF961 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				172B4CB629E45A82007BF961 /* resorts.json */,
 				172B4CB129E459EA007BF961 /* Resort.swift */,
 				172B4CB429E45A1E007BF961 /* Bundle-Decodable.swift */,
+				172B4CC129E5C200007BF961 /* Facility.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				172B4CBA29E46041007BF961 /* WelcomeView.swift in Sources */,
 				172B4CBE29E46B3C007BF961 /* SkiDetailsView.swift in Sources */,
 				172B4CC029E46B81007BF961 /* ResortDetailsView.swift in Sources */,
+				172B4CC229E5C200007BF961 /* Facility.swift in Sources */,
 				172B4CA629E42FB5007BF961 /* ContentView.swift in Sources */,
 				172B4CB229E459EA007BF961 /* Resort.swift in Sources */,
 				172B4CBC29E46A6F007BF961 /* ResortView.swift in Sources */,
