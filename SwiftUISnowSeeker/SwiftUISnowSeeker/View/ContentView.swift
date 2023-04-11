@@ -52,7 +52,7 @@ struct ContentView: View {
             
             WelcomeView()
         }
-        .phoneOnlyStackNavigationView()
+//        .phoneOnlyStackNavigationView()
     }
     var filteredResorts: [Resort] {
         if searchingText.isEmpty {
