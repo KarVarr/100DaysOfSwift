@@ -27,9 +27,10 @@ struct ResortView: View {
                     //Challenge 1
                     Text(resort.imageCredit)
                         .padding()
-                        .background(.black.opacity(0.3))
+                        .background(.orange.opacity(0.3))
                         .foregroundColor(.white)
                         .font(.largeTitle)
+                        .fontWeight(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 }
                 HStack {
@@ -42,12 +43,13 @@ struct ResortView: View {
                     }
                 }
                 .padding(.vertical)
-                .background(Color.primary.opacity(0.1))
+                .background(.yellow)
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 
                 Group {
                     Text(resort.description)
                         .padding(.vertical)
+                        
                     
                     Text("Facilities")
                         .font(.headline)
@@ -78,6 +80,7 @@ struct ResortView: View {
                 .padding(.horizontal)
             }
         }
+        .background(.orange.opacity(0.1))
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
         .alert(selectedFacility?.name ?? "More information", isPresented: $showingFacility, presenting: selectedFacility) { _ in
