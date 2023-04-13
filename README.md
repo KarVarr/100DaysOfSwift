@@ -33,13 +33,13 @@ https://www.hackingwithswift.com/100
   - Accessibility
   - And much more...
   
-  <img src="Screenshots/screen0.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen1.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen2.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen3.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen4.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen5.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen6.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen7.jpg" alt="image of certificate" width="300"/>
-  <img src="Screenshots/screen8.jpg" alt="image of certificate" width="300"/>
+  <img src="Screenshots/screen0.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen1.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen2.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen3.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen4.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen5.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen6.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen7.png" alt="image of Screenshots" width="300"/>
+  <img src="Screenshots/screen8.png" alt="image of Screenshots" width="300"/>
 </div>
