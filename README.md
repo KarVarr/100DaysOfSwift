@@ -11,4 +11,10 @@ https://www.hackingwithswift.com/100
 
 ---
 
+<div align="center">
+
 <img src="https://i.ytimg.com/vi/RB5nWzdl-b8/maxresdefault.jpg" alt="image of 100daysofswift" width="900"/>
+
+<img src="Screenshots/certificate.jpg" alt="image of certificate" width="900"/>
+
+</div>
