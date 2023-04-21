@@ -15,8 +15,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
         backgroundColor = .white
+        layer.cornerRadius = 10
         
         settings()
         addView()
@@ -32,16 +32,20 @@ class MyCollectionViewCell: UICollectionViewCell {
         addSubview(label)
         addSubview(image)
     }
+    
     func settings() {
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         label.textAlignment = .center
-        label.textColor = .orange
+        label.textColor = .white
+        label.font = UIFont(name: "MarkerFelt-Thin", size: 16)
         
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = . brown
+        image.backgroundColor = .brown
+        image.layer.cornerRadius = 20
     }
+    
     func layout() {
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
