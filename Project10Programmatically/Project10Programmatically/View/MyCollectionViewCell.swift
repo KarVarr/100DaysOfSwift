@@ -9,27 +9,51 @@ import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     
-    var label: UILabel = {
-       var label = UILabel()
-        label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.textAlignment = .center
-        label.textColor = .orange
-        
-        return label
-    }()
+    var label = UILabel()
+    var image = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        label.frame = bounds
-        
         
         
         backgroundColor = .white
-        addSubview(label)
+        
+        settings()
+        addView()
+        layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func addView() {
+        addSubview(label)
+        addSubview(image)
+    }
+    func settings() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.frame = bounds
+        label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        label.textAlignment = .center
+        label.textColor = .orange
+        
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.backgroundColor = . brown
+    }
+    func layout() {
+        NSLayoutConstraint.activate([
+            image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -10),
+            image.widthAnchor.constraint(equalToConstant: 120),
+            image.heightAnchor.constraint(equalToConstant: 120),
+            
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
     }
     
     
