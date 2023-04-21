@@ -20,8 +20,12 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        label.frame = contentView.bounds
-        contentView.addSubview(label)
+        label.frame = bounds
+        
+        
+        
+        backgroundColor = .white
+        addSubview(label)
     }
     
     required init?(coder: NSCoder) {

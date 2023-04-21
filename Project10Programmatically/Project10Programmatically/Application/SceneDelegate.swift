@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let layout = UICollectionViewFlowLayout()
         
-        window.rootViewController = UINavigationController(rootViewController: ViewController(collectionViewLayout: layout))
+        window.rootViewController = UINavigationController(rootViewController: HomeCollectionViewController(collectionViewLayout: layout))
         window.makeKeyAndVisible()
         self.window = window
     }
