@@ -16,11 +16,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         
         self.collectionView!.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        title = "Add Person"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
         
     }
@@ -31,32 +33,32 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
+//        picker.sourceType = .camera
         present(picker, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.editedImage] as? UIImage else {return}
-        
+        guard let image = info[.editedImage] as? UIImage else { return }
+
         let imageName = UUID().uuidString
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
         
-        if let jpegData = image.jpegData(compressionQuality: 1) {
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
         }
         
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
         collectionView.reloadData()
-        
+
         dismiss(animated: true)
     }
-    
+
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-
-    
+   
 
     // MARK: UICollectionViewDataSource
 
@@ -66,13 +68,19 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return people.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MyCollectionViewCell
-        cell.backgroundColor = .gray
-        cell.label.text = "Name"
+        cell.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.5145705342, blue: 1, alpha: 1)
+        
+        let person = people[indexPath.item]
+        cell.label.text = person.name.capitalized
+        
+        let imagePath = getDocumentsDirectory().appendingPathExtension(person.image)
+        cell.imageView.image = UIImage(contentsOfFile: imagePath.path)
+        
         return cell
     }
 
@@ -90,6 +98,24 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = people[indexPath.item]
+        
+        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "Ok", style: .default) {[weak self, weak ac] _ in
+            guard let newName = ac?.textFields?[0].text else { return }
+            person.name = newName
+            
+            self?.collectionView.reloadData()
+        })
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
     }
 
 }

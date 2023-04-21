@@ -10,7 +10,7 @@ import UIKit
 class MyCollectionViewCell: UICollectionViewCell {
     
     var label = UILabel()
-    var image = UIImageView()
+    var imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     func addView() {
         addSubview(label)
-        addSubview(image)
+        addSubview(imageView)
     }
     
     func settings() {
@@ -41,19 +41,22 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.textColor = .white
         label.font = UIFont(name: "MarkerFelt-Thin", size: 16)
         
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .brown
-        image.layer.cornerRadius = 20
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 5
+        imageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
+        imageView.layer.borderWidth = 2
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
     }
     
     func layout() {
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -10),
-            image.widthAnchor.constraint(equalToConstant: 120),
-            image.heightAnchor.constraint(equalToConstant: 120),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            imageView.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -10),
+            imageView.widthAnchor.constraint(equalToConstant: 120),
+            imageView.heightAnchor.constraint(equalToConstant: 120),
             
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             label.centerXAnchor.constraint(equalTo: centerXAnchor),
