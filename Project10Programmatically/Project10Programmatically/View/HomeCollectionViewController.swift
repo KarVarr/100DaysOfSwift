@@ -33,7 +33,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
-//        picker.sourceType = .camera
+        picker.sourceType = .photoLibrary
         present(picker, animated: true)
     }
     
@@ -56,7 +56,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+        return paths.first!
     }
    
 
@@ -85,15 +85,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 140, height: 180)
+        CGSize(width: 180, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        1
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        1
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -103,6 +103,21 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         
+        let acDelete = UIAlertController(title: "Delete or Rename?", message: nil, preferredStyle: .actionSheet)
+        acDelete.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        acDelete.addAction(UIAlertAction(title: "Delete", style: .default) {[weak self] _ in
+            self?.people.remove(at: indexPath.item)
+            collectionView.reloadData()
+        })
+        acDelete.addAction(UIAlertAction(title: "Rename", style: .default) {[weak self] _ in
+            self?.renamePerson(person)
+        })
+        
+        present(acDelete, animated: true)
+        
+    }
+    
+    func renamePerson(_ person: Person) {
         let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
         ac.addTextField()
         
