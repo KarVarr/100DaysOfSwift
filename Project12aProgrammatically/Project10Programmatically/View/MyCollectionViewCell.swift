@@ -38,7 +38,7 @@ class MyCollectionViewCell: UICollectionViewCell {
 //        label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         label.textAlignment = .center
-        label.textColor = .systemPink
+        label.textColor = .white
         label.font = UIFont(name: "MarkerFelt-Thin", size: 16)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +47,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         imageView.layer.borderWidth = 2
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
+        imageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
     }
     
     func layout() {
@@ -55,8 +56,8 @@ class MyCollectionViewCell: UICollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             imageView.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -10),
-            imageView.widthAnchor.constraint(equalToConstant: 120),
-            imageView.heightAnchor.constraint(equalToConstant: 120),
+//            imageView.widthAnchor.constraint(equalToConstant: 120),
+//            imageView.heightAnchor.constraint(equalToConstant: 120),
             
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             label.centerXAnchor.constraint(equalTo: centerXAnchor),

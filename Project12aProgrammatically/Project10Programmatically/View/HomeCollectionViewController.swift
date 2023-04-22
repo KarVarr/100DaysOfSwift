@@ -24,7 +24,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
-       
         
     }
     
@@ -74,19 +73,19 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MyCollectionViewCell
-        cell.backgroundColor = .white
+        cell.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.5145705342, blue: 1, alpha: 1)
         
         let person = people[indexPath.item]
         cell.label.text = person.name.capitalized
         
-        let imagePath = getDocumentsDirectory().appending(path: person.image)
+        let imagePath = getDocumentsDirectory().appendingPathExtension(person.image)
         cell.imageView.image = UIImage(contentsOfFile: imagePath.path)
         
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 160, height: 180)
+        CGSize(width: 180, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
