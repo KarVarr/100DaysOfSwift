@@ -24,7 +24,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
+        let defaults = UserDefaults.standard
         
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people")
+            }
+        }
     }
     
     //MARK: - Functions
@@ -49,6 +59,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
+        save()
         collectionView.reloadData()
 
         dismiss(animated: true)
@@ -57,6 +68,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths.first!
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        } else {
+            print("Failed to save people")
+        }
     }
    
 
@@ -107,6 +129,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         acDelete.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         acDelete.addAction(UIAlertAction(title: "Delete", style: .default) {[weak self] _ in
             self?.people.remove(at: indexPath.item)
+            self?.save()
             collectionView.reloadData()
         })
         acDelete.addAction(UIAlertAction(title: "Rename", style: .default) {[weak self] _ in
@@ -124,7 +147,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         ac.addAction(UIAlertAction(title: "Ok", style: .default) {[weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             person.name = newName
-            
+            self?.save()
             self?.collectionView.reloadData()
         })
         
