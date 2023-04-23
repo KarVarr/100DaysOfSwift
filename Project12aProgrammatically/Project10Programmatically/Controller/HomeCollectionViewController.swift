@@ -25,40 +25,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
         
-    }
-    
-    //MARK: - Functions
-    
-    @objc func addNewPerson() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.editedImage] as? UIImage else { return }
-
-        let imageName = UUID().uuidString
-        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-        
-        if let jpegData = image.jpegData(compressionQuality: 0.8) {
-            try? jpegData.write(to: imagePath)
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [Person.self], from: savedPeople) as? [Person] {
+                people = decodedPeople
+            }
         }
         
-        let person = Person(name: "Unknown", image: imageName)
-        people.append(person)
-        collectionView.reloadData()
-
-        dismiss(animated: true)
     }
-
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths.first!
-    }
-   
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -78,7 +53,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let person = people[indexPath.item]
         cell.label.text = person.name.capitalized
         
-        let imagePath = getDocumentsDirectory().appendingPathExtension(person.image)
+        let imagePath = getDocumentsDirectory().appending(path: person.image)
         cell.imageView.image = UIImage(contentsOfFile: imagePath.path)
         
         return cell
@@ -107,6 +82,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         acDelete.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         acDelete.addAction(UIAlertAction(title: "Delete", style: .default) {[weak self] _ in
             self?.people.remove(at: indexPath.item)
+            self?.save()
             collectionView.reloadData()
         })
         acDelete.addAction(UIAlertAction(title: "Rename", style: .default) {[weak self] _ in
@@ -115,6 +91,39 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         
         present(acDelete, animated: true)
         
+    }
+    
+    //MARK: - Functions
+    
+    @objc func addNewPerson() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+        
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+        }
+        
+        let person = Person(name: "Unknown", image: imageName)
+        people.append(person)
+        save()
+        collectionView.reloadData()
+
+        dismiss(animated: true)
+    }
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths.first!
     }
     
     func renamePerson(_ person: Person) {
@@ -131,6 +140,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(ac, animated: true)
+    }
+    
+    func save() {
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
     }
 
 }
