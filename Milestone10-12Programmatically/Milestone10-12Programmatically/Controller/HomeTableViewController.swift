@@ -8,7 +8,9 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    private let reuseIdentifier = "cell"
+    let reuseIdentifier = "cell"
+    
+    var places = [Place]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
             try? jpegData.write(to: imagePath)
         }
         
+        let newPlace = Place(image: imageName, name: "Unknown")
+        places.append(newPlace)
+        tableView.reloadData()
+        
         dismiss(animated: true)
     }
     
@@ -55,14 +61,18 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 10
+        return places.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MyTableViewCell
         
+        let place = places[indexPath.row]
+        cell.myLabel.text = place.name
+        
+        let imagePath = getDocumentsDirectory().appending(path: place.image)
+        cell.myImageView.image = UIImage(contentsOfFile: imagePath.path())
         
         return cell
     }

@@ -9,8 +9,21 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
+    let key = HomeTableViewController()
+    
      let myImageView = UIImageView()
      let myLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: key.reuseIdentifier)
+        self.addView()
+        self.settings()
+        self.layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +41,12 @@ class MyTableViewCell: UITableViewCell {
     }
     
     func settings() {
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
         myLabel.text = "Unknown"
+        
+        myImageView.translatesAutoresizingMaskIntoConstraints = false
+        myImageView.contentMode = .scaleToFill
+        myImageView.clipsToBounds = true
     }
     
     func layout() {
