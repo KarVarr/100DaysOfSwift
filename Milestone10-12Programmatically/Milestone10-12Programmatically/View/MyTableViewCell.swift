@@ -47,6 +47,8 @@ class MyTableViewCell: UITableViewCell {
         myImageView.translatesAutoresizingMaskIntoConstraints = false
         myImageView.contentMode = .scaleToFill
         myImageView.clipsToBounds = true
+        myImageView.layer.cornerRadius = 5
+        
     }
     
     func layout() {

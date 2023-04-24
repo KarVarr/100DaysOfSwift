@@ -20,6 +20,7 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         title = "New places"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newPlace))
     }
     
@@ -67,6 +68,7 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MyTableViewCell
+        cell.accessoryType = .disclosureIndicator
         
         let place = places[indexPath.row]
         cell.myLabel.text = place.name
@@ -76,6 +78,17 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let newVC = ImageViewController()
+        
+        
+        navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    
     
 
 

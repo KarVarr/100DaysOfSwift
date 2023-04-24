@@ -14,6 +14,8 @@
 		1734277129F6A3F30063886C /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277029F6A3F30063886C /* HomeTableViewController.swift */; };
 		1734277329F6A40C0063886C /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277229F6A40C0063886C /* MyTableViewCell.swift */; };
 		1734277729F6B89C0063886C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277629F6B89B0063886C /* Place.swift */; };
+		1734277929F6BE710063886C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277829F6BE710063886C /* ImageViewController.swift */; };
+		1734277B29F6BF9D0063886C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277A29F6BF9D0063886C /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1734277029F6A3F30063886C /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		1734277229F6A40C0063886C /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1734277629F6B89B0063886C /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		1734277829F6BE710063886C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		1734277A29F6BF9D0063886C /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		1734276F29F6A3D30063886C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1734277829F6BE710063886C /* ImageViewController.swift */,
 				1734277029F6A3F30063886C /* HomeTableViewController.swift */,
 			);
 			path = Controller;
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				1734277229F6A40C0063886C /* MyTableViewCell.swift */,
+				1734277A29F6BF9D0063886C /* ImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 				1734275A29F6A3660063886C /* AppDelegate.swift in Sources */,
 				1734277329F6A40C0063886C /* MyTableViewCell.swift in Sources */,
 				1734275C29F6A3660063886C /* SceneDelegate.swift in Sources */,
+				1734277929F6BE710063886C /* ImageViewController.swift in Sources */,
+				1734277B29F6BF9D0063886C /* ImageView.swift in Sources */,
 				1734277729F6B89C0063886C /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
