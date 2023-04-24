@@ -8,8 +8,8 @@
 import UIKit
 
 class ImageView {
-    let showingImage: UIImageView = {
-       let image = UIImageView()
+    var showingImage: UIImageView = {
+       var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
         image.clipsToBounds = true

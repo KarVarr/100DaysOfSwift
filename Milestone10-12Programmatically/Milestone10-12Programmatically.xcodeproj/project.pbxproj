@@ -16,6 +16,7 @@
 		1734277729F6B89C0063886C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277629F6B89B0063886C /* Place.swift */; };
 		1734277929F6BE710063886C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277829F6BE710063886C /* ImageViewController.swift */; };
 		1734277B29F6BF9D0063886C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277A29F6BF9D0063886C /* ImageView.swift */; };
+		1734277D29F6C71F0063886C /* CaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277C29F6C71F0063886C /* CaptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1734277629F6B89B0063886C /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1734277829F6BE710063886C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		1734277A29F6BF9D0063886C /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		1734277C29F6C71F0063886C /* CaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				1734277229F6A40C0063886C /* MyTableViewCell.swift */,
 				1734277A29F6BF9D0063886C /* ImageView.swift */,
+				1734277C29F6C71F0063886C /* CaptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				1734277329F6A40C0063886C /* MyTableViewCell.swift in Sources */,
 				1734275C29F6A3660063886C /* SceneDelegate.swift in Sources */,
 				1734277929F6BE710063886C /* ImageViewController.swift in Sources */,
+				1734277D29F6C71F0063886C /* CaptionView.swift in Sources */,
 				1734277B29F6BF9D0063886C /* ImageView.swift in Sources */,
 				1734277729F6B89C0063886C /* Place.swift in Sources */,
 			);

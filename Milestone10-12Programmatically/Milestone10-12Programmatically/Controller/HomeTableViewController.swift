@@ -82,8 +82,12 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let newVC = ImageViewController()
+        let place = places[indexPath.row]
+        let imagePath = getDocumentsDirectory().appending(path: place.image)
         
+        
+        let newVC = ImageViewController()
+        newVC.image.showingImage.image = UIImage(contentsOfFile: imagePath.path())
         
         navigationController?.pushViewController(newVC, animated: true)
     }
