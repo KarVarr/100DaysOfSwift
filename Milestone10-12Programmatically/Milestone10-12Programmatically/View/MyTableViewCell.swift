@@ -9,13 +9,13 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
-    let key = HomeTableViewController()
+     let homeTableView = HomeTableViewController()
     
      let myImageView = UIImageView()
      let myLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: key.reuseIdentifier)
+        super.init(style: style, reuseIdentifier: homeTableView.reuseIdentifier)
         self.addView()
         self.settings()
         self.layout()

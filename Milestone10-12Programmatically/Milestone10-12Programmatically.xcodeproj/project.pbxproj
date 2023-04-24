@@ -17,6 +17,7 @@
 		1734277929F6BE710063886C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277829F6BE710063886C /* ImageViewController.swift */; };
 		1734277B29F6BF9D0063886C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277A29F6BF9D0063886C /* ImageView.swift */; };
 		1734277D29F6C71F0063886C /* CaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277C29F6C71F0063886C /* CaptionView.swift */; };
+		1734278029F6DE8F0063886C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734277F29F6DE8F0063886C /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1734277829F6BE710063886C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		1734277A29F6BF9D0063886C /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		1734277C29F6C71F0063886C /* CaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionView.swift; sourceTree = "<group>"; };
+		1734277F29F6DE8F0063886C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				1734276E29F6A3C90063886C /* Application */,
+				1734277E29F6DE6B0063886C /* Utilits */,
 				1734277529F6A5110063886C /* Model */,
 				1734277429F6A50A0063886C /* View */,
 				1734276F29F6A3D30063886C /* Controller */,
@@ -117,6 +120,14 @@
 				1734277629F6B89B0063886C /* Place.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1734277E29F6DE6B0063886C /* Utilits */ = {
+			isa = PBXGroup;
+			children = (
+				1734277F29F6DE8F0063886C /* Utility.swift */,
+			);
+			path = Utilits;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			files = (
 				1734277129F6A3F30063886C /* HomeTableViewController.swift in Sources */,
 				1734275A29F6A3660063886C /* AppDelegate.swift in Sources */,
+				1734278029F6DE8F0063886C /* Utility.swift in Sources */,
 				1734277329F6A40C0063886C /* MyTableViewCell.swift in Sources */,
 				1734275C29F6A3660063886C /* SceneDelegate.swift in Sources */,
 				1734277929F6BE710063886C /* ImageViewController.swift in Sources */,

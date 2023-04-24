@@ -9,11 +9,14 @@ import Foundation
 
 
 class Place: Codable {
-    let image: String
-    let name: String
+    var image: String
+    var name: String
+    var caption: String
     
-    init(image: String, name: String) {
+    
+    init(image: String, name: String, caption: String) {
         self.image = image
         self.name = name
+        self.caption = caption
     }
 }

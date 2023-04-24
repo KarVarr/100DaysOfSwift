@@ -9,19 +9,32 @@ import UIKit
 
 class HomeTableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     let reuseIdentifier = "cell"
+    let utility = Utility()
     
     var places = [Place]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.5960784314, green: 0.8666666667, blue: 0.5911045668, alpha: 1)
         
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         title = "New places"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newPlace))
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedPlace = defaults.object(forKey: "places") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                places = try jsonDecoder.decode([Place].self, from: savedPlace)
+            } catch {
+                print("Failed to load place")
+            }
+        }
     }
     
     //MARK: - Function
@@ -43,8 +56,9 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
             try? jpegData.write(to: imagePath)
         }
         
-        let newPlace = Place(image: imageName, name: "Unknown")
+        let newPlace = Place(image: imageName, name: "Unknown", caption: "Name image")
         places.append(newPlace)
+        save()
         tableView.reloadData()
         
         dismiss(animated: true)
@@ -54,6 +68,17 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(places) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "places")
+        } else {
+            print("Failed to save place")
+        }
+    }
+    
 
     // MARK: - Table view data source
 
@@ -73,8 +98,10 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         let place = places[indexPath.row]
         cell.myLabel.text = place.name
         
+        
         let imagePath = getDocumentsDirectory().appending(path: place.image)
         cell.myImageView.image = UIImage(contentsOfFile: imagePath.path())
+        
         
         return cell
     }
@@ -89,11 +116,7 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         let newVC = ImageViewController()
         newVC.image.showingImage.image = UIImage(contentsOfFile: imagePath.path())
         
+        
         navigationController?.pushViewController(newVC, animated: true)
     }
-    
-    
-    
-
-
 }
