@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     let myView = ViewForImage()
     let myImage = ImageView()
     let myLabel = LabelView()
@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     let myButtonSave = ButtonViewSave()
     let myStackViewHorizontalForSlider = StackViewHorizontalForSlider()
     let myStackViewHorizontalForButtons = StackViewHorizontalForButtons()
+    
+    
+    var currentImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +40,11 @@ class ViewController: UIViewController {
         view.addSubview(myStackViewHorizontalForButtons.stackView)
         
     }
-
+    
     func settings() {
-        title = "Hello"
+        title = "Instafilter"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         view.backgroundColor = .white
         
@@ -50,7 +54,7 @@ class ViewController: UIViewController {
         myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonFilter.uiButton)
         myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonSave.uiButton)
     }
-
+    
     func layout() {
         NSLayoutConstraint.activate([
             myView.uiView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -72,7 +76,7 @@ class ViewController: UIViewController {
             myStackViewHorizontalForButtons.stackView.topAnchor.constraint(equalTo: myStackViewHorizontalForSlider.stackView.bottomAnchor, constant: 10),
             myStackViewHorizontalForButtons.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor),
             myStackViewHorizontalForButtons.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor),
-        
+            
             
             myButtonFilter.uiButton.widthAnchor.constraint(equalToConstant: 120),
             myButtonFilter.uiButton.heightAnchor.constraint(equalToConstant: 44),
@@ -82,5 +86,22 @@ class ViewController: UIViewController {
             
         ])
     }
+    
+    
+    @objc func importPicture() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        
+        dismiss(animated: true)
+        
+        currentImage = image
+    }
+    
 }
 
