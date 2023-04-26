@@ -24,17 +24,20 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newPlace))
         
-        let defaults = UserDefaults.standard
         
-        if let savedPlace = defaults.object(forKey: "places") as? Data {
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                places = try jsonDecoder.decode([Place].self, from: savedPlace)
-            } catch {
-                print("Failed to load place")
-            }
-        }
+        
+         
+           
+//
+//        if let savedPlace = defaults.object(forKey: "places") as? Data {
+//            let jsonDecoder = JSONDecoder()
+//
+//            do {
+//                places = try jsonDecoder.decode([Place].self, from: savedPlace)
+//            } catch {
+//                print("Failed to load place")
+//            }
+//        }
     }
     
     //MARK: - Function
@@ -58,7 +61,7 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         
         let newPlace = Place(image: imageName, name: "Unknown", caption: "Name image")
         places.append(newPlace)
-        save()
+//        save()
         tableView.reloadData()
         
         dismiss(animated: true)
@@ -69,15 +72,15 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         return paths[0]
     }
     
-    func save() {
-        let jsonEncoder = JSONEncoder()
-        if let savedData = try? jsonEncoder.encode(places) {
-            let defaults = UserDefaults.standard
-            defaults.set(savedData, forKey: "places")
-        } else {
-            print("Failed to save place")
-        }
-    }
+//    func save() {
+//        let jsonEncoder = JSONEncoder()
+//        if let savedData = try? jsonEncoder.encode(places) {
+//            let defaults = UserDefaults.standard
+//            defaults.set(savedData, forKey: "places")
+//        } else {
+//            print("Failed to save place")
+//        }
+//    }
     
 
     // MARK: - Table view data source
@@ -96,12 +99,12 @@ class HomeTableViewController: UITableViewController, UIImagePickerControllerDel
         cell.accessoryType = .disclosureIndicator
         
         let place = places[indexPath.row]
-        cell.myLabel.text = place.name
+        cell.myLabel.text = place.caption.capitalized
         
         
         let imagePath = getDocumentsDirectory().appending(path: place.image)
         cell.myImageView.image = UIImage(contentsOfFile: imagePath.path())
-        
+       
         
         return cell
     }

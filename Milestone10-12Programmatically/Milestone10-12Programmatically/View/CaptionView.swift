@@ -11,7 +11,7 @@ class CaptionView {
     var label: UILabel = {
        var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false 
-        label.text = "New place"
+        
         label.font = UIFont(name: "AppleSDGothicNeo-Light" , size: 24)
         return label
     }()
