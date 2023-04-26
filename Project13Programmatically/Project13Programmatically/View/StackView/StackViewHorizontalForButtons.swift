@@ -9,7 +9,7 @@ import UIKit
 
 class StackViewHorizontalForButtons {
     let stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [ButtonViewFilter().uiButton, ButtonViewSave().uiButton])
+        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.alignment = .center

@@ -9,7 +9,7 @@ import UIKit
 
 class StackViewHorizontalForSlider {
     let stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [LabelView().uiLabel, SliderView().uiSlider])
+        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.alignment = .center

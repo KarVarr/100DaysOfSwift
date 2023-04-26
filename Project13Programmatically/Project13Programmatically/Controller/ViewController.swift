@@ -44,6 +44,11 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        myStackViewHorizontalForSlider.stackView.addArrangedSubview(myLabel.uiLabel)
+        myStackViewHorizontalForSlider.stackView.addArrangedSubview(mySlider.uiSlider)
+        
+        myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonFilter.uiButton)
+        myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonSave.uiButton)
     }
 
     func layout() {
@@ -65,8 +70,8 @@ class ViewController: UIViewController {
             
             myStackViewHorizontalForButtons.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             myStackViewHorizontalForButtons.stackView.topAnchor.constraint(equalTo: myStackViewHorizontalForSlider.stackView.bottomAnchor, constant: 10),
-            myStackViewHorizontalForButtons.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
-            myStackViewHorizontalForButtons.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
+            myStackViewHorizontalForButtons.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor),
+            myStackViewHorizontalForButtons.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor),
         
             
             myButtonFilter.uiButton.widthAnchor.constraint(equalToConstant: 120),

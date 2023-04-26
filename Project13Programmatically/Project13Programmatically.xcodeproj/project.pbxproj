@@ -113,8 +113,7 @@
 				17AB0FEB29F98C3F00C854B5 /* ImageView.swift */,
 				17AB0FED29F98DCA00C854B5 /* LabelView.swift */,
 				17AB0FEF29F9903600C854B5 /* SliderView.swift */,
-				17AB0FF129F9951500C854B5 /* StackViewHorizontalForSlider.swift */,
-				17AB0FF829F9992500C854B5 /* StackViewHorizontalForButtons.swift */,
+				17AB0FFA29F9A59D00C854B5 /* StackView */,
 				17AB0FF729F998DD00C854B5 /* Buttons */,
 			);
 			path = View;
@@ -134,6 +133,15 @@
 				17AB0FF529F998D700C854B5 /* ButtonViewSave.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		17AB0FFA29F9A59D00C854B5 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				17AB0FF129F9951500C854B5 /* StackViewHorizontalForSlider.swift */,
+				17AB0FF829F9992500C854B5 /* StackViewHorizontalForButtons.swift */,
+			);
+			path = StackView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

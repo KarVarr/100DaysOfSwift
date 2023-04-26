@@ -12,7 +12,6 @@ class ButtonViewFilter {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Change Filter", for: .normal)
-        
         return button
     }()
 }
