@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     let myLabel = LabelView()
     let mySlider = SliderView()
     let myButtonFilter = ButtonViewFilter()
-    let myStackViewHorizontal = StackViewHorizontalForSlider()
+    let myButtonSave = ButtonViewSave()
+    let myStackViewHorizontalForSlider = StackViewHorizontalForSlider()
+    let myStackViewHorizontalForButtons = StackViewHorizontalForButtons()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,9 @@ class ViewController: UIViewController {
         view.addSubview(myLabel.uiLabel)
         view.addSubview(mySlider.uiSlider)
         view.addSubview(myButtonFilter.uiButton)
-        view.addSubview(myStackViewHorizontal.stackView)
+        view.addSubview(myButtonSave.uiButton)
+        view.addSubview(myStackViewHorizontalForSlider.stackView)
+        view.addSubview(myStackViewHorizontalForButtons.stackView)
         
     }
 
@@ -54,11 +58,22 @@ class ViewController: UIViewController {
             myImage.uiImageView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
             myImage.uiImageView.bottomAnchor.constraint(equalTo: myView.uiView.bottomAnchor, constant: -10),
             
-            myStackViewHorizontal.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            myStackViewHorizontal.stackView.topAnchor.constraint(equalTo: myView.uiView.bottomAnchor, constant: 10),
-            myStackViewHorizontal.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
-            myStackViewHorizontal.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
+            myStackViewHorizontalForSlider.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myStackViewHorizontalForSlider.stackView.topAnchor.constraint(equalTo: myView.uiView.bottomAnchor, constant: 10),
+            myStackViewHorizontalForSlider.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
+            myStackViewHorizontalForSlider.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
+            
+            myStackViewHorizontalForButtons.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myStackViewHorizontalForButtons.stackView.topAnchor.constraint(equalTo: myStackViewHorizontalForSlider.stackView.bottomAnchor, constant: 10),
+            myStackViewHorizontalForButtons.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
+            myStackViewHorizontalForButtons.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
         
+            
+            myButtonFilter.uiButton.widthAnchor.constraint(equalToConstant: 120),
+            myButtonFilter.uiButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            myButtonSave.uiButton.widthAnchor.constraint(equalToConstant: 60),
+            myButtonSave.uiButton.heightAnchor.constraint(equalToConstant: 44),
             
         ])
     }
