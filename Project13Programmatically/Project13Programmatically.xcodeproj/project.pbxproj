@@ -14,6 +14,12 @@
 		1734279A29F704240063886C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1734279829F704240063886C /* LaunchScreen.storyboard */; };
 		17AB0FEA29F9858C00C854B5 /* ViewForImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FE929F9858C00C854B5 /* ViewForImage.swift */; };
 		17AB0FEC29F98C3F00C854B5 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FEB29F98C3F00C854B5 /* ImageView.swift */; };
+		17AB0FEE29F98DCA00C854B5 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FED29F98DCA00C854B5 /* LabelView.swift */; };
+		17AB0FF029F9903600C854B5 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FEF29F9903600C854B5 /* SliderView.swift */; };
+		17AB0FF229F9951500C854B5 /* StackViewHorizontalForSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FF129F9951500C854B5 /* StackViewHorizontalForSlider.swift */; };
+		17AB0FF429F997F900C854B5 /* ButtonViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FF329F997F900C854B5 /* ButtonViewFilter.swift */; };
+		17AB0FF629F998D700C854B5 /* ButtonViewSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FF529F998D700C854B5 /* ButtonViewSave.swift */; };
+		17AB0FF929F9992500C854B5 /* StackViewHorizontalForButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB0FF829F9992500C854B5 /* StackViewHorizontalForButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		1734279B29F704240063886C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17AB0FE929F9858C00C854B5 /* ViewForImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForImage.swift; sourceTree = "<group>"; };
 		17AB0FEB29F98C3F00C854B5 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		17AB0FED29F98DCA00C854B5 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		17AB0FEF29F9903600C854B5 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		17AB0FF129F9951500C854B5 /* StackViewHorizontalForSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHorizontalForSlider.swift; sourceTree = "<group>"; };
+		17AB0FF329F997F900C854B5 /* ButtonViewFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewFilter.swift; sourceTree = "<group>"; };
+		17AB0FF529F998D700C854B5 /* ButtonViewSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewSave.swift; sourceTree = "<group>"; };
+		17AB0FF829F9992500C854B5 /* StackViewHorizontalForButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHorizontalForButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,11 @@
 			children = (
 				17AB0FE929F9858C00C854B5 /* ViewForImage.swift */,
 				17AB0FEB29F98C3F00C854B5 /* ImageView.swift */,
+				17AB0FED29F98DCA00C854B5 /* LabelView.swift */,
+				17AB0FEF29F9903600C854B5 /* SliderView.swift */,
+				17AB0FF129F9951500C854B5 /* StackViewHorizontalForSlider.swift */,
+				17AB0FF829F9992500C854B5 /* StackViewHorizontalForButtons.swift */,
+				17AB0FF729F998DD00C854B5 /* Buttons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +125,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		17AB0FF729F998DD00C854B5 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				17AB0FF329F997F900C854B5 /* ButtonViewFilter.swift */,
+				17AB0FF529F998D700C854B5 /* ButtonViewSave.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,11 +206,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AB0FF429F997F900C854B5 /* ButtonViewFilter.swift in Sources */,
+				17AB0FEE29F98DCA00C854B5 /* LabelView.swift in Sources */,
 				17AB0FEC29F98C3F00C854B5 /* ImageView.swift in Sources */,
+				17AB0FF629F998D700C854B5 /* ButtonViewSave.swift in Sources */,
 				1734279229F704220063886C /* ViewController.swift in Sources */,
 				1734278E29F704220063886C /* AppDelegate.swift in Sources */,
 				17AB0FEA29F9858C00C854B5 /* ViewForImage.swift in Sources */,
 				1734279029F704220063886C /* SceneDelegate.swift in Sources */,
+				17AB0FF029F9903600C854B5 /* SliderView.swift in Sources */,
+				17AB0FF929F9992500C854B5 /* StackViewHorizontalForButtons.swift in Sources */,
+				17AB0FF229F9951500C854B5 /* StackViewHorizontalForSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

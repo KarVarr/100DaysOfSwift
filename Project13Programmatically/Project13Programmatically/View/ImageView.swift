@@ -8,10 +8,11 @@
 import UIKit
 
 class ImageView {
-    let myImageView: UIImageView = {
+    let uiImageView: UIImageView = {
        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .orange
+        image.layer.cornerRadius = 5
         return image
     }()
 }
