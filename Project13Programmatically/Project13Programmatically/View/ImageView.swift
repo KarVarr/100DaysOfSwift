@@ -13,6 +13,8 @@ class ImageView {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .orange
         image.layer.cornerRadius = 5
+        image.clipsToBounds = true
+        image.contentMode = .scaleToFill
         return image
     }()
 }

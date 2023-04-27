@@ -4,7 +4,7 @@
 //
 //  Created by Karen Vardanian on 24.04.2023.
 //
-
+import CoreImage
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -19,6 +19,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     
     var currentImage: UIImage!
+    var context: CIContext!
+    var currentFilter: CIFilter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +42,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         view.addSubview(myStackViewHorizontalForButtons.stackView)
         
     }
-    
+ 
     func settings() {
         title = "Instafilter"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         view.backgroundColor = .white
+        
+        context = CIContext()
+        currentFilter = CIFilter(name: "CISepiaTone")
+        
+        mySlider.uiSlider.addTarget(self, action: #selector(applyProcessing), for: .valueChanged)
+         
         
         myStackViewHorizontalForSlider.stackView.addArrangedSubview(myLabel.uiLabel)
         myStackViewHorizontalForSlider.stackView.addArrangedSubview(mySlider.uiSlider)
@@ -93,14 +101,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
-        
         dismiss(animated: true)
-        
         currentImage = image
+        
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
+    }
+    
+    @objc func applyProcessing() {
+        guard let image = currentFilter.outputImage else { return }
+        currentFilter.setValue(mySlider.uiSlider.value, forKey: kCIInputIntensityKey)
+        
+        if let cgimg = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
+            myImage.uiImageView.image = processedImage
+        }
+        
     }
     
 }
