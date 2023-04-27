@@ -11,7 +11,7 @@ class ImageView {
     let uiImageView: UIImageView = {
        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .orange
+        image.image = UIImage(named: "defaultImage")
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
         image.contentMode = .scaleToFill

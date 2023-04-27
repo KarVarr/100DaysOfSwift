@@ -17,6 +17,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     let myStackViewHorizontalForSlider = StackViewHorizontalForSlider()
     let myStackViewHorizontalForButtons = StackViewHorizontalForButtons()
     
+    let myLabelRadius = LabelView()
+    let mySliderRadius = SliderView()
+    let myStackViewSlider2 = StackViewHorizontalForSlider()
     
     var currentImage: UIImage!
     var context: CIContext!
@@ -41,6 +44,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         view.addSubview(myStackViewHorizontalForSlider.stackView)
         view.addSubview(myStackViewHorizontalForButtons.stackView)
         
+        view.addSubview(myLabelRadius.uiLabel)
+        view.addSubview(mySliderRadius.uiSlider)
+        view.addSubview(myStackViewSlider2.stackView)
     }
     
     func settings() {
@@ -57,10 +63,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         myButtonFilter.uiButton.addTarget(self, action: #selector(changeFilter), for: .touchUpInside)
         myButtonSave.uiButton.addTarget(self, action: #selector(save), for: .touchUpInside)
         
+        myLabelRadius.uiLabel.text = "Radius:    "
+        mySliderRadius.uiSlider.addTarget(self, action: #selector(radiusSlider), for: .valueChanged)
         
         
         myStackViewHorizontalForSlider.stackView.addArrangedSubview(myLabel.uiLabel)
         myStackViewHorizontalForSlider.stackView.addArrangedSubview(mySlider.uiSlider)
+        
+        myStackViewSlider2.stackView.addArrangedSubview(myLabelRadius.uiLabel)
+        myStackViewSlider2.stackView.addArrangedSubview(mySliderRadius.uiSlider)
         
         myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonFilter.uiButton)
         myStackViewHorizontalForButtons.stackView.addArrangedSubview(myButtonSave.uiButton)
@@ -71,7 +82,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             myView.uiView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             myView.uiView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             myView.uiView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            myView.uiView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            myView.uiView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             
             myImage.uiImageView.topAnchor.constraint(equalTo: myView.uiView.topAnchor, constant: 10),
             myImage.uiImageView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
@@ -83,13 +94,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             myStackViewHorizontalForSlider.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
             myStackViewHorizontalForSlider.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
             
+            
+            myStackViewSlider2.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myStackViewSlider2.stackView.topAnchor.constraint(equalTo: myStackViewHorizontalForSlider.stackView.bottomAnchor, constant: 10),
+            myStackViewSlider2.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor, constant: 10),
+            myStackViewSlider2.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor, constant: -10),
+            
             myStackViewHorizontalForButtons.stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            myStackViewHorizontalForButtons.stackView.topAnchor.constraint(equalTo: myStackViewHorizontalForSlider.stackView.bottomAnchor, constant: 10),
+            myStackViewHorizontalForButtons.stackView.topAnchor.constraint(equalTo: myStackViewSlider2.stackView.bottomAnchor, constant: 10),
             myStackViewHorizontalForButtons.stackView.leadingAnchor.constraint(equalTo: myView.uiView.leadingAnchor),
             myStackViewHorizontalForButtons.stackView.trailingAnchor.constraint(equalTo: myView.uiView.trailingAnchor),
             
             
-            myButtonFilter.uiButton.widthAnchor.constraint(equalToConstant: 120),
+            myButtonFilter.uiButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 120),
             myButtonFilter.uiButton.heightAnchor.constraint(equalToConstant: 44),
             
             myButtonSave.uiButton.widthAnchor.constraint(equalToConstant: 60),
@@ -118,6 +135,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         applyProcessing()
     }
     
+    @objc func radiusSlider() {
+       applyProcessing()
+    }
+    
     @objc func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
         let value = mySlider.uiSlider.value
@@ -128,11 +149,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
         
         if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
-                let processedImage = UIImage(cgImage: cgimg)
+            let processedImage = UIImage(cgImage: cgimg)
             self.myImage.uiImageView.image = processedImage
-            }
+        }
         
     }
+    
+    
     
     @objc func changeFilter() {
         let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
@@ -150,7 +173,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     func setFilter(action: UIAlertAction) {
         guard currentImage != nil else { return }
         guard let actionTitle = action.title else { return }
-        
+        //Challenge 2
+        myButtonFilter.uiButton.setTitle(actionTitle, for: .normal)
         currentFilter = CIFilter(name: actionTitle)
         
         let beginImage = CIImage(image: currentImage)
@@ -170,6 +194,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         if let error = error {
                let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
                ac.addAction(UIAlertAction(title: "OK", style: .default))
+            //Challenge 1
                present(ac, animated: true)
            } else {
                let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
