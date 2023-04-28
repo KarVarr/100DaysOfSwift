@@ -115,7 +115,11 @@ class ViewController: UIViewController {
         guard let buttonTitle = sender.titleLabel?.text else { return }
         textField.currentAnswer.text = textField.currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+        //Challenge project 15
+        UIView.animate(withDuration: 1, delay: 0) {
+            sender.alpha = 0
+        }
+//        sender.isHidden = true
     }
     
     @objc func submitTapped(_ sender: UIButton) {
@@ -139,7 +143,8 @@ class ViewController: UIViewController {
             //Challenge 2
             textField.currentAnswer.text = ""
             for btn in activatedButtons {
-                btn.isHidden = false
+//                btn.isHidden = false
+                btn.alpha = 1
             }
             let ac = UIAlertController(title: "Wrong!", message: "Your enters an incorrect", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -162,7 +167,8 @@ class ViewController: UIViewController {
         textField.currentAnswer.text = ""
         
         for btn in activatedButtons {
-            btn.isHidden = false
+//            btn.isHidden = false
+            btn.alpha = 1
         }
         
         activatedButtons.removeAll()
@@ -222,7 +228,8 @@ class ViewController: UIViewController {
         loadLevel()
         
         for btn in letterButtons {
-            btn.isHidden = false
+//            btn.isHidden = false
+            btn.alpha = 1
         }
     }
     

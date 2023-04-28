@@ -15,6 +15,7 @@ class ImageView {
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
         image.contentMode = .scaleToFill
+        image.alpha = 0
         return image
     }()
 }

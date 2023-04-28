@@ -48,6 +48,10 @@ class ViewController: UIViewController {
         if count == 10 {
             showResult()
         }
+        
+        
+        
+        
     }
     
     func addView() {
@@ -69,6 +73,12 @@ class ViewController: UIViewController {
         button.layer.shadowRadius = 8
         button.layer.cornerRadius = 10
         button.tag = tag
+        
+        
+        //Challenge 3 Project 15
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5) {
+            button.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
@@ -132,6 +142,11 @@ class ViewController: UIViewController {
         var title: String
         var message: String
         
+        //Challenge 3 Project 15
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5) {
+            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+        
         if sender.tag == correctAnswer {
             title = "Correct"
             message = "And this is the correct answer. \(score)"
@@ -149,6 +164,8 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: askQuestion))
         present(ac, animated: true)
+        
+        
         
     }
     
