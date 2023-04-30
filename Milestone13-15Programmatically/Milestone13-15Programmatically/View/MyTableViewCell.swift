@@ -45,7 +45,7 @@ class MyTableViewCell: UITableViewCell {
         flagImageView.clipsToBounds = true
         flagImageView.layer.cornerRadius = 5
         flagImageView.layer.borderWidth = 2
-        flagImageView.layer.borderColor = UIColor.blue.cgColor
+        flagImageView.layer.borderColor = UIColor.orange.cgColor
     }
     
     func layout() {

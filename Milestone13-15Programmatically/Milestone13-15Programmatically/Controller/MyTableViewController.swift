@@ -109,9 +109,15 @@ class MyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let country = countries[indexPath.row]
+        let newVC = DetailTableViewController()
+        newVC.title = country.name?.common
         
-        let newVC = ViewController()
-        
+        newVC.countyCapital.text = country.capital?[0] 
+        newVC.countyPopulation.text = "\(String(describing: country.population ?? 0))"
+        newVC.countyRegion.text = country.region
+        newVC.countyTimezones.text = country.timezones?[0]
+        newVC.countyArea.text = "\(String(describing: country.area ?? 0))"
         
         navigationController?.pushViewController(newVC, animated: true)
     }

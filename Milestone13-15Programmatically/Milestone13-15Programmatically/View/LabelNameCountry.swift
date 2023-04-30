@@ -12,6 +12,8 @@ class  LabelNameCountry {
     let nameLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .darkGray
+        label.font = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
         return label
     }()
 }
