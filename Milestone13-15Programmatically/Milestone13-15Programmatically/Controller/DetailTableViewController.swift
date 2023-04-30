@@ -12,6 +12,7 @@ import UIKit
 class DetailTableViewController: UITableViewController {
     var country: Country!
     
+   
     
     
     var flagImage = UIImageView()
@@ -21,6 +22,13 @@ class DetailTableViewController: UITableViewController {
     var countyTimezones = UILabel()
     var countyRegion = UILabel()
     var countyArea = UILabel()
+    var countyStartOfWeek = UILabel()
+    var countyCarSide = UILabel()
+    var countyFlagString = UILabel()
+    
+    var currencyName = UILabel()
+    var currencySymbol = UILabel()
+     
     
     let sectionTitle = ["Flag", "General", "Languages", "Currencies"]
     
@@ -33,7 +41,7 @@ class DetailTableViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .never
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
-       
+        
     }
 
     // MARK: - Table view data source
@@ -50,7 +58,7 @@ class DetailTableViewController: UITableViewController {
         
         switch sectionTitle[section] {
         case "Flag": return 1
-        case "General": return 5
+        case "General": return 8
         case "Languages": return 1
         case "Currencies": return 1
         default: return 0
@@ -68,10 +76,13 @@ class DetailTableViewController: UITableViewController {
         case "General":
             switch indexPath.row {
             case 0: cell.textLabel?.text = "Capital: \(countyCapital.text ?? "Unknown Capital")"
-            case 1: cell.textLabel?.text = "Population: \(convertNumberToString(countyPopulation.text!) ?? "Unknown Population") people"
+            case 1: cell.textLabel?.text = "Population: \(convertNumberToString(countyPopulation.text!) ) people"
             case 2: cell.textLabel?.text = "Region: \(countyRegion.text ?? "Unknown Region")"
             case 3: cell.textLabel?.text = "Timezones: \(countyTimezones.text ?? "Unknown Timezones")"
-            case 4: cell.textLabel?.text = "Area: \(convertNumberToString(countyArea.text!) ?? "Unknown Area") km²"
+            case 4: cell.textLabel?.text = "Area: \(convertNumberToString(countyArea.text!) ) km²"
+            case 5: cell.textLabel?.text = "Start of week: \(String(describing: countyStartOfWeek.text!)) "
+            case 6: cell.textLabel?.text = "Car side: \(countyCarSide.text!)"
+            case 7: cell.textLabel?.text = "Flag emoji: \(countyFlagString.text!)"
             default:
                 return cell
             }
@@ -81,6 +92,14 @@ class DetailTableViewController: UITableViewController {
             
             return cell
             
+            
+        case "Currencies":
+            switch indexPath.row {
+            case 0: cell.textLabel?.text = "Currency: '\(currencySymbol.text!)100' \(currencyName.text!)"
+            default:
+                return cell
+            }
+            return cell
             
         default:
             cell

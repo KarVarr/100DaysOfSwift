@@ -118,6 +118,18 @@ class MyTableViewController: UITableViewController {
         newVC.countyRegion.text = country.region
         newVC.countyTimezones.text = country.timezones?[0]
         newVC.countyArea.text = "\(String(describing: country.area ?? 0))"
+        newVC.countyCarSide.text = country.car?.side
+        newVC.countyStartOfWeek.text = country.startOfWeek
+        newVC.countyFlagString.text = country.flag
+        
+        
+        
+        if let currency = country.currencies?.values.first {
+            newVC.currencyName.text = currency.name
+            newVC.currencySymbol.text = currency.symbol
+        }
+        
+
         
         navigationController?.pushViewController(newVC, animated: true)
     }
