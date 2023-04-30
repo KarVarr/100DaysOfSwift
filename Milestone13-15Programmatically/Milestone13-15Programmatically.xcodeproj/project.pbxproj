@@ -14,6 +14,7 @@
 		17AB103C29FE7F1500C854B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AB103A29FE7F1500C854B5 /* LaunchScreen.storyboard */; };
 		17AB104729FE806900C854B5 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104629FE806900C854B5 /* MyTableViewController.swift */; };
 		17AB104A29FE85DE00C854B5 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104929FE85DE00C854B5 /* Countries.swift */; };
+		17AB104D29FE868F00C854B5 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		17AB103D29FE7F1500C854B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17AB104629FE806900C854B5 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		17AB104929FE85DE00C854B5 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 		17AB102E29FE7F1400C854B5 /* Milestone13-15Programmatically */ = {
 			isa = PBXGroup;
 			children = (
-				17AB104829FE85D200C854B5 /* Model */,
 				17AB104429FE7FDF00C854B5 /* Application */,
+				17AB104829FE85D200C854B5 /* Model */,
+				17AB104B29FE867100C854B5 /* View */,
 				17AB104529FE7FEA00C854B5 /* Controller */,
 				17AB104329FE7FA800C854B5 /* Resources */,
 			);
@@ -100,6 +103,14 @@
 				17AB104929FE85DE00C854B5 /* Countries.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		17AB104B29FE867100C854B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				17AB103229FE7F1400C854B5 /* SceneDelegate.swift in Sources */,
 				17AB104A29FE85DE00C854B5 /* Countries.swift in Sources */,
 				17AB104729FE806900C854B5 /* MyTableViewController.swift in Sources */,
+				17AB104D29FE868F00C854B5 /* MyTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
