@@ -89,19 +89,7 @@ class MyTableViewController: UITableViewController {
         cell.myLabel.nameLabel.numberOfLines = 0
         cell.myLabel.nameLabel.text = country.name?.official
   
-        if let flagUrl = country.flags?.png {
-                if let url = URL(string: flagUrl) {
-                    let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if let imageData = data {
-                            let image = UIImage(data: imageData)
-                            DispatchQueue.main.async {
-                                cell.flagImageView.image = image
-                            }
-                        }
-                    })
-                    task.resume()
-                }
-            }
+        imagePath(country.flags?.png, cell.flagImageView)
 
         
         return cell
@@ -113,6 +101,10 @@ class MyTableViewController: UITableViewController {
         let newVC = DetailTableViewController()
         newVC.title = country.name?.common
         
+//        imagePath(country.flags?.png, newVC.flagImage)
+//        newVC.flagImage.image = UIImage(named: "WaitingScore")
+
+      
         newVC.countyCapital.text = country.capital?[0] 
         newVC.countyPopulation.text = "\(String(describing: country.population ?? 0))"
         newVC.countyRegion.text = country.region
@@ -134,4 +126,19 @@ class MyTableViewController: UITableViewController {
         navigationController?.pushViewController(newVC, animated: true)
     }
     
+    func imagePath(_ url: String?,_ path: UIImageView) {
+        if let flagUrl = url {
+                if let url = URL(string: flagUrl) {
+                    let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                        if let imageData = data {
+                            let image = UIImage(data: imageData)
+                            DispatchQueue.main.async {
+                                path.image = image
+                            }
+                        }
+                    })
+                    task.resume()
+                }
+            }
+    }
 }

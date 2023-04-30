@@ -1,5 +1,5 @@
 //
-//  MyTableViewCell.swift
+//  FlagCell.swift
 //  Milestone13-15Programmatically
 //
 //  Created by Karen Vardanian on 30.04.2023.
@@ -7,13 +7,14 @@
 
 import UIKit
 
-class MyTableViewCell: UITableViewCell {
-    let homeTabelView = MyTableViewController()
-    let myLabel = LabelNameCountry()
+class FlagCell: UITableViewCell {
+    
+    private let flagCell = DetailTableViewController()
+    
     let flagImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: homeTabelView.reuseIdentifier)
+        super.init(style: style, reuseIdentifier: flagCell.reuseIdentifier)
         self.addView()
         self.settings()
         self.layout()
@@ -22,20 +23,19 @@ class MyTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
+       
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+        
     }
     
-    
-    
     func addView() {
-        contentView.addSubview(myLabel.nameLabel)
         contentView.addSubview(flagImageView)
     }
     
@@ -43,9 +43,6 @@ class MyTableViewCell: UITableViewCell {
         flagImageView.translatesAutoresizingMaskIntoConstraints = false
         flagImageView.contentMode = .scaleToFill
         flagImageView.clipsToBounds = true
-        flagImageView.layer.cornerRadius = 5
-        flagImageView.layer.borderWidth = 2
-        flagImageView.layer.borderColor = UIColor.orange.cgColor
     }
     
     func layout() {
@@ -54,14 +51,10 @@ class MyTableViewCell: UITableViewCell {
             flagImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             flagImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             flagImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            flagImageView.widthAnchor.constraint(equalToConstant: 100),
-            flagImageView.heightAnchor.constraint(equalToConstant: 60),
-            
-            myLabel.nameLabel.leadingAnchor.constraint(equalTo: flagImageView.trailingAnchor, constant: 10),
-            myLabel.nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            myLabel.nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            flagImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            flagImageView.widthAnchor.constraint(equalToConstant: 300),
+            flagImageView.heightAnchor.constraint(equalToConstant: 400),
         ])
     }
-    
-    
+
 }

@@ -4,16 +4,16 @@
 //
 //  Created by Karen Vardanian on 30.04.2023.
 //
-
+import MapKit
 import UIKit
 
 
 
 class DetailTableViewController: UITableViewController {
+    
+    let reuseIdentifier = "flagCell"
+    
     var country: Country!
-    
-   
-    
     
     var flagImage = UIImageView()
     
@@ -25,12 +25,13 @@ class DetailTableViewController: UITableViewController {
     var countyStartOfWeek = UILabel()
     var countyCarSide = UILabel()
     var countyFlagString = UILabel()
+    var countyBorder = UILabel()
     
     var currencyName = UILabel()
     var currencySymbol = UILabel()
-     
     
-    let sectionTitle = ["Flag", "General", "Languages", "Currencies"]
+    
+    let sectionTitle = ["General", "Currencies"]
     
     
     
@@ -41,10 +42,30 @@ class DetailTableViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .never
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(FlagCell.self, forCellReuseIdentifier: reuseIdentifier)
         
+       
     }
+    
+    
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch sectionTitle[indexPath.section] {
+        case "Flag":
+            // Return the desired height for the flag cell
+            return 400
+        default:
+            // Return the default height for other cells
+            return UITableView.automaticDimension
+        }
+    }
+
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitle.count
@@ -59,7 +80,6 @@ class DetailTableViewController: UITableViewController {
         switch sectionTitle[section] {
         case "Flag": return 1
         case "General": return 8
-        case "Languages": return 1
         case "Currencies": return 1
         default: return 0
         }
@@ -69,10 +89,8 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        
-        
-        
         switch sectionTitle[indexPath.section] {
+      
         case "General":
             switch indexPath.row {
             case 0: cell.textLabel?.text = "Capital: \(countyCapital.text ?? "Unknown Capital")"
@@ -87,12 +105,7 @@ class DetailTableViewController: UITableViewController {
                 return cell
             }
             return cell
-            
-        case "Languages":
-            
-            return cell
-            
-            
+       
         case "Currencies":
             switch indexPath.row {
             case 0: cell.textLabel?.text = "Currency: '\(currencySymbol.text!)100' \(currencyName.text!)"
@@ -102,11 +115,11 @@ class DetailTableViewController: UITableViewController {
             return cell
             
         default:
-            cell
+            break
         }
         
 
-        return cell
+        return UITableViewCell()
     }
     
     func convertNumberToString(_ number: String) -> String {
