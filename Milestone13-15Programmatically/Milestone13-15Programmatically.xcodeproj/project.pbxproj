@@ -15,6 +15,7 @@
 		17AB104729FE806900C854B5 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104629FE806900C854B5 /* MyTableViewController.swift */; };
 		17AB104A29FE85DE00C854B5 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104929FE85DE00C854B5 /* Countries.swift */; };
 		17AB104D29FE868F00C854B5 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */; };
+		17AB105229FEB18300C854B5 /* LabelNameCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB105129FEB18300C854B5 /* LabelNameCountry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		17AB104629FE806900C854B5 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		17AB104929FE85DE00C854B5 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		17AB105029FEAE0700C854B5 /* Sample.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sample.geojson; sourceTree = "<group>"; };
+		17AB105129FEB18300C854B5 /* LabelNameCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNameCountry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				17AB104929FE85DE00C854B5 /* Countries.swift */,
+				17AB105029FEAE0700C854B5 /* Sample.geojson */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				17AB104C29FE868F00C854B5 /* MyTableViewCell.swift */,
+				17AB105129FEB18300C854B5 /* LabelNameCountry.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				17AB103429FE7F1400C854B5 /* ViewController.swift in Sources */,
 				17AB103029FE7F1400C854B5 /* AppDelegate.swift in Sources */,
 				17AB103229FE7F1400C854B5 /* SceneDelegate.swift in Sources */,
+				17AB105229FEB18300C854B5 /* LabelNameCountry.swift in Sources */,
 				17AB104A29FE85DE00C854B5 /* Countries.swift in Sources */,
 				17AB104729FE806900C854B5 /* MyTableViewController.swift in Sources */,
 				17AB104D29FE868F00C854B5 /* MyTableViewCell.swift in Sources */,

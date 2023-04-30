@@ -11,7 +11,7 @@ class MyTableViewController: UITableViewController {
     
     let reuseIdentifier = "reuseIdentifier"
 
-    var countries: [Countries] = []
+    var countries: [Country] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class MyTableViewController: UITableViewController {
             
             if let data = data {
                 do {
-                    self.countries = try JSONDecoder().decode([Countries].self, from: data)
+                    self.countries = try JSONDecoder().decode([Country].self, from: data)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -73,17 +73,37 @@ class MyTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return countries.count
     }
-
+ 
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MyTableViewCell
-        cell.accessoryType = .detailButton
+        cell.accessoryType = .disclosureIndicator
         let country = countries[indexPath.row]
         
-        cell.myLabel.text = ("\(country.name.common): \(country.region)")
+        cell.myLabel.nameLabel.numberOfLines = 0
+        cell.myLabel.nameLabel.text = country.name?.official
+  
+        if let flagUrl = country.flags?.png {
+                if let url = URL(string: flagUrl) {
+                    let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                        if let imageData = data {
+                            let image = UIImage(data: imageData)
+                            DispatchQueue.main.async {
+                                cell.flagImageView.image = image
+                            }
+                        }
+                    })
+                    task.resume()
+                }
+            }
+
+        
         return cell
     }
     
@@ -96,7 +116,4 @@ class MyTableViewController: UITableViewController {
         navigationController?.pushViewController(newVC, animated: true)
     }
     
-
-  
-
 }
