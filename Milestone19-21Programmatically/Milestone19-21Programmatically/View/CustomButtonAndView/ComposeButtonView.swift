@@ -11,7 +11,7 @@ class ComposeButtonView {
     let button: UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         button.backgroundColor = .clear
         return button
     }()

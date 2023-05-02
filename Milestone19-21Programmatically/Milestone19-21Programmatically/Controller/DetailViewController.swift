@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    
+    
     let customViewForComposeButton = CustomToolbarViewForComposeButton()
     let customViewForDeleteButton = CustomToolbarViewForDeleteButton()
     let composeButton = ComposeButtonView()
@@ -17,7 +19,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        
         
         addView()
         setting()
@@ -34,6 +36,10 @@ class DetailViewController: UIViewController {
     
     func setting() {
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        
+        title = "Detail"
+        navigationItem.largeTitleDisplayMode = .never
+        
        
         customViewForComposeButton.myView.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.5145705342, blue: 1, alpha: 1)
         customViewForComposeButton.myView.layer.cornerRadius = 30
@@ -93,9 +99,9 @@ class DetailViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         navigationController?.toolbar.backgroundColor = .cyan
         navigationController?.toolbar.layer.cornerRadius = 10
-        
-        
     }
+    
+    
     
     @objc func deleteItem() {
         

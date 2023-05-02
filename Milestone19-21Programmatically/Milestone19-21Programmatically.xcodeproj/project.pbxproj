@@ -18,6 +18,9 @@
 		17AB10D32A01281500C854B5 /* ComposeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D22A01281500C854B5 /* ComposeButtonView.swift */; };
 		17AB10D52A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */; };
 		17AB10D72A012BE200C854B5 /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */; };
+		17AB10DA2A0133F000C854B5 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D92A0133F000C854B5 /* Notes.swift */; };
+		17AB10DD2A01377C00C854B5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10DC2A01377C00C854B5 /* TitleLabel.swift */; };
+		17AB10DF2A01378D00C854B5 /* TextEditorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10DE2A01378D00C854B5 /* TextEditorLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		17AB10D22A01281500C854B5 /* ComposeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeButtonView.swift; sourceTree = "<group>"; };
 		17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbarViewForDeleteButton.swift; sourceTree = "<group>"; };
 		17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonView.swift; sourceTree = "<group>"; };
+		17AB10D92A0133F000C854B5 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		17AB10DC2A01377C00C854B5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		17AB10DE2A01378D00C854B5 /* TextEditorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				17AB10CE2A011C8400C854B5 /* CustomTableViewCell.swift */,
-				17AB10D02A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift */,
-				17AB10D22A01281500C854B5 /* ComposeButtonView.swift */,
-				17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */,
-				17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */,
+				17AB10DC2A01377C00C854B5 /* TitleLabel.swift */,
+				17AB10DE2A01378D00C854B5 /* TextEditorLabel.swift */,
+				17AB10DB2A0136F700C854B5 /* CustomButtonAndView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,8 +123,20 @@
 		17AB10CD2A011C6A00C854B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				17AB10D92A0133F000C854B5 /* Notes.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		17AB10DB2A0136F700C854B5 /* CustomButtonAndView */ = {
+			isa = PBXGroup;
+			children = (
+				17AB10D02A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift */,
+				17AB10D22A01281500C854B5 /* ComposeButtonView.swift */,
+				17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */,
+				17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */,
+			);
+			path = CustomButtonAndView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,11 +210,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				17AB10D52A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift in Sources */,
+				17AB10DA2A0133F000C854B5 /* Notes.swift in Sources */,
 				17AB10CB2A011AD900C854B5 /* HomeTableViewController.swift in Sources */,
 				17AB10D72A012BE200C854B5 /* DeleteButtonView.swift in Sources */,
+				17AB10DD2A01377C00C854B5 /* TitleLabel.swift in Sources */,
 				17AB10CF2A011C8400C854B5 /* CustomTableViewCell.swift in Sources */,
 				17AB10B82A011A4200C854B5 /* DetailViewController.swift in Sources */,
 				17AB10D32A01281500C854B5 /* ComposeButtonView.swift in Sources */,
+				17AB10DF2A01378D00C854B5 /* TextEditorLabel.swift in Sources */,
 				17AB10D12A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift in Sources */,
 				17AB10B42A011A4200C854B5 /* AppDelegate.swift in Sources */,
 				17AB10B62A011A4200C854B5 /* SceneDelegate.swift in Sources */,

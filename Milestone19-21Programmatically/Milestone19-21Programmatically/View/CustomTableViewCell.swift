@@ -8,7 +8,9 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
+    
+    let title = TitleLabel()
+    let textField = TextEditorLabel()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -38,7 +40,8 @@ class CustomTableViewCell: UITableViewCell {
     
     
        func addView() {
-          
+           contentView.addSubview(title.titleLabel)
+           contentView.addSubview(textField.textEditor)
        }
        
        func settings() {
@@ -47,7 +50,14 @@ class CustomTableViewCell: UITableViewCell {
        
        func layout() {
            NSLayoutConstraint.activate([
-              
+            title.titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            title.titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            title.titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            textField.textEditor.topAnchor.constraint(equalTo: title.titleLabel.bottomAnchor, constant: 5),
+            textField.textEditor.leadingAnchor.constraint(equalTo: title.titleLabel.leadingAnchor, constant: 16),
+            textField.textEditor.trailingAnchor.constraint(equalTo: title.titleLabel.trailingAnchor, constant: -16),
+            textField.textEditor.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
            ])
        }
 

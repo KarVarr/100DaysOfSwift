@@ -11,7 +11,7 @@ class DeleteButtonView {
     let button: UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "xmark.bin"), for: .normal)
+        button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.backgroundColor = .clear
         return button
     }()
