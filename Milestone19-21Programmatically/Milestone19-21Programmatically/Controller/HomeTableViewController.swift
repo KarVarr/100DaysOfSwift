@@ -58,8 +58,10 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - EDIT
     @objc func editButton() {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        
         
         if tableView.isEditing {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editButton))
@@ -102,15 +104,21 @@ class HomeTableViewController: UITableViewController {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
+    
+    // MARK: - SWIPE DELETE
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, success) in
             self.note.remove(at: indexPath.row)
-            save()
-            tableView.reloadData()
+            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
         }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete])
+        save()
+        tableView.reloadData()
+        return swipeActions
     }
     
+    // MARK: - MOVE
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         note.swapAt(sourceIndexPath.row, destinationIndexPath.row)
         save()

@@ -56,9 +56,10 @@ class CustomTableViewCell: UITableViewCell {
             title.titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             textField.textEditor.topAnchor.constraint(equalTo: title.titleLabel.bottomAnchor, constant: 5),
-            textField.textEditor.leadingAnchor.constraint(equalTo: title.titleLabel.leadingAnchor),
+            textField.textEditor.leadingAnchor.constraint(equalTo: title.titleLabel.leadingAnchor, constant: -10),
             textField.textEditor.trailingAnchor.constraint(equalTo: title.titleLabel.trailingAnchor, constant: -16),
             textField.textEditor.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            textField.textEditor.heightAnchor.constraint(equalToConstant: 24),
            ])
        }
 

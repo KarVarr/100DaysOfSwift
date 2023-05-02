@@ -7,11 +7,15 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
-    var titleLabel = TitleLabel()
+class DetailViewController: UIViewController, UITextViewDelegate {
     
     let note = [Notes]()
+    
+    
+    var titleLabel = TitleLabel()
+    var textField = TextEditorLabel()
+    let placeholderLabel = TitleLabel()
+
     
     let customViewForComposeButton = CustomToolbarViewForComposeButton()
     let customViewForDeleteButton = CustomToolbarViewForDeleteButton()
@@ -24,28 +28,46 @@ class DetailViewController: UIViewController {
         addView()
         setting()
         layout()
-//        toolBarAndNavigationViewSetting()
+        //        toolBarAndNavigationViewSetting()
+       
     }
     
+    //MARK: - ADD VIEWS
     func addView() {
         view.addSubview(customViewForComposeButton.myView)
         view.addSubview(customViewForDeleteButton.myView)
+        
         view.addSubview(composeButton.button)
         view.addSubview(deleteButton.button)
+        
         view.addSubview(titleLabel.titleLabel)
+        view.addSubview(textField.textEditor)
+        
+        textField.textEditor.addSubview(placeholderLabel.titleLabel)
     }
     
+    //MARK: - SETTINGS
     func setting() {
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         
         
         navigationItem.largeTitleDisplayMode = .never
         
-        
+        titleLabel.titleLabel.font = UIFont(name: "GillSans-Bold", size: 32)
         composeButton.button.addTarget(self, action: #selector(composeItem), for: .touchUpInside)
+        
+        
+        placeholderLabel.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeholderLabel.titleLabel.text = "Write something here..."
+        placeholderLabel.titleLabel.textColor = .lightGray
+        
+        textField.textEditor.delegate = self
+        textField.textEditor.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textViewDidChange(textField.textEditor)
         
     }
     
+    //MARK: - LAYOUT
     func layout() {
         NSLayoutConstraint.activate([
             customViewForComposeButton.myView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -70,29 +92,40 @@ class DetailViewController: UIViewController {
             
             titleLabel.titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             titleLabel.titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            textField.textEditor.topAnchor.constraint(equalTo: titleLabel.titleLabel.bottomAnchor, constant: 10),
+            textField.textEditor.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            textField.textEditor.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            textField.textEditor.bottomAnchor.constraint(equalTo: customViewForDeleteButton.myView.topAnchor, constant: -20),
+            
+            placeholderLabel.titleLabel.topAnchor.constraint(equalTo: textField.textEditor.topAnchor, constant: 8),
+            placeholderLabel.titleLabel.leadingAnchor.constraint(equalTo: textField.textEditor.leadingAnchor, constant: 16),
+
         ])
     }
     
-//    func toolBarAndNavigationViewSetting() {
-//        title = "Detail"
-//        navigationItem.largeTitleDisplayMode = .never
-//
-//        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteItem))
-//        let composeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(composeItem))
-//
-//        let leftSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-//        let leftSpace = UIBarButtonItem(customView: leftSpacerView)
-//
-//        let rightSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-//        let rightSpace = UIBarButtonItem(customView: rightSpacerView)
-//
-//        toolbarItems = [leftSpace,deleteButton, UIBarButtonItem.flexibleSpace(), composeButton, rightSpace]
-//        navigationController?.isToolbarHidden = false
-//        navigationController?.toolbar.backgroundColor = .cyan
-//        navigationController?.toolbar.layer.cornerRadius = 10
-//    }
+    //    func toolBarAndNavigationViewSetting() {
+    //        title = "Detail"
+    //        navigationItem.largeTitleDisplayMode = .never
+    //
+    //        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteItem))
+    //        let composeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(composeItem))
+    //
+    //        let leftSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+    //        let leftSpace = UIBarButtonItem(customView: leftSpacerView)
+    //
+    //        let rightSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+    //        let rightSpace = UIBarButtonItem(customView: rightSpacerView)
+    //
+    //        toolbarItems = [leftSpace,deleteButton, UIBarButtonItem.flexibleSpace(), composeButton, rightSpace]
+    //        navigationController?.isToolbarHidden = false
+    //        navigationController?.toolbar.backgroundColor = .cyan
+    //        navigationController?.toolbar.layer.cornerRadius = 10
+    //    }
     
-    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.titleLabel.isHidden = !textView.text.isEmpty
+    }
     
     @objc func deleteItem() {
         
@@ -109,7 +142,7 @@ class DetailViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
-
-
+    
+    
 }
 

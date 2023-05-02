@@ -8,9 +8,17 @@
 import UIKit
 
 class TextEditorLabel {
-    let textEditor: UITextField = {
-       let textEditor = UITextField()
+    
+    let textEditor: UITextView = {
+        let textEditor = UITextView()
         textEditor.translatesAutoresizingMaskIntoConstraints = false
+        textEditor.textColor = .black
+        textEditor.textAlignment = .left
+        textEditor.font = UIFont.systemFont(ofSize: 16)
+        textEditor.autocapitalizationType = .sentences
+        textEditor.returnKeyType = .done
+        textEditor.layer.cornerRadius = 8
+        textEditor.clipsToBounds = true
         return textEditor
     }()
 }
