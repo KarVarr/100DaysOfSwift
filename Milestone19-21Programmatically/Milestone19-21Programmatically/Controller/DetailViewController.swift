@@ -9,7 +9,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var titleLabel = TitleLabel()
     
+    let note = [Notes]()
     
     let customViewForComposeButton = CustomToolbarViewForComposeButton()
     let customViewForDeleteButton = CustomToolbarViewForDeleteButton()
@@ -18,8 +20,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         addView()
         setting()
@@ -32,29 +32,17 @@ class DetailViewController: UIViewController {
         view.addSubview(customViewForDeleteButton.myView)
         view.addSubview(composeButton.button)
         view.addSubview(deleteButton.button)
+        view.addSubview(titleLabel.titleLabel)
     }
     
     func setting() {
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         
-        title = "Detail"
+        
         navigationItem.largeTitleDisplayMode = .never
         
-       
-        customViewForComposeButton.myView.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.5145705342, blue: 1, alpha: 1)
-        customViewForComposeButton.myView.layer.cornerRadius = 30
-        customViewForComposeButton.myView.layer.shadowOffset = .zero
-        customViewForComposeButton.myView.layer.shadowOpacity = 0.25
-        customViewForComposeButton.myView.layer.shadowColor = UIColor.black.cgColor
-        customViewForComposeButton.myView.layer.shadowRadius = 3
         
-        
-        customViewForDeleteButton.myView.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
-        customViewForDeleteButton.myView.layer.cornerRadius = 30
-        customViewForDeleteButton.myView.layer.shadowOffset = .zero
-        customViewForDeleteButton.myView.layer.shadowOpacity = 0.25
-        customViewForDeleteButton.myView.layer.shadowColor = UIColor.black.cgColor
-        customViewForDeleteButton.myView.layer.shadowRadius = 3
+        composeButton.button.addTarget(self, action: #selector(composeItem), for: .touchUpInside)
         
     }
     
@@ -79,27 +67,30 @@ class DetailViewController: UIViewController {
             deleteButton.button.bottomAnchor.constraint(equalTo: customViewForDeleteButton.myView.bottomAnchor, constant: -5),
             deleteButton.button.leadingAnchor.constraint(equalTo: customViewForDeleteButton.myView.leadingAnchor, constant: 5),
             deleteButton.button.trailingAnchor.constraint(equalTo: customViewForDeleteButton.myView.trailingAnchor, constant: -5),
+            
+            titleLabel.titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
-    func toolBarAndNavigationViewSetting() {
-        title = "Detail"
-        navigationItem.largeTitleDisplayMode = .never
-        
-        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteItem))
-        let composeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(composeItem))
-        
-        let leftSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-        let leftSpace = UIBarButtonItem(customView: leftSpacerView)
-        
-        let rightSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-        let rightSpace = UIBarButtonItem(customView: rightSpacerView)
-        
-        toolbarItems = [leftSpace,deleteButton, UIBarButtonItem.flexibleSpace(), composeButton, rightSpace]
-        navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.backgroundColor = .cyan
-        navigationController?.toolbar.layer.cornerRadius = 10
-    }
+//    func toolBarAndNavigationViewSetting() {
+//        title = "Detail"
+//        navigationItem.largeTitleDisplayMode = .never
+//
+//        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteItem))
+//        let composeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(composeItem))
+//
+//        let leftSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+//        let leftSpace = UIBarButtonItem(customView: leftSpacerView)
+//
+//        let rightSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+//        let rightSpace = UIBarButtonItem(customView: rightSpacerView)
+//
+//        toolbarItems = [leftSpace,deleteButton, UIBarButtonItem.flexibleSpace(), composeButton, rightSpace]
+//        navigationController?.isToolbarHidden = false
+//        navigationController?.toolbar.backgroundColor = .cyan
+//        navigationController?.toolbar.layer.cornerRadius = 10
+//    }
     
     
     
@@ -108,7 +99,15 @@ class DetailViewController: UIViewController {
     }
     
     @objc func composeItem() {
+        let ac = UIAlertController(title: "Change title", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "Ok", style: .default) {[weak self] _ in
+            guard let newTitle = ac.textFields?[0].text else { return }
+            self?.titleLabel.titleLabel.text = newTitle
+        })
         
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
 
 
