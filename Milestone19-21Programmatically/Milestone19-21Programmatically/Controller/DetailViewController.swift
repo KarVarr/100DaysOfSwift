@@ -7,9 +7,11 @@
 
 import UIKit
 
+
+
 class DetailViewController: UIViewController, UITextViewDelegate {
     
-    let note = [Notes]()
+    var note = [Notes]()
     
     
     var titleLabel = TitleLabel()
@@ -29,12 +31,20 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         setting()
         layout()
         
-        if !textField.textEditor.text.isEmpty  {
-            deleteButton.button.isEnabled = true
-        } else {
-            deleteButton.button.isEnabled = false
-        }
+        
+        
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        note = Storage.load()
+        
+//        textField.textEditor.text = note.first?.note
+    }
+    
+    
     
     
     //MARK: - ADD VIEWS
@@ -153,14 +163,26 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         ac.addAction(UIAlertAction(title: "Ok", style: .default) {[weak self] _ in
             guard let newTitle = ac.textFields?[0].text else { return }
             self?.titleLabel.titleLabel.text = newTitle
+            
+            let newNote = Notes(title: newTitle, note: self?.textField.textEditor.text ?? "Empty note", id: UUID())
+            self?.note.append(newNote)
+            
+            if let notes = self?.note {
+                Storage.save(note: notes)
+            }
         })
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+        
     }
     
+    
+    
     @objc func shareNoteButton() {
-        
+        let vc = UIActivityViewController(activityItems: [note.first?.title, note.first?.title], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
     
     

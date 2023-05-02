@@ -21,6 +21,7 @@
 		17AB10DA2A0133F000C854B5 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D92A0133F000C854B5 /* Notes.swift */; };
 		17AB10DD2A01377C00C854B5 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10DC2A01377C00C854B5 /* TitleLabel.swift */; };
 		17AB10DF2A01378D00C854B5 /* TextEditorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10DE2A01378D00C854B5 /* TextEditorLabel.swift */; };
+		17AB10E12A018A5700C854B5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10E02A018A5700C854B5 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		17AB10D92A0133F000C854B5 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		17AB10DC2A01377C00C854B5 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		17AB10DE2A01378D00C854B5 /* TextEditorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorLabel.swift; sourceTree = "<group>"; };
+		17AB10E02A018A5700C854B5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				17AB10D92A0133F000C854B5 /* Notes.swift */,
+				17AB10E02A018A5700C854B5 /* Storage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				17AB10D12A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift in Sources */,
 				17AB10B42A011A4200C854B5 /* AppDelegate.swift in Sources */,
 				17AB10B62A011A4200C854B5 /* SceneDelegate.swift in Sources */,
+				17AB10E12A018A5700C854B5 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

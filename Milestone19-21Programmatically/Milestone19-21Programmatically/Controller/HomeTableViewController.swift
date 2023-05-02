@@ -12,7 +12,7 @@ class HomeTableViewController: UITableViewController {
     var note = [Notes]()
     
     let reuseIdentifier = "customCell"
-    let userDefaultKey = "note"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,39 +24,22 @@ class HomeTableViewController: UITableViewController {
         
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier:reuseIdentifier)
         
-        let defaults = UserDefaults.standard
-        
-        if let savedNote = defaults.object(forKey: userDefaultKey) as? Data {
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                note = try jsonDecoder.decode([Notes].self, from: savedNote)
-            } catch {
-                print("Failed to load note!")
-            }
-        }
-        
     }
     
-    
-    @objc func addNote() {
-        let newNote = Notes(title: "New note", note: "Write something...")
-        note.append(newNote)
-        save()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        note = Storage.load()
         tableView.reloadData()
     }
     
     
-    func save() {
-        let jsonEncoder = JSONEncoder()
-        
-        if let savedData = try? jsonEncoder.encode(note) {
-            let defaults = UserDefaults.standard
-            defaults.set(savedData, forKey: userDefaultKey)
-        } else {
-            print("Failed to save people!")
-        }
+    @objc func addNote() {
+        let newNote = Notes(title: "New note", note: "Write something...", id: UUID())
+        note.append(newNote)
+        Storage.save(note: note)
+        tableView.reloadData()
     }
+    
     
     // MARK: - EDIT
     @objc func editButton() {
@@ -68,9 +51,9 @@ class HomeTableViewController: UITableViewController {
         } else {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButton))
         }
-        UserDefaults.standard.removeObject(forKey: userDefaultKey)
+        UserDefaults.standard.removeObject(forKey: Storage().userDefaultKey)
         UserDefaults.standard.synchronize()
-        save()
+        Storage.save(note: note)
         tableView.reloadData()
         
         
@@ -113,7 +96,7 @@ class HomeTableViewController: UITableViewController {
         }
         
         let swipeActions = UISwipeActionsConfiguration(actions: [delete])
-        save()
+        Storage.save(note: note)
         tableView.reloadData()
         return swipeActions
     }
@@ -121,7 +104,7 @@ class HomeTableViewController: UITableViewController {
     // MARK: - MOVE
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         note.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-        save()
+        Storage.save(note: note)
         
     }
     

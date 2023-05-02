@@ -9,11 +9,15 @@ import UIKit
 
 
 class Notes: Codable {
+   
+    
     var title: String
     var note: String
+    var id: UUID
     
-    init(title: String, note: String) {
+    init(title: String, note: String, id: UUID) {
         self.title = title
         self.note = note
+        self.id = id
     }
 }
