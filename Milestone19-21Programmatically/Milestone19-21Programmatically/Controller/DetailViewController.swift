@@ -15,7 +15,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     var titleLabel = TitleLabel()
     var textField = TextEditorLabel()
     let placeholderLabel = TitleLabel()
-
+    
     
     let customViewForComposeButton = CustomToolbarViewForComposeButton()
     let customViewForDeleteButton = CustomToolbarViewForDeleteButton()
@@ -28,9 +28,14 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         addView()
         setting()
         layout()
-        //        toolBarAndNavigationViewSetting()
-       
+        
+        if !textField.textEditor.text.isEmpty  {
+            deleteButton.button.isEnabled = true
+        } else {
+            deleteButton.button.isEnabled = false
+        }
     }
+    
     
     //MARK: - ADD VIEWS
     func addView() {
@@ -44,6 +49,8 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         view.addSubview(textField.textEditor)
         
         textField.textEditor.addSubview(placeholderLabel.titleLabel)
+        
+        
     }
     
     //MARK: - SETTINGS
@@ -52,9 +59,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         
         
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareNoteButton))
         
         titleLabel.titleLabel.font = UIFont(name: "GillSans-Bold", size: 32)
         composeButton.button.addTarget(self, action: #selector(composeItem), for: .touchUpInside)
+        deleteButton.button.addTarget(self, action: #selector(deleteItem), for: .touchUpInside)
+        
         
         
         placeholderLabel.titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -63,8 +73,10 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         
         textField.textEditor.delegate = self
         textField.textEditor.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        textViewDidChange(textField.textEditor)
         
+        textViewDidChange(textField.textEditor)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     //MARK: - LAYOUT
@@ -100,35 +112,39 @@ class DetailViewController: UIViewController, UITextViewDelegate {
             
             placeholderLabel.titleLabel.topAnchor.constraint(equalTo: textField.textEditor.topAnchor, constant: 8),
             placeholderLabel.titleLabel.leadingAnchor.constraint(equalTo: textField.textEditor.leadingAnchor, constant: 16),
-
+            
         ])
     }
     
-    //    func toolBarAndNavigationViewSetting() {
-    //        title = "Detail"
-    //        navigationItem.largeTitleDisplayMode = .never
-    //
-    //        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "xmark.bin"), style: .plain, target: self, action: #selector(deleteItem))
-    //        let composeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(composeItem))
-    //
-    //        let leftSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-    //        let leftSpace = UIBarButtonItem(customView: leftSpacerView)
-    //
-    //        let rightSpacerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
-    //        let rightSpace = UIBarButtonItem(customView: rightSpacerView)
-    //
-    //        toolbarItems = [leftSpace,deleteButton, UIBarButtonItem.flexibleSpace(), composeButton, rightSpace]
-    //        navigationController?.isToolbarHidden = false
-    //        navigationController?.toolbar.backgroundColor = .cyan
-    //        navigationController?.toolbar.layer.cornerRadius = 10
-    //    }
     
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.titleLabel.isHidden = !textView.text.isEmpty
     }
     
+    //MARK: - HIDE KEYBOARD
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textField.textEditor.resignFirstResponder()
+            deleteButton.button.isEnabled = true
+            return false
+        }
+        return true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc func deleteItem() {
-        
+        if !textField.textEditor.text.isEmpty {
+            let ac = UIAlertController(title: "Delete all text?", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Delete", style: .default) { [weak self] _ in
+                self?.textField.textEditor.text = ""
+                self?.placeholderLabel.titleLabel.isHidden = false
+            })
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(ac, animated: true)
+        }
     }
     
     @objc func composeItem() {
@@ -141,6 +157,10 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    @objc func shareNoteButton() {
+        
     }
     
     
