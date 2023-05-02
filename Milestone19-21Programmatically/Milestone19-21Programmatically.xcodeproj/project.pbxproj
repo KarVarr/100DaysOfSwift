@@ -14,6 +14,10 @@
 		17AB10C02A011A4400C854B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AB10BE2A011A4400C854B5 /* LaunchScreen.storyboard */; };
 		17AB10CB2A011AD900C854B5 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10CA2A011AD900C854B5 /* HomeTableViewController.swift */; };
 		17AB10CF2A011C8400C854B5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10CE2A011C8400C854B5 /* CustomTableViewCell.swift */; };
+		17AB10D12A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D02A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift */; };
+		17AB10D32A01281500C854B5 /* ComposeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D22A01281500C854B5 /* ComposeButtonView.swift */; };
+		17AB10D52A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */; };
+		17AB10D72A012BE200C854B5 /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		17AB10C12A011A4400C854B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17AB10CA2A011AD900C854B5 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		17AB10CE2A011C8400C854B5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		17AB10D02A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbarViewForComposeButton.swift; sourceTree = "<group>"; };
+		17AB10D22A01281500C854B5 /* ComposeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeButtonView.swift; sourceTree = "<group>"; };
+		17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbarViewForDeleteButton.swift; sourceTree = "<group>"; };
+		17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				17AB10CE2A011C8400C854B5 /* CustomTableViewCell.swift */,
+				17AB10D02A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift */,
+				17AB10D22A01281500C854B5 /* ComposeButtonView.swift */,
+				17AB10D42A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift */,
+				17AB10D62A012BE200C854B5 /* DeleteButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,9 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AB10D52A012A6800C854B5 /* CustomToolbarViewForDeleteButton.swift in Sources */,
 				17AB10CB2A011AD900C854B5 /* HomeTableViewController.swift in Sources */,
+				17AB10D72A012BE200C854B5 /* DeleteButtonView.swift in Sources */,
 				17AB10CF2A011C8400C854B5 /* CustomTableViewCell.swift in Sources */,
 				17AB10B82A011A4200C854B5 /* DetailViewController.swift in Sources */,
+				17AB10D32A01281500C854B5 /* ComposeButtonView.swift in Sources */,
+				17AB10D12A0123D900C854B5 /* CustomToolbarViewForComposeButton.swift in Sources */,
 				17AB10B42A011A4200C854B5 /* AppDelegate.swift in Sources */,
 				17AB10B62A011A4200C854B5 /* SceneDelegate.swift in Sources */,
 			);

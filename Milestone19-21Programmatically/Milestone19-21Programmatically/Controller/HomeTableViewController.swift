@@ -32,7 +32,7 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.accessoryType = .detailDisclosureButton
+        cell.accessoryType = .disclosureIndicator
         
         cell.textLabel?.text = "test"
 
