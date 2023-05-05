@@ -12,6 +12,7 @@
 		17AB10F32A05565800C854B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB10F22A05565800C854B5 /* ViewController.swift */; };
 		17AB10F82A05565900C854B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AB10F72A05565900C854B5 /* Assets.xcassets */; };
 		17AB10FB2A05565900C854B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AB10F92A05565900C854B5 /* LaunchScreen.storyboard */; };
+		17AB11072A0557E100C854B5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB11062A0557E100C854B5 /* Label.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		17AB10F72A05565900C854B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17AB10FA2A05565900C854B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17AB10FC2A05565900C854B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17AB11062A0557E100C854B5 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				17AB11032A0556CE00C854B5 /* Application */,
+				17AB11052A0557C900C854B5 /* View */,
 				17AB11042A0556D700C854B5 /* Controller */,
 				17AB11022A0556A300C854B5 /* Resouces */,
 			);
@@ -86,6 +89,14 @@
 				17AB10F22A05565800C854B5 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		17AB11052A0557C900C854B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17AB11062A0557E100C854B5 /* Label.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 			files = (
 				17AB10F32A05565800C854B5 /* ViewController.swift in Sources */,
 				17AB10EF2A05565800C854B5 /* AppDelegate.swift in Sources */,
+				17AB11072A0557E100C854B5 /* Label.swift in Sources */,
 				17AB10F12A05565800C854B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
