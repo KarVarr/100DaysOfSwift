@@ -9,8 +9,9 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
-    let arr = ["first", "second", "third", "four"]
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +19,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         
-        title = "project 25"
+        title = "Selfie Share"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(camera))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
         
         
         self.collectionView!.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -30,8 +31,20 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     
     
-    @objc func camera() {
+    @objc func importPicture() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
         
+        dismiss(animated: true)
+        
+        images.insert(image, at: 0)
+        collectionView.reloadData()
     }
     
     // MARK: UICollectionViewDataSource
@@ -43,22 +56,23 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return images.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MyCollectionViewCell
         
-        cell.backgroundColor = .red 
+        if let imageView = cell.viewWithTag(1000) as? UIImageView {
+            imageView.image = images[indexPath.item]
+        }
         
-        cell.label.text = arr[indexPath.item].uppercased()
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (view.frame.width - 20), height: 400)
+        CGSize(width: 145, height: 145)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -73,6 +87,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 
-
+    
     
 }
