@@ -9,10 +9,11 @@ import UIKit
 
 class ImageView {
     var customImageView: UIImageView = {
-       var image = UIImageView()
+        var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 20
         return image
     }()
 }

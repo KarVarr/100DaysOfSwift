@@ -94,8 +94,6 @@ class ViewController: UIViewController {
             hStack.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor),
             hStack.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor),
             
-            
-            
         ])
         
     }
@@ -143,7 +141,12 @@ class ViewController: UIViewController {
     }
     
     @objc func shareMeme() {
+        guard let image = myImage.customImageView.image?.jpegData(compressionQuality: 1) else {return}
         
+        
+    
+        let vc = UIActivityViewController(activityItems: [image, topLabel.customLabel.text ?? "Unknown"], applicationActivities: [])
+        present(vc, animated: true)
     }
     
 }
