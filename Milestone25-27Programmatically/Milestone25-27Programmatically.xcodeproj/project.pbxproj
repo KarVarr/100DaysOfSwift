@@ -16,6 +16,7 @@
 		17AB115A2A0806D800C854B5 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB11592A0806D800C854B5 /* ButtonView.swift */; };
 		17AB115C2A08073300C854B5 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB115B2A08073300C854B5 /* ToolbarView.swift */; };
 		17AB115E2A080A3800C854B5 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB115D2A080A3800C854B5 /* HorizontalStackView.swift */; };
+		17AB11602A08140500C854B5 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB115F2A08140500C854B5 /* LabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		17AB11592A0806D800C854B5 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		17AB115B2A08073300C854B5 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		17AB115D2A080A3800C854B5 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
+		17AB115F2A08140500C854B5 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				17AB11592A0806D800C854B5 /* ButtonView.swift */,
 				17AB115B2A08073300C854B5 /* ToolbarView.swift */,
 				17AB115D2A080A3800C854B5 /* HorizontalStackView.swift */,
+				17AB115F2A08140500C854B5 /* LabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				17AB115C2A08073300C854B5 /* ToolbarView.swift in Sources */,
 				17AB115A2A0806D800C854B5 /* ButtonView.swift in Sources */,
 				17AB115E2A080A3800C854B5 /* HorizontalStackView.swift in Sources */,
+				17AB11602A08140500C854B5 /* LabelView.swift in Sources */,
 				17AB11412A07FE9100C854B5 /* AppDelegate.swift in Sources */,
 				17AB11432A07FE9100C854B5 /* SceneDelegate.swift in Sources */,
 			);

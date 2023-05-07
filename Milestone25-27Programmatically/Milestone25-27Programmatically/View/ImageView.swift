@@ -11,6 +11,8 @@ class ImageView {
     var customImageView: UIImageView = {
        var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFit
         return image
     }()
 }
