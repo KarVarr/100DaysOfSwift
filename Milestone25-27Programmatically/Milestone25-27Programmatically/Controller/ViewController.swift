@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     func setting() {
         view.backgroundColor = .systemOrange
         
-        myImage.customImageView.image = UIImage(systemName: "plus")
+        myImage.customImageView.image = UIImage(systemName: "photo")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         
         
         toolbarView.customView.backgroundColor = .black
